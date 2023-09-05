@@ -87,6 +87,22 @@ Download af data forudsætter en Webi-rapport opsat på en tidsplan, som aflever
 Downloadflowet er illustreret i nedenstående figur: 
 
 ```mermaid
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#3c3c3c',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#3c3c3c',
+      'lineColor': '#F8B229',
+      'secondaryColor': '#616161',
+      'tertiaryColor': '#616161',
+      'tertiaryTextColor': '#fff'
+    }
+  }
+}%%
+
 %% Upload af data %%
 flowchart LR
     subgraph "Randers Kommune" 
