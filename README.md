@@ -39,7 +39,7 @@ flowchart LR
     end
     subgraph SG2["Randers Kommune"]
         subgraph SG20 [ ]
-
+            style SG20 stroke-dasharray: 0 1  
             subgraph SG21["Kubernetes-platformen"]
             
                 B1["
