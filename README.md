@@ -16,15 +16,31 @@ I tillæg til ETL-servicen, er det også muligt at manuelt at tilføje og hente 
 # Upload 
 Uploadflowet er illustreret i nedenstående figur: 
 ```mermaid
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#3c3c3c',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#3c3c3c',
+      'lineColor': '#F8B229',
+      'secondaryColor': '#616161',
+      'tertiaryColor': '#616161',
+      'tertiaryTextColor': '#fff'
+    }
+  }
+}%%
+
 %% Upload af data %%
 flowchart LR
-    subgraph "Interne og eksterne"
+    subgraph SG1["Interne og\n eksterne"]
         A[("Datakilde(r)")] 
     end
-    subgraph "Randers Kommune" 
-        subgraph subgraph_padding_1 [ ]
-        style subgraph_padding_1 stroke-dasharray: 0 1  
-            subgraph "Kubernetes-platformen"
+    subgraph SG2["Randers Kommune"]
+        subgraph SG20 [ ]
+
+            subgraph SG21["Kubernetes-platformen"]
             
                 B1["
                 Automatisk transformering
@@ -38,7 +54,7 @@ flowchart LR
             prædefineret syntaks
         "]
     end
-    subgraph "KMD Insight" 
+    subgraph SG3["KMD Insight" ]
         C[("SFTP-server")]
         D["
             Transformation til 
