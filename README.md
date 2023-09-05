@@ -45,7 +45,7 @@ flowchart LR
                 B1["
                 Automatisk transformering
                 via Node-RED til 
-                prædifineret syntaks
+                prædefineret syntaks
                 "]
             end
         end
