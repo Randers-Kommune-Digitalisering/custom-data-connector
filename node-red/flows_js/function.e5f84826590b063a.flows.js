@@ -1,7 +1,7 @@
 const Node = {
   "id": "e5f84826590b063a",
   "type": "function",
-  "z": "971a7ae6df987a48",
+  "z": "84314e70c5c07697",
   "name": "split datetime",
   "func": "",
   "outputs": 1,
@@ -9,14 +9,14 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 410,
-  "y": 800,
+  "x": 470,
+  "y": 60,
   "wires": [
     [
       "4ae1a5c1989051b1"
     ]
   ],
-  "_order": 22
+  "_order": 26
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {

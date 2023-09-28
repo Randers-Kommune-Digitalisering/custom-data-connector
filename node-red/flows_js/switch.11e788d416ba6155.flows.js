@@ -1,27 +1,29 @@
 const Node = {
-  "id": "ea286421938ec063",
+  "id": "11e788d416ba6155",
   "type": "switch",
   "z": "03715ff8e991446c",
-  "g": "633b505264d4927a",
-  "name": "check for response data",
-  "property": "payload",
+  "g": "2e6fc66263b74e2b",
+  "name": "check status",
+  "property": "statusCode",
   "propertyType": "msg",
   "rules": [
     {
-      "t": "nempty"
+      "t": "neq",
+      "v": "200",
+      "vt": "num"
     }
   ],
   "checkall": "true",
   "repair": false,
   "outputs": 1,
-  "x": 270,
-  "y": 340,
+  "x": 430,
+  "y": 120,
   "wires": [
     [
-      "d636b5344f8693ef"
+      "768abdf9ed7f7bb4"
     ]
   ],
-  "_order": 11
+  "_order": 19
 }
 
 module.exports = Node;

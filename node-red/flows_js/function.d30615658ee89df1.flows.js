@@ -1,7 +1,7 @@
 const Node = {
   "id": "d30615658ee89df1",
   "type": "function",
-  "z": "971a7ae6df987a48",
+  "z": "03715ff8e991446c",
   "g": "633b505264d4927a",
   "name": "add dates and fix data types",
   "func": "",
@@ -10,14 +10,12 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 780,
-  "y": 420,
+  "x": 940,
+  "y": 340,
   "wires": [
-    [
-      "7208316b0728a773"
-    ]
+    []
   ],
-  "_order": 17
+  "_order": 13
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {

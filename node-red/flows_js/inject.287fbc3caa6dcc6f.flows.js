@@ -1,9 +1,8 @@
 const Node = {
-  "id": "a63e38f15a56eefb",
+  "id": "287fbc3caa6dcc6f",
   "type": "inject",
   "z": "971a7ae6df987a48",
-  "g": "2e6fc66263b74e2b",
-  "name": "Inject once",
+  "name": "trigger",
   "props": [
     {
       "p": "payload"
@@ -12,18 +11,18 @@ const Node = {
   "repeat": "",
   "crontab": "",
   "once": false,
-  "onceDelay": "5",
+  "onceDelay": 0.1,
   "topic": "",
   "payload": "",
   "payloadType": "date",
-  "x": 160,
-  "y": 220,
+  "x": 150,
+  "y": 340,
   "wires": [
     [
-      "35a1db39c6de6e98"
+      "0d900b4d2c4787bc"
     ]
   ],
-  "_order": 12
+  "_order": 33
 }
 
 module.exports = Node;

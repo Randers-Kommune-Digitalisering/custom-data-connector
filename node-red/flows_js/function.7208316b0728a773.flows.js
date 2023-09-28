@@ -1,7 +1,7 @@
 const Node = {
   "id": "7208316b0728a773",
   "type": "function",
-  "z": "971a7ae6df987a48",
+  "z": "84314e70c5c07697",
   "name": "validate consistency of columns",
   "func": "",
   "outputs": 1,
@@ -9,14 +9,14 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 190,
-  "y": 800,
+  "x": 230,
+  "y": 60,
   "wires": [
     [
       "e5f84826590b063a"
     ]
   ],
-  "_order": 18
+  "_order": 22
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {

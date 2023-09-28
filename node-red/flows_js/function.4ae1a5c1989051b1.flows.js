@@ -1,7 +1,7 @@
 const Node = {
   "id": "4ae1a5c1989051b1",
   "type": "function",
-  "z": "971a7ae6df987a48",
+  "z": "84314e70c5c07697",
   "name": "set max 4 decimal places",
   "func": "",
   "outputs": 1,
@@ -9,14 +9,14 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 450,
-  "y": 880,
+  "x": 690,
+  "y": 60,
   "wires": [
     [
       "f80f44fb6233a5b9"
     ]
   ],
-  "_order": 19
+  "_order": 23
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
