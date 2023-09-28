@@ -9,8 +9,8 @@ const Node = {
   "filename": "",
   "localFilename": "",
   "name": "KMD Insight",
-  "x": 1070,
-  "y": 180,
+  "x": 1170,
+  "y": 260,
   "wires": [
     []
   ],

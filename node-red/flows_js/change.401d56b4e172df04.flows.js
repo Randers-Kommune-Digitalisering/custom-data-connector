@@ -9,6 +9,31 @@ const Node = {
       "t": "delete",
       "p": "columns",
       "pt": "msg"
+    },
+    {
+      "t": "delete",
+      "p": "statusCode",
+      "pt": "msg"
+    },
+    {
+      "t": "delete",
+      "p": "headers",
+      "pt": "msg"
+    },
+    {
+      "t": "delete",
+      "p": "responseUrl",
+      "pt": "msg"
+    },
+    {
+      "t": "delete",
+      "p": "redirectList",
+      "pt": "msg"
+    },
+    {
+      "t": "delete",
+      "p": "retry",
+      "pt": "msg"
     }
   ],
   "action": "",

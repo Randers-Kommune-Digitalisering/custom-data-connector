@@ -2,20 +2,20 @@ const Node = {
   "id": "b920fbca099f98d9",
   "type": "change",
   "z": "84314e70c5c07697",
-  "name": "set file names",
+  "name": "set file paths",
   "rules": [
     {
       "t": "set",
       "p": "meta_name",
       "pt": "msg",
-      "to": "Meta_test",
+      "to": "Outgoing/Meta_test.csv",
       "tot": "str"
     },
     {
       "t": "set",
       "p": "data_name",
       "pt": "msg",
-      "to": "Data_test",
+      "to": "Outgoing/Data_test.csv",
       "tot": "str"
     }
   ],
@@ -24,11 +24,11 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 640,
+  "x": 630,
   "y": 140,
   "wires": [
     [
-      "76db6cd38f0c8c81"
+      "c6ad3bb96d56c3c2"
     ]
   ],
   "_order": 32

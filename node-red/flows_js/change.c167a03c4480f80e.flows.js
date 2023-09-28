@@ -1,0 +1,30 @@
+const Node = {
+  "id": "c167a03c4480f80e",
+  "type": "change",
+  "z": "84314e70c5c07697",
+  "name": "set payload",
+  "rules": [
+    {
+      "t": "move",
+      "p": "data",
+      "pt": "msg",
+      "to": "payload",
+      "tot": "msg"
+    }
+  ],
+  "action": "",
+  "property": "",
+  "from": "",
+  "to": "",
+  "reg": false,
+  "x": 790,
+  "y": 260,
+  "wires": [
+    [
+      "7c98df7b7da2a951"
+    ]
+  ],
+  "_order": 33
+}
+
+module.exports = Node;
