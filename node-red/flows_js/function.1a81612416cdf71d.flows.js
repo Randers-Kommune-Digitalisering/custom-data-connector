@@ -1,26 +1,28 @@
 const Node = {
-  "id": "5f3e8906e8898d6e",
+  "id": "1a81612416cdf71d",
   "type": "function",
   "z": "84314e70c5c07697",
-  "name": "change decimal seperator",
+  "name": "set file paths",
   "func": "",
   "outputs": 1,
   "noerr": 0,
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 450,
+  "x": 650,
   "y": 260,
   "wires": [
     [
-      "1a81612416cdf71d"
+      "c6ad3bb96d56c3c2"
     ]
   ],
-  "_order": 25
+  "_order": 38
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.data = msg.data.replaceAll('.', ',');
+  const outPath = env.get("OUT_PATH");
+  msg.meta_path = outPath + "/Meta_" + msg.title + ".csv";
+  msg.data_path = outPath + "/Data_" + msg.title + ".csv";
   return msg;
 }
 

@@ -4,10 +4,10 @@ const Node = {
   "z": "84314e70c5c07697",
   "name": "Missing: validate number of fields for string, number and cpr number",
   "info": "",
-  "x": 340,
-  "y": 220,
+  "x": 1100,
+  "y": 360,
   "wires": [],
-  "_order": 21
+  "_order": 22
 }
 
 module.exports = Node;

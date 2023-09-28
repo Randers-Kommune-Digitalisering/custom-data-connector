@@ -8,13 +8,13 @@ const Node = {
   "pattern": "",
   "filename": "",
   "localFilename": "",
-  "name": "KMD Insight",
-  "x": 1170,
-  "y": 260,
+  "name": "KMD Insight sftp",
+  "x": 540,
+  "y": 620,
   "wires": [
     []
   ],
-  "_order": 29
+  "_order": 30
 }
 
 module.exports = Node;

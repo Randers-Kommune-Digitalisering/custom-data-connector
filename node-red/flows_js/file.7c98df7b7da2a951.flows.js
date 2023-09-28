@@ -3,20 +3,20 @@ const Node = {
   "type": "file",
   "z": "84314e70c5c07697",
   "name": "Write data",
-  "filename": "data_name",
+  "filename": "path",
   "filenameType": "msg",
   "appendNewline": false,
   "createDir": true,
   "overwriteFile": "true",
   "encoding": "utf8",
-  "x": 970,
-  "y": 260,
+  "x": 530,
+  "y": 480,
   "wires": [
     [
       "76db6cd38f0c8c81"
     ]
   ],
-  "_order": 30
+  "_order": 31
 }
 
 module.exports = Node;

@@ -1,13 +1,13 @@
 const Node = {
-  "id": "7d2f78ec278ec098",
+  "id": "f65e2fb462d50c78",
   "type": "comment",
   "z": "84314e70c5c07697",
-  "name": "Missing:s ftp server connection",
+  "name": "Missing: add data types to meta file",
   "info": "",
-  "x": 590,
-  "y": 660,
+  "x": 300,
+  "y": 300,
   "wires": [],
-  "_order": 37
+  "_order": 41
 }
 
 module.exports = Node;

@@ -3,7 +3,7 @@ const Node = {
   "type": "debug",
   "z": "03715ff8e991446c",
   "g": "633b505264d4927a",
-  "name": "http-request 2",
+  "name": "request error",
   "active": true,
   "tosidebar": true,
   "console": true,

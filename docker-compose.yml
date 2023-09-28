@@ -12,6 +12,8 @@ services:
       # DB_HOST: db
       # DB_PORT: 3306
       # DB_DATABASE: demo
+      OUT_PATH: output
+      IN_PATH: input
       JOBINDSATS_API_KEY: ${JOBINDSATS_API_KEY}
             
       # Miljøvariablen FLOWS fortæller Node-RED IDEet hvilket flow.json den skal åbne og gemme ændringer i ved deploy.

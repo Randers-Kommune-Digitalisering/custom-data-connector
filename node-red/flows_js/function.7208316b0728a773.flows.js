@@ -9,19 +9,19 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 230,
-  "y": 60,
+  "x": 550,
+  "y": 180,
   "wires": [
     [
-      "e5f84826590b063a"
+      "93d1596b39ecfd38"
     ]
   ],
-  "_order": 22
+  "_order": 23
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   const keyCount = Object.keys(msg.payload[0]).length
-  if (!msg.payload.every(obj => Object.keys(obj).length === keyCount)) msg.node.error('Validation error', 'inconsistent number of keys');
+  if (!msg.payload.every(obj => Object.keys(obj).length === keyCount)) throw new Error("Validation error: inconsistent number of keys");
   return msg;
 }
 
