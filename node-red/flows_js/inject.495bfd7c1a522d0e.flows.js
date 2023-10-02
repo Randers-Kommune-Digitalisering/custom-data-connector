@@ -1,28 +1,22 @@
 const Node = {
-  "id": "287fbc3caa6dcc6f",
+  "id": "495bfd7c1a522d0e",
   "type": "inject",
   "z": "971a7ae6df987a48",
-  "name": "trigger",
-  "props": [
-    {
-      "p": "payload"
-    }
-  ],
+  "name": "",
+  "props": [],
   "repeat": "",
   "crontab": "",
   "once": false,
   "onceDelay": 0.1,
   "topic": "",
-  "payload": "",
-  "payloadType": "date",
   "x": 110,
-  "y": 180,
+  "y": 260,
   "wires": [
     [
-      "0d900b4d2c4787bc"
+      "8db135e2c33f1ddb"
     ]
   ],
-  "_order": 45
+  "_order": 49
 }
 
 module.exports = Node;
