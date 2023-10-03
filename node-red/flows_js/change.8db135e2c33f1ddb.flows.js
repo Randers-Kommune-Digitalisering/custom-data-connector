@@ -8,7 +8,7 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[\t    {\t    \"cpr_test_1\": 1234567890,\t    \"cpr_test_2\": \"1234567890\",\t    \"cpr_test_3\": \"123456-7890\"\t    },\t    {\t    \"cpr_test_1\": 1234567890,\t    \"cpr_test_2\": \"1234567890\",\t    \"cpr_test_3\": \"123456-7890\"\t    }\t]",
+      "to": "[\t    {\t    \"cpr_test\": 1201577890,\t    \"num_test\": 123.88908081,\t    \"txt_test\": \"Hej med dig\"\t    },\t    {\t    \"cpr_test\": 1101567890,\t    \"num_test\": 127.808081,\t    \"txt_test\": \"Hej\"\t    }\t]",
       "tot": "jsonata"
     },
     {
@@ -31,7 +31,7 @@ const Node = {
       "6d4b53efdb8b1699"
     ]
   ],
-  "_order": 48
+  "_order": 43
 }
 
 module.exports = Node;

@@ -9,12 +9,12 @@ const Node = {
   "filename": "",
   "localFilename": "",
   "name": "KMD Insight sftp",
-  "x": 540,
-  "y": 620,
+  "x": 800,
+  "y": 520,
   "wires": [
     []
   ],
-  "_order": 30
+  "_order": 28
 }
 
 module.exports = Node;

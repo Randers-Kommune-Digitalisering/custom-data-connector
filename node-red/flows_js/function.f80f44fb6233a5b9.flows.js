@@ -10,23 +10,26 @@ const Node = {
   "finalize": "",
   "libs": [],
   "x": 240,
-  "y": 260,
+  "y": 300,
   "wires": [
     [
       "5f3e8906e8898d6e"
     ]
   ],
-  "_order": 26
+  "_order": 25
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  const items = msg.payload;
+  const data_items = msg.payload;
+  const meta_items = msg.columns;
   const replacer = (key, value) => value === null ? '' : value;
-  const header = Object.keys(items[0]);
-  msg.meta = header.join(';')
-  msg.data = [...items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
+  const meta_header = Object.keys(meta_items[0]);
+  const data_header = Object.keys(data_items[0]);
+  msg.meta = [meta_header.join(';'), ...meta_items.map(row => meta_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
+  msg.data = [...data_items.map(row => data_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
   delete msg.payload;
   return msg;
+  
 }
 
 module.exports = Node;

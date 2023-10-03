@@ -10,18 +10,20 @@ const Node = {
   "finalize": "",
   "libs": [],
   "x": 450,
-  "y": 260,
+  "y": 300,
   "wires": [
     [
       "1a81612416cdf71d"
     ]
   ],
-  "_order": 25
+  "_order": 24
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.data = msg.data.replaceAll('.', ',');
-  return msg;
+  
+    msg.data = msg.data.replaceAll('.', ',');
+    return msg;
+  
 }
 
 module.exports = Node;

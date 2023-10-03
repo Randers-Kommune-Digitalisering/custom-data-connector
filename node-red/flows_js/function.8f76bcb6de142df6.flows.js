@@ -16,10 +16,11 @@ const Node = {
       "7208316b0728a773"
     ]
   ],
-  "_order": 39
+  "_order": 37
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+  
   // Check for illegal characters
   var isValid = (function () {
       var rg1 = /^[^\\/:\*\?"<>\|]+$/;

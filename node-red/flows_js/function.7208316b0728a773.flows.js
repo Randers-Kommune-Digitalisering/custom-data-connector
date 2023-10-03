@@ -13,16 +13,17 @@ const Node = {
   "y": 180,
   "wires": [
     [
-      "b5a535d1caa5982a"
+      "93d1596b39ecfd38"
     ]
   ],
-  "_order": 23
+  "_order": 22
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   const keyCount = Object.keys(msg.payload[0]).length
   if (!msg.payload.every(obj => Object.keys(obj).length === keyCount)) throw new Error("Validation error: inconsistent number of keys");
   return msg;
+  
 }
 
 module.exports = Node;

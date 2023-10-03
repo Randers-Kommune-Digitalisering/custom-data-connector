@@ -4,10 +4,10 @@ const Node = {
   "z": "84314e70c5c07697",
   "name": "Missing:s ftp server connection",
   "info": "",
-  "x": 590,
-  "y": 660,
+  "x": 850,
+  "y": 560,
   "wires": [],
-  "_order": 37
+  "_order": 35
 }
 
 module.exports = Node;

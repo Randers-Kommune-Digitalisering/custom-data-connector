@@ -9,45 +9,35 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 1330,
-  "y": 180,
+  "x": 230,
+  "y": 240,
   "wires": [
     [
       "4ae1a5c1989051b1"
     ]
   ],
-  "_order": 27
+  "_order": 26
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  const datetime = {
-      0: "start",
-      1: "stop"
-  }
-  
   msg.payload = msg.payload.map(item => {
       const updatedItems = { ...item };
-  
-      let numDates = 0;
   
       for (const key in item) {
           try {
               if (!isNaN(item[key].getMonth())) {
                   updatedItems[key] = item[key].toISOString().split('T')[0];
-                  updatedItems['Tid_' + datetime[numDates]] = item[key].toISOString().split('T')[1].split('.')[0];
-                  if (datetime[numDates] === undefined) throw new Error("Too many datetimes");
-                  numDates++;
+                  if ('Tid_' + key in item) updatedItems['Tid-' + key] = item[key].toISOString().split('T')[1].split('.')[0];
               }
           }
-          catch(e){
-              if (e.message === "Too many datetimes") throw e;
-          }
+          catch(e){}
       }
   
       return updatedItems;
   });
   
   return msg
+  
 }
 
 module.exports = Node;
