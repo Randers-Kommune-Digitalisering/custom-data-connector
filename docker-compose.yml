@@ -7,13 +7,10 @@ services:
     ports:
       - "1880:1880"
     environment:
-      # DB_USER: root
-      # DB_PASS: pass
-      # DB_HOST: db
-      # DB_PORT: 3306
-      # DB_DATABASE: demo
-      OUT_PATH: output
-      IN_PATH: input
+      REMOTE_IN_PATH: output
+      REMOTE_OUT_PATH: output
+      FTP_USER: demo
+      FTP_PASS: pass
       JOBINDSATS_API_KEY: ${JOBINDSATS_API_KEY}
             
       # Miljøvariablen FLOWS fortæller Node-RED IDEet hvilket flow.json den skal åbne og gemme ændringer i ved deploy.
@@ -22,7 +19,21 @@ services:
       # Bind mount fra codespace til den kørende containers /data.
       # Gør det muligt at deploye flowkode direkte fra IDE og bruge git til at comitte ændringerne til repo.
     volumes:
-      - "./node-red/:/data" 
+      - "./node-red/:/data"
+
+    depends_on: 
+      - ftp
+
+  ftp:
+    image: atmoz/sftp:latest
+    restart: always
+    command: demo:pass:::output
+    ports:
+      - "22:22"
+    volumes:
+      - "./ftp/:/ftp"
+    networks:
+      - node_red
       
 networks: 
   node_red:

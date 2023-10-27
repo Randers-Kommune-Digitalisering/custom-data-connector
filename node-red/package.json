@@ -30,10 +30,9 @@
     ],
     "dependencies": {
         "node-red": "3.0.2",
-        "node-red-contrib-fastest-validator": "~1.0.4",
-        "node-red-contrib-ftp": "~0.0.8",
+        "node-red-contrib-ftp-sftp-hubone": "~1.8.9",
         "node-red-contrib-js-storage": "1.0.2",
-        "node-red-contrib-mysql-config": "1.0.4",
+        "node-red-contrib-loop": "~1.0.1",
         "node-red-contrib-prometheus-exporter": "1.0.5"
     },
     "engines": {

@@ -1,21 +1,29 @@
 const Node = {
-  "id": "c6ad3bb96d56c3c2",
+  "id": "53e5f121c8a78c5c",
   "type": "change",
   "z": "84314e70c5c07697",
+  "g": "8d5d84158664e514",
   "name": "set payload and path",
   "rules": [
     {
-      "t": "move",
-      "p": "meta",
+      "t": "set",
+      "p": "payload",
       "pt": "msg",
-      "to": "payload",
+      "to": "{}",
+      "tot": "json"
+    },
+    {
+      "t": "move",
+      "p": "data_filename",
+      "pt": "msg",
+      "to": "payload.filename",
       "tot": "msg"
     },
     {
       "t": "move",
-      "p": "meta_path",
+      "p": "data",
       "pt": "msg",
-      "to": "path",
+      "to": "payload.filedata",
       "tot": "msg"
     }
   ],
@@ -24,14 +32,14 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 300,
-  "y": 460,
+  "x": 200,
+  "y": 540,
   "wires": [
     [
-      "3f66e0afb58d1656"
+      "cdb7d09195b2d0b1"
     ]
   ],
-  "_order": 32
+  "_order": 51
 }
 
 module.exports = Node;
