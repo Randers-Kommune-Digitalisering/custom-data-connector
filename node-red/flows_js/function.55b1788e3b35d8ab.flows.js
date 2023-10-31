@@ -19,8 +19,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.payload = { "success": true, "message": msg.title + " uploaded" }
-  return msg;
+  
+    msg.payload = { "success": true, "message": msg.title + " uploaded" }
+    return msg;
+  
 }
 
 module.exports = Node;

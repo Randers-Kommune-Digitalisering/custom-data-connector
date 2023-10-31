@@ -18,8 +18,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  throw new Error(`Missing data in request`)
-  return msg;
+  
+    throw new Error(`Missing data in request`)
+    return msg;
+  
 }
 
 module.exports = Node;

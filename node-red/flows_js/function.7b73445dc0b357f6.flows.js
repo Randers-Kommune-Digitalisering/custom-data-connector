@@ -19,8 +19,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  throw new Error(`Unknown Content-Type`)
-  return msg;
+  
+    throw new Error(`Unknown Content-Type`)
+    return msg;
+  
 }
 
 module.exports = Node;

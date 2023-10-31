@@ -2,8 +2,22 @@ const Node = {
   "id": "4597670980931f9a",
   "type": "change",
   "z": "84314e70c5c07697",
-  "name": "set credentials",
+  "name": "set ftp env vars",
   "rules": [
+    {
+      "t": "set",
+      "p": "host",
+      "pt": "msg",
+      "to": "FTP_HOST",
+      "tot": "env"
+    },
+    {
+      "t": "set",
+      "p": "port",
+      "pt": "msg",
+      "to": "FTP_PORT",
+      "tot": "env"
+    },
     {
       "t": "set",
       "p": "user",

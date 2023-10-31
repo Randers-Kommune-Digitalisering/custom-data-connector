@@ -18,8 +18,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.payload = { "success": true, "msg": `${msg.uploadedFiles.join()} uploaded` }
-  return msg;
+  
+    msg.payload = { "success": true, "msg": `${msg.uploadedFiles.join()} uploaded` }
+    return msg;
+  
 }
 
 module.exports = Node;

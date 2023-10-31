@@ -19,8 +19,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  throw new Error('Incorrect query for GET /universe, only param available is file')
-  return msg;
+  
+    throw new Error('Incorrect query for GET /universe, only param available is file')
+    return msg;
+  
 }
 
 module.exports = Node;
