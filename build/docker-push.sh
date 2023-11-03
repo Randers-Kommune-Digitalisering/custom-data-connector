@@ -8,4 +8,3 @@ if [ -z $TAG_NAME ]; then
 fi
 
 docker push $TAG_NAME
-#docker push "${TAG_NAME}-web-ui"
