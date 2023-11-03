@@ -24,7 +24,7 @@ jobs:
 # Set docker image names.
       - name: Setup env variables
         run: |
-          echo "DOCKER_SERVICE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "DOCKER_SERVICE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')-node-red" >> $GITHUB_ENV
 
 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -50,7 +50,7 @@ jobs:
 
 # Push to Github
       - name: Tag service git id docker image
-        run: ./build/docker-tag.sh ${{ env.DOCKER_SERVICE }}-node-red:latest ${{ env.DOCKER_SERVICE }}-node-red:${{ github.sha }}
+        run: ./build/docker-tag.sh ${{ env.DOCKER_SERVICE }} ${{ env.DOCKER_SERVICE }}:${{ github.sha }}
 
       - name: Tag service dev docker image
         run: ./build/docker-tag.sh ${{ env.DOCKER_SERVICE }}:latest ${{ env.DOCKER_SERVICE }}:dev
