@@ -17,16 +17,14 @@ const Node = {
       "423b6842ac91f858"
     ]
   ],
-  "_order": 44
+  "_order": 43
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    const remotePath = env.get("REMOTE_IN_PATH");
-    msg.meta_filename = remotePath + "/Meta_" + msg.title + ".csv";
-    msg.data_filename = remotePath + "/Data_" + msg.title + ".csv";
-    return msg;
-  
+  const remotePath = env.get("REMOTE_IN_PATH");
+  msg.meta_filename = remotePath + "/Meta_" + msg.title + ".csv";
+  msg.data_filename = remotePath + "/Data_" + msg.title + ".csv";
+  return msg;
 }
 
 module.exports = Node;

@@ -10,19 +10,16 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 1030,
-  "y": 140,
+  "x": 1130,
+  "y": 160,
   "wires": [
     []
   ],
-  "_order": 88
+  "_order": 96
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    throw new Error(`Unknown Content-Type`)
-    return msg;
-  
+  throw new Error(`Unknown Content-Type`)
 }
 
 module.exports = Node;

@@ -1,5 +1,17 @@
 version: "3.9"
 services:
+  web-ui:
+    build: web-ui
+    networks:
+      - node_red
+    ports:
+      - "80:80"
+    environment:
+      VITE_API_URL: node-red
+
+    depends_on: 
+      - node-red
+
   node-red:
     build: node-red
     networks:

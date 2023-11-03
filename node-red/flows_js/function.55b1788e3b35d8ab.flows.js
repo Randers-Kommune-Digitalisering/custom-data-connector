@@ -15,14 +15,13 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 50
+  "_order": 49
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    msg.payload = { "success": true, "message": msg.title + " uploaded" }
-    return msg;
-  
+  msg.payload = { "success": true, "message": msg.title + " uploaded" };
+  msg.statusCode = 200;
+  return msg;
 }
 
 module.exports = Node;

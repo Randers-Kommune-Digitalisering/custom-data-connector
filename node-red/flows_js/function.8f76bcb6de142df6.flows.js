@@ -17,40 +17,35 @@ const Node = {
       "7208316b0728a773"
     ]
   ],
-  "_order": 41
+  "_order": 40
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    
-      
-      // Check for illegal characters
-      var isValid = (function () {
-          var rg1 = /^[^\\/:\*\?"<>\|]+$/;
-          var rg3 = /^(nul|prn|con|lpt[0-9]|com[0-9])(\.|$)/i;
-          return function isValid(fname) {
-              return rg1.test(fname) && !rg3.test(fname);
-          }
-      })();
-      
-      // Check if title is there and valid
-      if(typeof msg.title == "string") {
-          if(isValid(msg.title)){
-              // Replace whitespaces with underscores
-              msg.title = msg.title.replace(/ /g, '_');
-          } else {
-              throw new Error("Validation error: message title contains illegal characters");
-          }
-      } else {
-          throw new Error("Validation error: message does not contain a title, must be string");   
+  // Check for illegal characters
+  var isValid = (function () {
+      var rg1 = /^[^\\/:\*\?"<>\|]+$/;
+      var rg3 = /^(nul|prn|con|lpt[0-9]|com[0-9])(\.|$)/i;
+      return function isValid(fname) {
+          return rg1.test(fname) && !rg3.test(fname);
       }
-      
-      // Check for data in payload
-      if(!Array.isArray(msg.payload)) throw new Error("Validation error: message does not contain data(payload)");
-      
-      return msg;
-    
+  })();
   
+  // Check if title is there and valid
+  if(typeof msg.title == "string") {
+      if(isValid(msg.title)){
+          // Replace whitespaces with underscores
+          msg.title = msg.title.replace(/ /g, '_');
+      } else {
+          throw new Error("Validation error: message title contains illegal characters");
+      }
+  } else {
+      throw new Error("Validation error: message does not contain a title, must be string");   
+  }
+  
+  // Check for array in data
+  if(!Array.isArray(msg.data)) throw new Error("Validation error: message does not contain data");
+  
+  return msg;
 }
 
 module.exports = Node;

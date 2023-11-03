@@ -17,23 +17,21 @@ const Node = {
       "f80f44fb6233a5b9"
     ]
   ],
-  "_order": 37
+  "_order": 36
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+  msg.data = msg.data.map(item => {
+      const updatedItems = { ...item };
   
-    msg.payload = msg.payload.map(item => {
-        const updatedItems = { ...item };
-    
-        for (const key in item) {
-                if (!isNaN(item[key])) updatedItems[key] = Math.round(item[key] * 10000) / 10000;
-        }
-    
-        return updatedItems;
-    });
-    
-    return msg;
+      for (const key in item) {
+              if (!isNaN(item[key])) updatedItems[key] = Math.round(item[key] * 10000) / 10000;
+      }
   
+      return updatedItems;
+  });
+  
+  return msg;
 }
 
 module.exports = Node;

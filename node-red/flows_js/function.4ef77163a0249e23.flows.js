@@ -9,19 +9,18 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 770,
-  "y": 40,
+  "x": 670,
+  "y": 80,
   "wires": [
     []
   ],
-  "_order": 71
+  "_order": 57
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    msg.payload = { "success": true, "msg": `${msg.uploadedFiles.join()} uploaded` }
-    return msg;
-  
+  msg.payload = { "success": true, "msg": `"${msg.uploadedFiles.join()}" uploaded as "${msg.uploadedFilesNew.join()}"` }
+  msg.statusCode = 200;
+  return msg;
 }
 
 module.exports = Node;
