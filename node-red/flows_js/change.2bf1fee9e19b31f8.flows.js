@@ -1,8 +1,7 @@
 const Node = {
-  "id": "68573e22ad80a6c4",
+  "id": "2bf1fee9e19b31f8",
   "type": "change",
-  "z": "551975e4cbab4f74",
-  "g": "e85b2bd4e56c3a58",
+  "z": "ba6019643c26475d",
   "name": "set  res",
   "rules": [
     {
@@ -16,15 +15,22 @@ const Node = {
       "t": "set",
       "p": "headers.content-type",
       "pt": "msg",
-      "to": "application/json",
+      "to": "text/csv",
       "tot": "str"
+    },
+    {
+      "t": "set",
+      "p": "headers.content-disposition",
+      "pt": "msg",
+      "to": "\"inline; filename=\" & $substringAfter(msg.payload.filename, '/')",
+      "tot": "jsonata"
     },
     {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "{\"success\": true, \"files\": payload}",
-      "tot": "jsonata"
+      "to": "payload.filedata",
+      "tot": "msg"
     },
     {
       "t": "set",
@@ -39,12 +45,12 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 630,
-  "y": 240,
+  "x": 1130,
+  "y": 80,
   "wires": [
     []
   ],
-  "_order": 61
+  "_order": 73
 }
 
 module.exports = Node;

@@ -7,4 +7,5 @@ if [ -z $TAG_NAME ]; then
   exit 1
 fi
 
-docker push $TAG_NAME
+docker push "${TAG_NAME}-node-red"
+#docker push "${TAG_NAME}-web-ui"

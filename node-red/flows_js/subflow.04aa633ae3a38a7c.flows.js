@@ -17,8 +17,8 @@ const Node = {
   ],
   "out": [
     {
-      "x": 920,
-      "y": 40,
+      "x": 780,
+      "y": 80,
       "wires": [
         {
           "id": "4ef77163a0249e23",
@@ -31,7 +31,7 @@ const Node = {
   "meta": {},
   "color": "#DEB887",
   "icon": "node-red/switch.svg",
-  "_order": 4
+  "_order": 3
 }
 
 module.exports = Node;

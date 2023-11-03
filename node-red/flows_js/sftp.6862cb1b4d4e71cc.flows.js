@@ -1,7 +1,6 @@
 const Node = {
-  "id": "6295c11819438f31",
+  "id": "6862cb1b4d4e71cc",
   "type": "sftp",
-  "z": "551975e4cbab4f74",
   "host": "demo",
   "port": "101",
   "username": "root",

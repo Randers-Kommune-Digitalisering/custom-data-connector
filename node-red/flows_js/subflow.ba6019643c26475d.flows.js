@@ -1,31 +1,31 @@
 const Node = {
-  "id": "551975e4cbab4f74",
+  "id": "ba6019643c26475d",
   "type": "subflow",
-  "name": "Data connector download",
+  "name": "Data connector download/delete",
   "info": "",
   "category": "",
   "in": [
     {
-      "x": 40,
-      "y": 160,
+      "x": 60,
+      "y": 120,
       "wires": [
         {
-          "id": "6b88de73b7f2653a"
+          "id": "f50773100d6f606c"
         }
       ]
     }
   ],
   "out": [
     {
-      "x": 900,
-      "y": 240,
+      "x": 1260,
+      "y": 120,
       "wires": [
         {
-          "id": "68573e22ad80a6c4",
+          "id": "2bf1fee9e19b31f8",
           "port": 0
         },
         {
-          "id": "65401623.9abfe8",
+          "id": "9a96c032189f672d",
           "port": 0
         }
       ]
@@ -35,7 +35,7 @@ const Node = {
   "meta": {},
   "color": "#3FADB5",
   "icon": "font-awesome/fa-download",
-  "_order": 3
+  "_order": 5
 }
 
 module.exports = Node;

@@ -14,14 +14,11 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 74
+  "_order": 66
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    throw new Error(`Missing data in request`)
-    return msg;
-  
+  throw new Error(`Data or name missing`);
 }
 
 module.exports = Node;

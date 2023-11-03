@@ -13,7 +13,7 @@ const Node = {
     },
     {
       "t": "set",
-      "p": "payload",
+      "p": "data",
       "pt": "msg",
       "to": "payload.data",
       "tot": "msg"
@@ -28,10 +28,10 @@ const Node = {
   "y": 40,
   "wires": [
     [
-      "648a17ae827f6ad5"
+      "7f393cbd0691f791"
     ]
   ],
-  "_order": 75
+  "_order": 67
 }
 
 module.exports = Node;

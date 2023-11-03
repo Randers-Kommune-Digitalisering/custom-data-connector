@@ -1,33 +1,31 @@
 const Node = {
-  "id": "8d49d56512a33e06",
+  "id": "336a912ecc32d35f",
   "type": "function",
-  "z": "551975e4cbab4f74",
-  "g": "e7f688e8e6ed561a",
-  "name": "set file names",
+  "z": "ba6019643c26475d",
+  "name": "set file name",
   "func": "",
   "outputs": 1,
   "noerr": 0,
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 360,
-  "y": 420,
+  "x": 630,
+  "y": 120,
   "wires": [
     [
-      "4a69f27066402cd2"
+      "315f456e1cd717e3"
     ]
   ],
-  "_order": 52
+  "_order": 80
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
-    if (msg.payload.includes(msg.req.query.file)) {
+    if (msg.payload.includes(msg.req.params.file)) {
         const remotePath = env.get("REMOTE_OUT_PATH");
-        msg.payload.filename = remotePath + "/" + msg.req.query.file;
+        msg.payload.filename = remotePath + "/" + msg.req.params.file;
         return msg;
     } else throw Error('No such file');
-  
 }
 
 module.exports = Node;

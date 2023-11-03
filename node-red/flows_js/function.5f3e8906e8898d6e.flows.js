@@ -17,18 +17,12 @@ const Node = {
       "8272b3b4cb2c3081"
     ]
   ],
-  "_order": 38
+  "_order": 37
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    
-      
-        msg.data = msg.data.replaceAll('.', ',');
-        return msg;
-      
-    
-  
+  msg.data = msg.data.replaceAll('.', ',');
+  return msg;
 }
 
 module.exports = Node;

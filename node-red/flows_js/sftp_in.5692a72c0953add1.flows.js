@@ -1,9 +1,8 @@
 const Node = {
-  "id": "1b11255410880ba0",
+  "id": "5692a72c0953add1",
   "type": "sftp in",
-  "z": "551975e4cbab4f74",
-  "g": "e85b2bd4e56c3a58",
-  "sftp": "6295c11819438f31",
+  "z": "864f94e568493dca",
+  "sftp": "6862cb1b4d4e71cc",
   "operation": "list",
   "filename": "",
   "localFilename": "",
@@ -12,14 +11,14 @@ const Node = {
   "workdir": "",
   "savedir": "",
   "name": "list files",
-  "x": 180,
-  "y": 260,
+  "x": 340,
+  "y": 100,
   "wires": [
     [
-      "777898645fba1b33"
+      "8416e08411d3c0d9"
     ]
   ],
-  "_order": 56
+  "_order": 82
 }
 
 module.exports = Node;
