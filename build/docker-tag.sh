@@ -13,4 +13,4 @@ if [ -z "$TO_TAG" ]; then
   exit 1
 fi
 
-docker tag $FROM_TAG $TO_TAG
+docker tag "${FROM_TAG}-red-node" "${TO_TAG}-node-red"
