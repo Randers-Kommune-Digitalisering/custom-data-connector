@@ -50,7 +50,7 @@ jobs:
 
 # Push to Github
       - name: Tag service git id docker image
-        run: ./build/docker-tag.sh ${{ env.DOCKER_SERVICE }}:latest ${{ env.DOCKER_SERVICE }}:${{ github.sha }}
+        run: ./build/docker-tag.sh ${{ env.DOCKER_SERVICE }}-node-red:latest ${{ env.DOCKER_SERVICE }}-node-red:${{ github.sha }}
 
       - name: Tag service dev docker image
         run: ./build/docker-tag.sh ${{ env.DOCKER_SERVICE }}:latest ${{ env.DOCKER_SERVICE }}:dev
