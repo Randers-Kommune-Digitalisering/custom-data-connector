@@ -37,7 +37,7 @@ function makePretty() {
 }
 
 function submitJson() {
-  fetch(import.meta.env.VITE_API_URL + "/universe", { method: "POST", headers: { "Content-Type": "application/json" }, body: jsonText.value })
+  fetch("/universe", { method: "POST", headers: { "Content-Type": "application/json" }, body: jsonText.value })
   .then((res) => res.json())
   .then((data) => {
     msg.value = data.message;
