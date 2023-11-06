@@ -21,8 +21,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.title = msg.req.files.at(-1).originalname.split('.')[0];
-  return msg;
+  
+    msg.title = msg.req.files.at(-1).originalname.split('.')[0];
+    return msg;
+  
 }
 
 module.exports = Node;

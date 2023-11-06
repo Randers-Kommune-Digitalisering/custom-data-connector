@@ -19,7 +19,9 @@ const Node = {
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
-    throw new Error(`No files`)
+    
+      throw new Error(`No files`)
+    
   
 }
 

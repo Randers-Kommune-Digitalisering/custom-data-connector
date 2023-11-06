@@ -18,14 +18,16 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  if(msg.req.method === "POST") {
-      const fileNames = msg.payload.map(file => file = file.split('.')[0].slice(5));
-      while(fileNames.includes(msg.title)) {
-          msg.title = msg.title + "_kopi";
-      }
-  }
   
-  return msg;
+    if(msg.req.method === "POST") {
+        const fileNames = msg.payload.map(file => file = file.split('.')[0].slice(5));
+        while(fileNames.includes(msg.title)) {
+            msg.title = msg.title + "_kopi";
+        }
+    }
+    
+    return msg;
+  
 }
 
 module.exports = Node;

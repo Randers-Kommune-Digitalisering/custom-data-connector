@@ -21,8 +21,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.data = msg.data.replaceAll('.', ',');
-  return msg;
+  
+    msg.data = msg.data.replaceAll('.', ',');
+    return msg;
+  
 }
 
 module.exports = Node;

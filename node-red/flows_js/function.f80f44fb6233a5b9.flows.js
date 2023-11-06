@@ -21,14 +21,16 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  const data_items = msg.data;
-  const meta_items = msg.columns;
-  const replacer = (key, value) => value === null ? '' : value;
-  const meta_header = Object.keys(meta_items[0]);
-  const data_header = Object.keys(data_items[0]);
-  msg.meta = [meta_header.join(';'), ...meta_items.map(row => meta_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
-  msg.data = [...data_items.map(row => data_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
-  return msg;
+  
+    const data_items = msg.data;
+    const meta_items = msg.columns;
+    const replacer = (key, value) => value === null ? '' : value;
+    const meta_header = Object.keys(meta_items[0]);
+    const data_header = Object.keys(data_items[0]);
+    msg.meta = [meta_header.join(';'), ...meta_items.map(row => meta_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
+    msg.data = [...data_items.map(row => data_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
+    return msg;
+  
 }
 
 module.exports = Node;
