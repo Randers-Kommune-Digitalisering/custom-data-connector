@@ -6,11 +6,11 @@ var app = express();
 
 const port = process.env.PORT || 3000;
 const customDataConnectorHost = process.env.CUSTOM_DATA_CONNECTOR_HOST;
-const customDataConnectorPort = process.env.CUSTOM_DATA_CONNECTOR_PORT;
+//const customDataConnectorPort = process.env.CUSTOM_DATA_CONNECTOR_PORT;
 
 app.use(cors())
 
-app.use('/universe', createProxyMiddleware('/universe', {target: 'http://'+customDataConnectorHost+':'+customDataConnectorPort}));
+app.use('/universe', createProxyMiddleware('/universe', {target: 'http://' + customDataConnectorHost, secure: false}));
 
 app.use(express.static('dist'));
 

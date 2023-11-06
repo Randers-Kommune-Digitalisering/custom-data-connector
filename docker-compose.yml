@@ -5,9 +5,9 @@ services:
     networks:
       - node_red
     ports:
-      - "80:80"
+      - "80:3000"
     environment:
-      PORT: 80
+      PORT: 3000
       CUSTOM_DATA_CONNECTOR_HOST: node-red
       CUSTOM_DATA_CONNECTOR_PORT: 1880
 
