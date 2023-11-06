@@ -7,7 +7,9 @@ services:
     ports:
       - "80:80"
     environment:
-      VITE_API_URL: node-red
+      PORT: 80
+      CUSTOM_DATA_CONNECTOR_HOST: node-red
+      CUSTOM_DATA_CONNECTOR_PORT: 1880
 
     depends_on: 
       - node-red

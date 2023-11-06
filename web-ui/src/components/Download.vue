@@ -24,7 +24,7 @@ function getFiles() {
   busy.value = true;
   files.value = null;
   loading.value = true;
-  fetch(import.meta.env.VITE_API_URL + "/universe", { method: "GET" })
+  fetch("/universe", { method: "GET" })
   .then((res) => res.json())
   .then((data) => {
     let err = !data.success;
@@ -40,7 +40,7 @@ async function downloadFile(file) {
   busy.value = true;
   file.loading =true;
   
-  fetch(import.meta.env.VITE_API_URL + "/universe/" + file.name, { method: "GET" })
+  fetch("/universe/" + file.name, { method: "GET" })
   .then((res) => {
     const contentType = res.headers.get("Content-Type");
     if(contentType.includes("application/json")){
@@ -70,7 +70,7 @@ async function downloadFile(file) {
 async function deleteFile(file) {
   busy.value = true;
   file.loading = true
-  fetch(import.meta.env.VITE_API_URL + "/universe/" + file.name, { method: "DELETE" })
+  fetch("/universe/" + file.name, { method: "DELETE" })
   .then((res) => res.json())
   .then((data) => {
     let err = !data.success;

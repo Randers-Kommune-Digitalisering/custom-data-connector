@@ -25,11 +25,11 @@ function submitFile() {
     formData.append('file', files.value[i])
   }
 
-  fetch(import.meta.env.VITE_API_URL + "/universe", { method: "POST", body: formData })
+  fetch("/universe", { method: "POST", body: formData })
   .then((res) => res.json())
   .then((data) => {
     msg.value = data.message;
-    err.value = !res.success;
+    err.value = !data.success;
     fileInput.value.value = null;
   });
 }
