@@ -1,24 +1,25 @@
 const Node = {
-  "id": "6cef729fccbfcc52",
+  "id": "372e597aa7de3081",
   "type": "sftp in",
-  "z": "ba6019643c26475d",
+  "z": "04aa633ae3a38a7c",
+  "g": "2214c2bc20dee325",
   "sftp": "6862cb1b4d4e71cc",
-  "operation": "get",
+  "operation": "put",
   "filename": "",
   "localFilename": "",
   "fileContents": "",
-  "fileExtension": ".txt",
+  "fileExtension": "",
   "workdir": "",
   "savedir": "",
-  "name": "get file",
-  "x": 990,
-  "y": 80,
+  "name": "put files",
+  "x": 1060,
+  "y": 280,
   "wires": [
     [
-      "2bf1fee9e19b31f8"
+      "7c0a2d7dd0f9703d"
     ]
   ],
-  "_order": 77
+  "_order": 65
 }
 
 module.exports = Node;

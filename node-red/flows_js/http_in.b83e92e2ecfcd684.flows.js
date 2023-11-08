@@ -1,21 +1,21 @@
 const Node = {
-  "id": "a88ab5880ae6090f",
+  "id": "b83e92e2ecfcd684",
   "type": "http in",
   "z": "971a7ae6df987a48",
   "g": "295a00dbacfcb968",
   "name": "",
-  "url": "universe/:file",
-  "method": "get",
-  "upload": false,
+  "url": "/universe",
+  "method": "put",
+  "upload": true,
   "swaggerDoc": "",
-  "x": 690,
-  "y": 260,
+  "x": 670,
+  "y": 140,
   "wires": [
     [
-      "58bc07d7209332b6"
+      "70bf281bc8eb9202"
     ]
   ],
-  "_order": 115
+  "_order": 126
 }
 
 module.exports = Node;

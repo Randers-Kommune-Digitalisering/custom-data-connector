@@ -1,6 +1,8 @@
 <script setup>
 
 import { ref, watch } from 'vue';
+
+const props = defineProps(['method', 'name'])
 const err = ref(false);
 const msg = ref(null);
 const msgStyle = ref({color: 'green'});
@@ -19,29 +21,60 @@ function onFileChanged($event) {
 }
 
 function submitFile() {
-  let formData = new FormData()
+  var url = "/universe";
+  var data = null;
 
-  for(let i=0; i<files.value.length; i++){
-    formData.append('file', files.value[i])
+  if(props.name) {
+    url  = "/universe/" + props.name;
+    let header = { "Content-Type": "text/csv" }
+
+    var reader = new FileReader();
+    reader.onload = function(evt) {
+      if(evt.target.readyState != 2) return;
+      if(evt.target.error) {
+          throw Error('Error while reading file');
+          return;
+      }
+      data = evt.target.result;
+      sendRequest(header)
+    };
+
+    reader.readAsText(files.value[0]);
+
+  } else {
+    data = new FormData()
+
+    for(let i=0; i<files.value.length; i++){
+      data.append('file', files.value[i])
+    }
+
+    sendRequest()
   }
-
-  fetch("/universe", { method: "POST", body: formData })
-  .then((res) => res.json())
-  .then((data) => {
-    msg.value = data.message;
-    err.value = !data.success;
-    fileInput.value.value = null;
-  });
+ 
+  function sendRequest(header) {
+    let request = { method: props.method, body: data }
+    if(header) request = { method: props.method, headers: header, body: data }
+    
+    fetch(url, request)
+    .then((res) => res.json())
+    .then((data) => {
+      msg.value = data.message;
+      err.value = !data.success;
+      fileInput.value.value = null;
+    });
+  }
 }
 </script>
 
 <template>
   <div class="upload">
-    <h2>{{msg}}</h2>
-    <h1>Upload CSV filer</h1>
+    <p :style="msgStyle">{{msg}}</p>
+    <h1 v-if="!props.name">Upload CSV filer</h1>
+    <h1 v-if="props.name">Upload CSV fil</h1>
     <form v-on:submit.prevent="submitFile">
-      <input multiple @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
-      <input :disabled="!files" type="submit" value="Upload" class="submit-button">
+      <input v-if="!props.name" multiple @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
+      <input v-if="props.name" @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
+      <input :disabled="!files" type="submit" value="Upload" class="submit-button green">
     </form>
   </div>
 </template>
@@ -79,6 +112,7 @@ h3 {
 }
 
 input[type="file"]::file-selector-button {
+  width: 100px;
   border-radius: 4px;
   padding: 0 16px;
   height: 35px;
@@ -94,6 +128,7 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .submit-button {
+  width: 100px;
   display: block;
   margin-top: 20px;
   padding: 10px 20px;
@@ -111,5 +146,9 @@ input[type="file"]::file-selector-button:hover {
 .submit-button:disabled {
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
+}
+
+.green {
+  background-color:var(--vt-c-green);
 }
 </style>

@@ -17,12 +17,15 @@ const Node = {
     "7c23aadd02a45047",
     "2ce6880fa257b8b9",
     "fc45fcbc33fac54a",
-    "205fccf2fae87ff3"
+    "205fccf2fae87ff3",
+    "0fb8ad10502fde91",
+    "a53c947e5719a216",
+    "f3e5c581a47981f9",
+    "a0fa929354b106fb",
+    "372e597aa7de3081"
   ],
   "x": 394,
   "y": 119,
-  "w": 1262,
-  "h": 102,
   "_order": 14
 }
 

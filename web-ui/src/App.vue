@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <!-- <RouterLink to="/">Hjem</RouterLink> -->
         <RouterLink to="/download">Download</RouterLink>
-        <RouterLink to="/upload">Upload</RouterLink>
+        <RouterLink to="/upload/POST">Upload</RouterLink>
       </nav>
     </div>
   </header>

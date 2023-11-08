@@ -2,19 +2,20 @@
 
 import { ref, watch } from 'vue';
 
+const props = defineProps(['method', 'name'])
 const fileSelected = ref(false);
 const jsonText = ref('{"name":"myname", "data":[{"myColNum": 1, "myColText":"mytext1"},{"myColNum": 2, "myColText":"mytext2"}]}');
 const err = ref(false);
 const msg = ref(null);
 const msgStyle = ref({color: 'green'});
-makePretty()
 
+if(props.name) jsonText.value = '[{"myColNum": 1, "myColText":"mytext1"},{"myColNum": 2, "myColText":"mytext2"}]';
+makePretty()
 
 watch(err, function(err) {
   if(err) msgStyle.value = {color: 'red'};
   else if(err) msgStyle.value = {color: 'green'};
 });
-
 
 function onFileChanged($event) {
   fileSelected.value = $event.target.files.length < 1 ? false : true;
@@ -37,7 +38,13 @@ function makePretty() {
 }
 
 function submitJson() {
-  fetch("/universe", { method: "POST", headers: { "Content-Type": "application/json" }, body: jsonText.value })
+  var url = "/universe";
+  if(props.name) url  = "/universe/" + props.name;
+  
+  var jsonBody = jsonText.value;
+  if(props.name) jsonBody = `{"name": "${props.name}", "data": ${jsonText.value}}`
+
+  fetch(url, { method: props.method, headers: { "Content-Type": "application/json" }, body: jsonBody })
   .then((res) => res.json())
   .then((data) => {
     msg.value = data.message;
@@ -55,8 +62,9 @@ function chooseFiles() {
 <div class="upload">
   <h2 :style="msgStyle">{{msg}}</h2>
   <h1>Upload JSON</h1>
+  <h2>{{props.name}}</h2>
   <textarea v-model="jsonText" @change="makePretty($event)" id="jsonText" cols=50 rows=15 class="json-input"></textarea>
-  <button class="submit-button" @click="submitJson()">Upload</button>
+  <button class="submit-button green" @click="submitJson()">Upload</button>
 </div>
 
 </template>
@@ -122,6 +130,7 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .submit-button {
+  width: 100px;
   display: block;
   margin-top: 20px;
   padding: 10px 20px;
@@ -139,5 +148,9 @@ input[type="file"]::file-selector-button:hover {
 .submit-button:disabled {
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
+}
+
+.green {
+  background-color:var(--vt-c-green);
 }
 </style>

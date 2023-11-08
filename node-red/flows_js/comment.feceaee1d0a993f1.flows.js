@@ -5,9 +5,9 @@ const Node = {
   "name": "Error\\n On error the error will be returned in the form:  {\"success\":false, \"message\":\"my error message\"}",
   "info": "",
   "x": 360,
-  "y": 620,
+  "y": 720,
   "wires": [],
-  "_order": 107
+  "_order": 112
 }
 
 module.exports = Node;
