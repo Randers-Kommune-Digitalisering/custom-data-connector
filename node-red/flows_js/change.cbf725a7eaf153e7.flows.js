@@ -36,7 +36,7 @@ const Node = {
       "t": "set",
       "p": "workdir",
       "pt": "msg",
-      "to": "REMOTE_OUT_PATH",
+      "to": "REMOTE_IN_PATH",
       "tot": "env"
     }
   ],
@@ -45,14 +45,14 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 180,
-  "y": 100,
+  "x": 400,
+  "y": 40,
   "wires": [
     [
       "5692a72c0953add1"
     ]
   ],
-  "_order": 86
+  "_order": 93
 }
 
 module.exports = Node;

@@ -9,12 +9,14 @@ const err = ref(false);
 const msg = ref(null);
 const msgStyle = ref({color: 'green'});
 
+const URL = "/data/";
+
 if(props.name) jsonText.value = '[{"myColNum": 1, "myColText":"mytext1"},{"myColNum": 2, "myColText":"mytext2"}]';
 makePretty()
 
 watch(err, function(err) {
   if(err) msgStyle.value = {color: 'red'};
-  else if(err) msgStyle.value = {color: 'green'};
+  else msgStyle.value = {color: 'green'};
 });
 
 function onFileChanged($event) {
@@ -38,8 +40,8 @@ function makePretty() {
 }
 
 function submitJson() {
-  var url = "/universe";
-  if(props.name) url  = "/universe/" + props.name;
+  var url = URL;
+  if(props.name) url  = url + props.name;
   
   var jsonBody = jsonText.value;
   if(props.name) jsonBody = `{"name": "${props.name}", "data": ${jsonText.value}}`
@@ -60,9 +62,9 @@ function chooseFiles() {
 
 <template>
 <div class="upload">
-  <h2 :style="msgStyle">{{msg}}</h2>
+  <p :style="msgStyle">{{msg}}</p>
   <h1>Upload JSON</h1>
-  <h2>{{props.name}}</h2>
+  <h2>Fil: {{props.name}}</h2>
   <textarea v-model="jsonText" @change="makePretty($event)" id="jsonText" cols=50 rows=15 class="json-input"></textarea>
   <button class="submit-button green" @click="submitJson()">Upload</button>
 </div>

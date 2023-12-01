@@ -1,27 +1,27 @@
 const Node = {
   "id": "864f94e568493dca",
   "type": "subflow",
-  "name": "Check for existing files",
+  "name": "Check name",
   "info": "",
   "category": "",
   "in": [
     {
-      "x": 60,
-      "y": 100,
+      "x": 40,
+      "y": 40,
       "wires": [
         {
-          "id": "cbf725a7eaf153e7"
+          "id": "fcd8ae473365d5c8"
         }
       ]
     }
   ],
   "out": [
     {
-      "x": 760,
-      "y": 100,
+      "x": 980,
+      "y": 160,
       "wires": [
         {
-          "id": "41983d3a162a7d2c",
+          "id": "bf7ceb0207b9c08c",
           "port": 0
         }
       ]

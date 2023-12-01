@@ -1,7 +1,7 @@
 const Node = {
   "id": "84314e70c5c07697",
   "type": "subflow",
-  "name": "Data connector upload",
+  "name": "Upload data",
   "info": "",
   "category": "",
   "in": [
@@ -17,8 +17,8 @@ const Node = {
   ],
   "out": [
     {
-      "x": 660,
-      "y": 540,
+      "x": 1040,
+      "y": 480,
       "wires": [
         {
           "id": "55b1788e3b35d8ab",

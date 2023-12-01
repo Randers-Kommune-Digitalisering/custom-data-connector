@@ -2,7 +2,6 @@ const Node = {
   "id": "5f3e8906e8898d6e",
   "type": "function",
   "z": "84314e70c5c07697",
-  "g": "089d805555301a78",
   "name": "change decimal seperator",
   "func": "",
   "outputs": 1,
@@ -10,14 +9,12 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 650,
-  "y": 380,
+  "x": 190,
+  "y": 580,
   "wires": [
-    [
-      "8272b3b4cb2c3081"
-    ]
+    []
   ],
-  "_order": 37
+  "_order": 57
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {

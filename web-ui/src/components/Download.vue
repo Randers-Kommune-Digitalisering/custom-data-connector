@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
+
 const router = useRouter();
 const error = ref(false);
 const msg = ref(null);
@@ -22,14 +23,14 @@ getFiles();
 
 watch(error, function(err) {
   if(error) msgStyle.value = {color: 'red'};
-  else if(error) msgStyle.value = {color: 'green'};
+  else msgStyle.value = {color: 'green'};
 });
 
 function getFiles() {
   busy.value = true;
   files.value = null;
   loading.value = true;
-  fetch("/universe", { method: "GET" })
+  fetch("/waiting", { method: "GET" })
   .then((res) => res.json())
   .then((data) => {
     let err = !data.success;
@@ -45,7 +46,7 @@ function downloadFile(file) {
   busy.value = true;
   file.loading =true;
   
-  fetch("/universe/" + file.name, { method: "GET" })
+  fetch("/waiting/" + file.name, { method: "GET" })
   .then((res) => {
     const contentType = res.headers.get("Content-Type");
     if(contentType.includes("application/json")){
@@ -77,7 +78,7 @@ function editFile(file){
   file.loading =true;
   name.value = file.name;
   
-  fetch("/universe/" + file.name, { method: "GET" })
+  fetch("/waiting/" + file.name, { method: "GET" })
   .then((res) => {
     const contentType = res.headers.get("Content-Type");
     if(contentType.includes("application/json")){
@@ -100,7 +101,7 @@ function editFile(file){
 }
 
 function saveFile() {
-  const url  = "/universe/" + name.value;
+  const url  = "/waiting/" + name.value;
   const header = { "Content-Type": "text/csv" };
   const request = { method: "PUT", headers: header, body: textInput.value };
   
@@ -125,7 +126,7 @@ function deleteFile(file) {
   if(file.name === name.value) hideEditor()
   busy.value = true;
   file.loading = true
-  fetch("/universe/" + file.name, { method: "DELETE" })
+  fetch("/waiting/" + file.name, { method: "DELETE" })
   .then((res) => res.json())
   .then((data) => {
     let err = !data.success;

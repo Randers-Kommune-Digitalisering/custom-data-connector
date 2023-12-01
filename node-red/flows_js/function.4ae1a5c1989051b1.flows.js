@@ -10,14 +10,14 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 810,
+  "x": 530,
   "y": 320,
   "wires": [
     [
       "f80f44fb6233a5b9"
     ]
   ],
-  "_order": 36
+  "_order": 43
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -26,7 +26,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
         const updatedItems = { ...item };
     
         for (const key in item) {
-                if (!isNaN(item[key])) updatedItems[key] = Math.round(item[key] * 10000) / 10000;
+          if (!item[key] == null && !isNaN(item[key])) updatedItems[key] = Math.round(item[key] * 10000) / 10000;
         }
     
         return updatedItems;

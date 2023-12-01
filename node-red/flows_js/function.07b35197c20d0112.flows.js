@@ -10,23 +10,22 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 1020,
+  "x": 1100,
   "y": 180,
   "wires": [
     [
-      "0fb8ad10502fde91"
+      "60b51345c824e5f3"
     ]
   ],
-  "_order": 54
+  "_order": 64
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     let file = msg.req.files.pop();
     if (file.mimetype === 'text/csv') {
-      msg.payload = file.buffer.toString('utf8');
-      msg.uploadedFiles.push(file.originalname);
-      msg.uploadedFilesNew.push(msg.title)
+      msg.payload = file.buffer.toString('utf8').replace(/\r/g, "");
+      msg.uploadedFiles.push(msg.name)
       return msg;
     } else throw Error(`Unknown file type: ${file.mimetype}`)
     

@@ -2,7 +2,7 @@ const Node = {
   "id": "c40dac11e91f3583",
   "type": "switch",
   "z": "0a430953902bab1f",
-  "name": "check for data",
+  "name": "check data",
   "property": "payload",
   "propertyType": "msg",
   "rules": [
@@ -18,7 +18,7 @@ const Node = {
   "checkall": "true",
   "repair": false,
   "outputs": 2,
-  "x": 360,
+  "x": 470,
   "y": 60,
   "wires": [
     [
@@ -28,7 +28,7 @@ const Node = {
       "671ff63c1cc1202d"
     ]
   ],
-  "_order": 70
+  "_order": 76
 }
 
 module.exports = Node;

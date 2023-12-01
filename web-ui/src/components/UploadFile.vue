@@ -1,6 +1,7 @@
 <script setup>
 
 import { ref, watch } from 'vue';
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
 const props = defineProps(['method', 'name'])
 const err = ref(false);
@@ -9,23 +10,39 @@ const msgStyle = ref({color: 'green'});
 const files = ref(null);
 const fileInput = ref(null);
 
+const emit = defineEmits(['upload', 'busy'])
+
+//Loader
+const loading = ref(false)
+const color = "#325d88"
+const size = "30px"
+
+let URL = "/data/"
+
 watch(err, function(err) {
   if(err) msgStyle.value = {color: 'red'};
-  else if(err) msgStyle.value = {color: 'green'};
+  else msgStyle.value = {color: 'green'};
 });
 
 function onFileChanged($event) {
-    if ($event.target.files) {
-        files.value = $event.target.files;
-    }
+  if ($event.target.files) {
+      files.value = $event.target.files;
+  }
+}
+
+function checkUrl() {
+  if(props.name) URL = props.name.slice(0,5) === 'Meta_' ? "/meta/" : "/data/";
 }
 
 function submitFile() {
-  var url = "/universe";
+  loading.value = true;
+  emit('busy', true);
   var data = null;
+  checkUrl();
+  var url = URL;
 
   if(props.name) {
-    url  = "/universe/" + props.name;
+    url  = url + props.name;
     let header = { "Content-Type": "text/csv" }
 
     var reader = new FileReader();
@@ -33,7 +50,6 @@ function submitFile() {
       if(evt.target.readyState != 2) return;
       if(evt.target.error) {
           throw Error('Error while reading file');
-          return;
       }
       data = evt.target.result;
       sendRequest(header)
@@ -53,14 +69,20 @@ function submitFile() {
  
   function sendRequest(header) {
     let request = { method: props.method, body: data }
+    
     if(header) request = { method: props.method, headers: header, body: data }
     
     fetch(url, request)
     .then((res) => res.json())
     .then((data) => {
+      loading.value = false;
       msg.value = data.message;
       err.value = !data.success;
+      emit('upload', err.value);
+      emit('busy', false);
+      if(err.value) console.log(msg.value)
       fileInput.value.value = null;
+      files.value = null;
     });
   }
 }
@@ -68,13 +90,16 @@ function submitFile() {
 
 <template>
   <div class="upload">
-    <p :style="msgStyle">{{msg}}</p>
-    <h1 v-if="!props.name">Upload CSV filer</h1>
-    <h1 v-if="props.name">Upload CSV fil</h1>
+    <!-- <p :style="msgStyle">{{msg}}</p> -->
     <form v-on:submit.prevent="submitFile">
-      <input v-if="!props.name" multiple @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
-      <input v-if="props.name" @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
-      <input :disabled="!files" type="submit" value="Upload" class="submit-button green">
+      <input :disabled="loading" v-if="!props.name" multiple @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
+      <input :disabled="loading" v-if="props.name" @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
+      <div style="display: flex; align-items: center; flex-direction: row;">
+        <input :disabled="!files || loading" type="submit" value="Upload" class="submit-button green">
+        <ClipLoader :loading="loading" :color="color" :size="size" class="loader"/>
+        <span v-if="!err && msg && !loading" class="success">&#10004;</span>
+        <span v-if="err && msg && !loading" class="fail">&#10008;</span>
+      </div>
     </form>
   </div>
 </template>
@@ -127,6 +152,11 @@ input[type="file"]::file-selector-button:hover {
   background-color: var(--vt-c-blue-soft);
 }
 
+input[type="file"][disabled]::file-selector-button {
+  background-color:var(--vt-c-grey);
+  cursor: not-allowed;
+}
+
 .submit-button {
   width: 100px;
   display: block;
@@ -146,6 +176,26 @@ input[type="file"]::file-selector-button:hover {
 .submit-button:disabled {
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
+}
+
+.loader {
+  padding: 23px 0 0 20px;
+}
+
+.success {
+  position: relative;
+  top: 9px;
+  left: 9px;
+  font-size: 30px;
+  color: var(--vt-c-green);
+}
+
+.fail {
+  position: relative;
+  top: 9px;
+  left: 9px;
+  font-size: 30px;
+  color: var(--vt-c-red);
 }
 
 .green {

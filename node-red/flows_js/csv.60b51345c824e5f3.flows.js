@@ -8,20 +8,20 @@ const Node = {
   "hdrin": true,
   "hdrout": "none",
   "multi": "mult",
-  "ret": "\\n",
+  "ret": "\\r\\n",
   "temp": "",
   "skip": "0",
   "strings": true,
   "include_empty_strings": true,
   "include_null_values": true,
-  "x": 690,
+  "x": 590,
   "y": 240,
   "wires": [
     [
       "fc45fcbc33fac54a"
     ]
   ],
-  "_order": 55
+  "_order": 65
 }
 
 module.exports = Node;

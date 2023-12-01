@@ -8,8 +8,15 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[$.\"payload\".\"filename\"]",
+      "to": "[payload[$substring(longname,0,1) != \"d\"].filename]",
       "tot": "jsonata"
+    },
+    {
+      "t": "move",
+      "p": "payload",
+      "pt": "msg",
+      "to": "waiting_files",
+      "tot": "msg"
     }
   ],
   "action": "",
@@ -17,14 +24,14 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 480,
-  "y": 100,
+  "x": 700,
+  "y": 40,
   "wires": [
     [
-      "41983d3a162a7d2c"
+      "9f39a88d5c32dd51"
     ]
   ],
-  "_order": 88
+  "_order": 95
 }
 
 module.exports = Node;

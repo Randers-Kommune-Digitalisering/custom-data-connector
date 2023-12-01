@@ -2,12 +2,12 @@ const Node = {
   "id": "ea391dfcde581f50",
   "type": "comment",
   "z": "84314e70c5c07697",
-  "name": "Returns a json object in payload, in the form:\\n {\"success\":true, \"message\":\"MyFile uploaded\"}",
+  "name": "Returns a json object in payload, in the form:\\n {\"success\":true, \"message\":\"Source MyName uploaded\"}",
   "info": "",
-  "x": 670,
-  "y": 160,
+  "x": 730,
+  "y": 180,
   "wires": [],
-  "_order": 45
+  "_order": 51
 }
 
 module.exports = Node;

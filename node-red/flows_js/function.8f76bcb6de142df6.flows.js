@@ -3,21 +3,21 @@ const Node = {
   "type": "function",
   "z": "84314e70c5c07697",
   "g": "089d805555301a78",
-  "name": "contains valid data and title",
+  "name": "contains valid group, name and data",
   "func": "",
   "outputs": 1,
   "noerr": 0,
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 220,
+  "x": 250,
   "y": 260,
   "wires": [
     [
       "7208316b0728a773"
     ]
   ],
-  "_order": 40
+  "_order": 46
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -32,15 +32,14 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     })();
     
     // Check if title is there and valid
-    if(typeof msg.title == "string") {
-        if(isValid(msg.title)){
-            // Replace whitespaces with underscores
-            msg.title = msg.title.replace(/ /g, '_');
+    if(typeof msg.name == "string") {
+        if (isValid(msg.name) || isValid(msg.group)){
+            msg.name = msg.group.replace(/ |_/g, '-') + "_" + msg.name.replace(/ /g, '_');
         } else {
             throw new Error("Validation error: message title contains illegal characters");
         }
     } else {
-        throw new Error("Validation error: message does not contain a title, must be string");   
+        throw new Error("Validation error: message does not contain a name, must be string");   
     }
     
     // Check for array in data

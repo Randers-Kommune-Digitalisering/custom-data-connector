@@ -10,21 +10,21 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 850,
-  "y": 380,
+  "x": 910,
+  "y": 320,
   "wires": [
     [
-      "423b6842ac91f858"
+      "19c67e4f25cd98db"
     ]
   ],
-  "_order": 43
+  "_order": 49
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     const remotePath = env.get("REMOTE_IN_PATH");
-    msg.meta_filename = remotePath + "/Meta_" + msg.title + ".csv";
-    msg.data_filename = remotePath + "/Data_" + msg.title + ".csv";
+    msg.meta_filename = remotePath + "/Meta_" + msg.group + ".csv";
+    msg.data_filename = remotePath + "/Data_" + msg.name + ".csv";
     return msg;
   
 }
