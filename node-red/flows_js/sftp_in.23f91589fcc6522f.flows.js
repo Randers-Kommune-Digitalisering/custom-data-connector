@@ -12,14 +12,14 @@ const Node = {
   "workdir": "",
   "savedir": "",
   "name": "put files",
-  "x": 380,
-  "y": 480,
+  "x": 760,
+  "y": 420,
   "wires": [
     [
       "53e5f121c8a78c5c"
     ]
   ],
-  "_order": 47
+  "_order": 53
 }
 
 module.exports = Node;

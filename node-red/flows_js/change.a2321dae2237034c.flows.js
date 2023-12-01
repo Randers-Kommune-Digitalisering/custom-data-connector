@@ -10,13 +10,6 @@ const Node = {
       "pt": "msg",
       "to": "[]",
       "tot": "json"
-    },
-    {
-      "t": "set",
-      "p": "uploadedFilesNew",
-      "pt": "msg",
-      "to": "[]",
-      "tot": "json"
     }
   ],
   "action": "",
@@ -31,7 +24,7 @@ const Node = {
       "205fccf2fae87ff3"
     ]
   ],
-  "_order": 52
+  "_order": 62
 }
 
 module.exports = Node;

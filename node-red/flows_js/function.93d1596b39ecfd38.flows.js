@@ -9,18 +9,23 @@ const Node = {
   "noerr": 0,
   "initialize": "",
   "finalize": "",
-  "libs": [],
-  "x": 780,
+  "libs": [
+    {
+      "var": "moment",
+      "module": "moment"
+    }
+  ],
+  "x": 840,
   "y": 260,
   "wires": [
     [
-      "e5f84826590b063a"
+      "0b4539367c3cec7d"
     ]
   ],
-  "_order": 42
+  "_order": 48
 }
 
-Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+Node.func = async function (node, msg, RED, context, flow, global, env, util, moment) {
   
     const time_max = 2;
     const date_max = 5;
@@ -37,6 +42,14 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     var i = 0;
     
     msg.columns = [];
+  
+    function isDate(date) {
+        return moment(date).isValid();
+    }
+  
+    function isTime(time) {
+        return /(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)/.test(time)
+    }
     
     function hasTime(date_time) {
         return date_time.toISOString().split('T')[1] === "00:00:00.000Z" ? false : true;
@@ -55,8 +68,15 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
         else throw new Error("Too many date columns");
     }
     
+      function setTime(key) {
+          time_cnt += 1;
+          if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslæt" + time_cnt, "EgetNavn": key });
+          else throw new Error("Too many time columns");
+      }
+  
     function isCPR(value) {
-        if (!isNaN(value)) if(value % 1 != 0) { value = value.toString() } else return false;
+        if (value == null) return false;
+        if (!isNaN(value)) if(value % 1 === 0) { value = value.toString() } else return false;
         if (value.length === 10 || (value.includes('-') && value.length === 11)) return !isNaN(Date.parse(["20" + value.slice(4, 6), value.slice(2, 4), value.slice(0, 2)].join("/")));
     }
     
@@ -96,7 +116,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
                 else setNum(key);
             // Text/strings
             } else if (typeof item[key] === 'string' || item[key] instanceof String) {
-                if (isCPR(item[key])) setCPR(key);
+                if (isDate(item[key])) setDate(key);
+                else if (isTime(item[key])) setTime(key);
+                else if (isCPR(item[key])) setCPR(key);
                 else setTxt(key);
             } else {
                 throw new Error("Unknown type/column");

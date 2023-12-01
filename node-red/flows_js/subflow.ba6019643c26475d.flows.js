@@ -1,7 +1,7 @@
 const Node = {
   "id": "ba6019643c26475d",
   "type": "subflow",
-  "name": "Data connector download/delete",
+  "name": "Exported download / delete",
   "info": "",
   "category": "",
   "in": [

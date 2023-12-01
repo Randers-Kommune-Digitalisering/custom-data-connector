@@ -6,27 +6,32 @@ const router = createRouter({
     {
       path: '/',
       name: 'hjem',
-      redirect: '/download'
+      redirect: '/upload'
       //component:() => import('../views/HomeView.vue')
     }
     ,
     {
-      path: '/download',
-      name: 'download',
-      component: () => import('../views/DownloadView.vue')
-    }
-    ,
-    {
-      path: '/upload/:method',
+      path: '/upload',
       name: 'upload',
-      props: route => ({ name: route.query.name}),
       component: () => import('../views/UploadView.vue')
     }
     ,
     {
-      path: '/upload',
-      name: 'upload redirect',
-      redirect: '/upload/POST'
+      path: '/status',
+      name: 'status',
+      component: () => import('../views/StatusView.vue')
+    }
+    ,
+    {
+      path: '/out',
+      name: 'Udtræk',
+      component: () => import('../views/ExportedView.vue')
+    }
+    ,
+    {
+      path: '/in',
+      name: 'Imported',
+      component: () => import('../views/ImportedView.vue')
     }
     ,
     {

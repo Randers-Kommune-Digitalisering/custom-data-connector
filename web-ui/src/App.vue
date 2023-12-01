@@ -1,16 +1,21 @@
-<script setup lang="ts">
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
+const version = APP_VERSION;
 </script>
 
 <template>
   <header>
     <img alt="logo" class="logo" src="./assets/logo.svg" />
     <div class="wrapper">
-      <h1>Custom data connector (test)</h1>
+      <h1>BI Custom Data</h1>
+      <span class="version">Version {{version}}</span>
       <nav>
         <!-- <RouterLink to="/">Hjem</RouterLink> -->
-        <RouterLink to="/download">Download</RouterLink>
-        <RouterLink to="/upload/POST">Upload</RouterLink>
+        <RouterLink to="/upload">Upload</RouterLink>
+        <RouterLink to="/status">Status</RouterLink>
+        <RouterLink to="/out">Udtræk</RouterLink>
+        <RouterLink to="/in">Indlæst</RouterLink>
+        
       </nav>
     </div>
   </header>
@@ -46,6 +51,17 @@ h1 {
   display: block;
   max-height: 50px;
   padding-left: 20px;
+}
+
+.version {
+  position:absolute;
+  font-size: small;
+  font-weight: bold;
+  top:0;
+  right:0;
+  color: var(--vt-c-white);
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 nav {

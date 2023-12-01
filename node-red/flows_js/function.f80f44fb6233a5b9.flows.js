@@ -10,27 +10,29 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 440,
-  "y": 380,
+  "x": 740,
+  "y": 320,
   "wires": [
     [
-      "5f3e8906e8898d6e"
+      "8272b3b4cb2c3081"
     ]
   ],
-  "_order": 38
+  "_order": 44
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    const data_items = msg.data;
-    const meta_items = msg.columns;
-    const replacer = (key, value) => value === null ? '' : value;
-    const meta_header = Object.keys(meta_items[0]);
-    const data_header = Object.keys(data_items[0]);
-    msg.meta = [meta_header.join(';'), ...meta_items.map(row => meta_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
-    msg.data = [...data_items.map(row => data_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
-    return msg;
-  
+  const data_items = msg.data;
+  const meta_items = msg.columns;
+  //const replacer = (key, value) => value === null ? '' : value;
+  const replacer = (value) => value === null ? '' : value;
+  const meta_header = Object.keys(meta_items[0]);
+  const data_header = Object.keys(data_items[0]);
+  msg.meta = [meta_header.join(';'), ...meta_items.map(row => meta_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
+  let data_first_row = data_header.join(';') + '\r\n';
+  //let data_rows = [...data_items.map(row => data_header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'))].join('\r\n');
+  let data_rows = [...data_items.map(row => data_header.map(fieldName => String(replacer(row[fieldName]))).join(';'))].join('\r\n');
+  msg.data = data_first_row + data_rows
+  return msg;
 }
 
 module.exports = Node;
