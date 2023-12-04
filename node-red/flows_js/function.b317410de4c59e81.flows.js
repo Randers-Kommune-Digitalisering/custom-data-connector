@@ -20,18 +20,20 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  let remotePath = "";
   
-  if (msg.req.params.file) {
-      // Check if exists
-      if (msg.waiting_files.includes(msg.req.params.file)) remotePath = env.get("REMOTE_IN_PATH");
-      else if (msg.failed_files.includes(msg.req.params.file)) remotePath = env.get("REMOTE_IN_FAILED_PATH");
-      else throw Error('No such file');
-      msg.payload = { "filename": "" };
-      msg.payload.filename = remotePath + "/" + msg.req.params.file;   
-  }
+    let remotePath = "";
+    
+    if (msg.req.params.file) {
+        // Check if exists
+        if (msg.waiting_files.includes(msg.req.params.file)) remotePath = env.get("REMOTE_IN_PATH");
+        else if (msg.failed_files.includes(msg.req.params.file)) remotePath = env.get("REMOTE_IN_FAILED_PATH");
+        else throw Error('No such file');
+        msg.payload = { "filename": "" };
+        msg.payload.filename = remotePath + "/" + msg.req.params.file;   
+    }
+    
+    return msg;
   
-  return msg;
 }
 
 module.exports = Node;

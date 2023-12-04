@@ -19,10 +19,12 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  if (msg.meta_already_exists) msg.payload = { "success": true, "message": "Source " + msg.name + " uploaded" };
-  else msg.payload = { "success": true, "message": "Group and source " + msg.name + " uploaded" };
-  msg.statusCode = 200;
-  return msg;
+  
+    if (msg.meta_already_exists) msg.payload = { "success": true, "message": "Source " + msg.name + " uploaded" };
+    else msg.payload = { "success": true, "message": "Group and source " + msg.name + " uploaded" };
+    msg.statusCode = 200;
+    return msg;
+  
 }
 
 module.exports = Node;

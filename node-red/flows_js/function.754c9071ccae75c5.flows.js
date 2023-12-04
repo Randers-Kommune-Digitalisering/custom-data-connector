@@ -17,14 +17,16 @@ const Node = {
       "04553a2c9b2b110e"
     ]
   ],
-  "_order": 187
+  "_order": 188
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.headers = { "content-type": "application/json"};
-  msg.payload = { "success": true, "message": `Group ${msg.payload.filename.split("_")[1].split('.')[0]} uploaded` };
-    msg.statusCode = 200;
-    return msg;
+  
+    msg.headers = { "content-type": "application/json"};
+    msg.payload = { "success": true, "message": `Group ${msg.payload.filename.split("_")[1].split('.')[0]} uploaded` };
+      msg.statusCode = 200;
+      return msg;
+    
   
 }
 

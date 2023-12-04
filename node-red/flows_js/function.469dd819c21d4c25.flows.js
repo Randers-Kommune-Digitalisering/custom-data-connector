@@ -17,13 +17,15 @@ const Node = {
       "415dc8be0201ad0c"
     ]
   ],
-  "_order": 190
+  "_order": 191
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.headers = { "content-type": "application/json"};
-  msg.statusCode = 200;
-  return msg;
+  
+    msg.headers = { "content-type": "application/json"};
+    msg.statusCode = 200;
+    return msg;
+    
   
 }
 
