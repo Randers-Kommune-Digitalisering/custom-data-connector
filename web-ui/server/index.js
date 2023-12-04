@@ -16,11 +16,13 @@ app.use('/imported', createProxyMiddleware('/imported', {target: 'http://' + cus
 app.use('/exported', createProxyMiddleware('/exported', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/meta', createProxyMiddleware('/meta', {target: 'http://' + customDataConnectorHost, secure: false, proxyTimeout: 360000, timeout: 360000, onProxyReq: (proxyReq, req) => {
     req.client.server.requestTimeout = 360000;
+    req.client.server.headersTimeout = 360000;
     fixRequestBody(proxyReq, req);
   },
 }));
 app.use('/data', createProxyMiddleware('/data', {target: 'http://' + customDataConnectorHost, secure: false, proxyTimeout: 360000, timeout: 360000, onProxyReq: (proxyReq, req) => {
     req.client.server.requestTimeout = 360000;
+    req.client.server.headersTimeout = 360000;
     fixRequestBody(proxyReq, req);
   },
 }));
