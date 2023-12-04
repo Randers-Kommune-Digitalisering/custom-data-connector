@@ -4,6 +4,7 @@ import { ref, watch } from 'vue';
 import vSelect from 'vue-select';
 import "vue-select/dist/vue-select.css";
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
+import axios from 'axios';
 
 const err = ref(false);
 const msg = ref(null);
@@ -64,6 +65,24 @@ function onFileChanged($event) {
   }
 }
 
+async function makePostRequest(url, data, timeoutMillis) {
+      try {
+        const response = await axios.post(url, data, {
+          timeout: timeoutMillis,
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // Add any other headers as needed
+          },
+        });
+
+        // Process responseData as needed
+        return response.data;
+      } catch (error) {
+        // Handle errors, e.g., timeout or network issues
+        console.error('Error making POST request:', error.message);
+      }
+    }
+
 function submitFile() {
   loading.value = true;
   let data = new FormData();
@@ -75,7 +94,8 @@ function submitFile() {
   */
   
   data.append(fileName.value, new File([file.value], fileName.value, {type: file.value.type}));
-
+  makePostRequest(URL, data, 360000).then((res) => console.log(res))
+  /*
   let request = { method: 'POST', body: data };
   fetch(URL, request)
   .then((res) => res.json())
@@ -88,6 +108,7 @@ function submitFile() {
       file.value = null;
     } else console.log(msg.value)
   });
+  */
 }
 </script>
 
