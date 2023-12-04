@@ -14,8 +14,16 @@ app.use('/all', createProxyMiddleware('/all', {target: 'http://' + customDataCon
 app.use('/status', createProxyMiddleware('/status', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/imported', createProxyMiddleware('/imported', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/exported', createProxyMiddleware('/exported', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/meta', createProxyMiddleware('/meta', {target: 'http://' + customDataConnectorHost, secure: false, onProxyReq: fixRequestBody}));
-app.use('/data', createProxyMiddleware('/data', {target: 'http://' + customDataConnectorHost, secure: false, onProxyReq: fixRequestBody}));
+app.use('/meta', createProxyMiddleware('/meta', {target: 'http://' + customDataConnectorHost, secure: false, proxyTimeout: 360000, timeout: 360000, onProxyReq: (proxyReq, req) => {
+    req.client.server.requestTimeout = 360000;
+    fixRequestBody(proxyReq, req);
+  },
+}));
+app.use('/data', createProxyMiddleware('/data', {target: 'http://' + customDataConnectorHost, secure: false, proxyTimeout: 360000, timeout: 360000, onProxyReq: (proxyReq, req) => {
+    req.client.server.requestTimeout = 360000;
+    fixRequestBody(proxyReq, req);
+  },
+}));
 
 app.use(express.static('dist'));
 
