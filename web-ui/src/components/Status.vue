@@ -57,6 +57,12 @@ function getFiles() {
 }
 
 function downloadFile(file) {
+  const a = document.createElement('a') 
+  a.setAttribute('href', URL + file.name) 
+  a.setAttribute('download', file.name); 
+  a.click()
+
+  /*
   busy.value = true;
   file.loading =true;
   
@@ -85,6 +91,7 @@ function downloadFile(file) {
         });      
     } else throw Error("Unknown response!")
   });
+  */
 }
 
 function editFile(file){
