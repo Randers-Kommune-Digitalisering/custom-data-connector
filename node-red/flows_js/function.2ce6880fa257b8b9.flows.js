@@ -31,6 +31,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       group_name = msg.req.files.at(-1).originalname.split('.')[0];
     }
     */
+    group_name = msg.req.files.at(-1).originalname.split('.')[0];
     
     msg.name = group_name
     
