@@ -14,8 +14,8 @@ app.use('/all', createProxyMiddleware('/all', {target: 'http://' + customDataCon
 app.use('/status', createProxyMiddleware('/status', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/imported', createProxyMiddleware('/imported', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/exported', createProxyMiddleware('/exported', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/meta', createProxyMiddleware('/meta', {target: 'http://' + customDataConnectorHost, secure: false, }));
-app.use('/data', createProxyMiddleware('/data', {target: 'http://' + customDataConnectorHost, secure: false,}));
+app.use('/meta', createProxyMiddleware('/meta', {target: 'http://' + customDataConnectorHost, secure: false}));
+app.use('/data', createProxyMiddleware('/data', {target: 'http://' + customDataConnectorHost, secure: false}));
 
 app.use(express.static('dist'));
 

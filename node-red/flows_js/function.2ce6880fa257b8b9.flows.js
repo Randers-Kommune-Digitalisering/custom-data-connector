@@ -9,37 +9,32 @@ const Node = {
   "noerr": 0,
   "initialize": "",
   "finalize": "",
-  "libs": [
-    {
-      "var": "utf8",
-      "module": "utf8"
-    }
-  ],
+  "libs": [],
   "x": 660,
   "y": 180,
   "wires": [
     [
-      "b6fbbe9b181d0496"
+      "3a5ac4149d90d854"
     ]
   ],
   "_order": 72
 }
 
-Node.func = async function (node, msg, RED, context, flow, global, env, util, utf8) {
+Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     let group_name = ''
     
+    /*
     try {
       group_name = utf8.decode(msg.req.files.at(-1).originalname.split('.')[0]);
     } catch (error) {
       group_name = msg.req.files.at(-1).originalname.split('.')[0];
     }
+    */
     
     msg.name = group_name
     
     return msg;
-    
-  
 }
 
 module.exports = Node;

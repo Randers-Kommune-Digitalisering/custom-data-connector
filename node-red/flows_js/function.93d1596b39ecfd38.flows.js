@@ -9,12 +9,7 @@ const Node = {
   "noerr": 0,
   "initialize": "",
   "finalize": "",
-  "libs": [
-    {
-      "var": "moment",
-      "module": "moment"
-    }
-  ],
+  "libs": [],
   "x": 840,
   "y": 260,
   "wires": [
@@ -25,7 +20,7 @@ const Node = {
   "_order": 48
 }
 
-Node.func = async function (node, msg, RED, context, flow, global, env, util, moment) {
+Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
       const time_max = 2;
@@ -45,7 +40,8 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
       msg.columns = [];
     
       function isDate(date) {
-          return moment(date).isValid();
+          return false;
+          //return moment(date).isValid();
       }
     
       function isTime(time) {
