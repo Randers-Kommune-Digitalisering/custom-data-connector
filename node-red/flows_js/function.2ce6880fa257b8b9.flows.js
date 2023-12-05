@@ -9,7 +9,12 @@ const Node = {
   "noerr": 0,
   "initialize": "",
   "finalize": "",
-  "libs": [],
+  "libs": [
+    {
+      "var": "utf8",
+      "module": "utf8"
+    }
+  ],
   "x": 660,
   "y": 180,
   "wires": [
@@ -20,7 +25,7 @@ const Node = {
   "_order": 72
 }
 
-Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+Node.func = async function (node, msg, RED, context, flow, global, env, util, utf8) {
   
     let group_name = ''
     

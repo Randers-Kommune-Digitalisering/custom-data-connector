@@ -29,6 +29,7 @@
         }
     ],
     "dependencies": {
+        "dayjs": "^1.11.10",
         "moment": "^2.29.4",
         "node-red": "3.0.2",
         "node-red-contrib-ftp-sftp-hubone": "~1.8.9",
