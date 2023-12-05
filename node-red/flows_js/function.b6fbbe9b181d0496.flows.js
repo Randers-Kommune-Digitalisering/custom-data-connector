@@ -22,7 +22,7 @@ const Node = {
       "07b35197c20d0112"
     ]
   ],
-  "_order": 74
+  "_order": 73
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util, utf8) {
@@ -37,8 +37,8 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, ut
       msg.name = msg.name.split('_').slice(1).join('_');
     }
     
-    if (msg.groups.includes(msg.group)) msg.meta_already_exists = true;
-    else msg.meta_already_exists = false;
+    //if (msg.groups.includes(msg.group)) msg.meta_already_exists = true;
+    //else msg.meta_already_exists = false;
     
     return msg;
     

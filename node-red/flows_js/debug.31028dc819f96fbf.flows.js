@@ -8,14 +8,14 @@ const Node = {
   "tosidebar": true,
   "console": true,
   "tostatus": false,
-  "complete": "true",
-  "targetType": "full",
+  "complete": "error",
+  "targetType": "msg",
   "statusVal": "",
   "statusType": "auto",
   "x": 750,
   "y": 1160,
   "wires": [],
-  "_order": 142
+  "_order": 141
 }
 
 module.exports = Node;

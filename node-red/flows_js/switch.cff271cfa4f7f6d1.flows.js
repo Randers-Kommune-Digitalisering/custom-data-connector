@@ -33,23 +33,19 @@ const Node = {
   "y": 780,
   "wires": [
     [
-      "6f30d50b8212499c",
-      "f39a7aa83fda8853"
+      "6f30d50b8212499c"
     ],
     [
-      "132afc7346e495d9",
-      "f39a7aa83fda8853"
+      "132afc7346e495d9"
     ],
     [
-      "dc1b37d3502c11c7",
-      "f39a7aa83fda8853"
+      "dc1b37d3502c11c7"
     ],
     [
-      "b11b67c12cba48dc",
-      "f39a7aa83fda8853"
+      "b11b67c12cba48dc"
     ]
   ],
-  "_order": 163
+  "_order": 162
 }
 
 module.exports = Node;

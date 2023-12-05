@@ -94,8 +94,8 @@ function submitFile() {
   */
   
   data.append(fileName.value, new File([file.value], fileName.value, {type: file.value.type}));
-  makePostRequest(URL, data, 360000).then((res) => console.log(res))
-  /*
+  //makePostRequest(URL, data, 360000).then((res) => console.log(res))
+  
   let request = { method: 'POST', body: data };
   fetch(URL, request)
   .then((res) => res.json())
@@ -108,7 +108,7 @@ function submitFile() {
       file.value = null;
     } else console.log(msg.value)
   });
-  */
+  
 }
 </script>
 
