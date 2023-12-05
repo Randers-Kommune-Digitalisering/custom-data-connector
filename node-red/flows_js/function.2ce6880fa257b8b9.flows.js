@@ -26,21 +26,17 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util, utf8) {
+  let group_name = ''
   
-    let group_name = ''
-    
-    /*
-    try {
-      group_name = utf8.decode(msg.req.files.at(-1).originalname.split('.')[0]);
-    } catch (error) {
-      group_name = msg.req.files.at(-1).originalname.split('.')[0];
-    }
-    */
+  try {
+    group_name = utf8.decode(msg.req.files.at(-1).originalname.split('.')[0]);
+  } catch (error) {
     group_name = msg.req.files.at(-1).originalname.split('.')[0];
-    
-    msg.name = group_name
-    
-    return msg;
+  }
+  
+  msg.name = group_name
+  
+  return msg;
 }
 
 module.exports = Node;

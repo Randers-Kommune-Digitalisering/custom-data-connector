@@ -1,0 +1,14 @@
+{
+    "utf8": {
+        "spec": "utf8",
+        "module": "utf8",
+        "builtin": false,
+        "known": false
+    },
+    "dayjs": {
+        "spec": "dayjs",
+        "module": "dayjs",
+        "builtin": false,
+        "known": false
+    }
+}
