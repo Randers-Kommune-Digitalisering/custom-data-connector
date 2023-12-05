@@ -466,6 +466,8 @@ module.exports = {
          *    global.get("os")
          */
         functionGlobalContext: {
+            dayjs:require('dayjs'),
+            utf8:require('utf8')
             // os:require('os'),
         },
     
