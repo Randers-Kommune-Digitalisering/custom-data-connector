@@ -9,12 +9,7 @@ const Node = {
   "noerr": 0,
   "initialize": "",
   "finalize": "",
-  "libs": [
-    {
-      "var": "utf8",
-      "module": "utf8"
-    }
-  ],
+  "libs": [],
   "x": 960,
   "y": 180,
   "wires": [
@@ -25,7 +20,7 @@ const Node = {
   "_order": 73
 }
 
-Node.func = async function (node, msg, RED, context, flow, global, env, util, utf8) {
+Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     if (['Meta_', 'Data_'].includes(msg.name.slice(0, 5))) msg.name = msg.name.slice(5);
     

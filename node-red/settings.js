@@ -465,11 +465,6 @@ module.exports = {
          * will allow the `os` module to be accessed in a Function node using:
          *    global.get("os")
          */
-        functionGlobalContext: {
-            dayjs:require('dayjs'),
-            utf8:require('utf8')
-            // os:require('os'),
-        },
     
         /** The maximum number of messages nodes will buffer internally as part of their
          * operation. This applies across a range of nodes that operate on message sequences.
