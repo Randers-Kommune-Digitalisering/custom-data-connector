@@ -72,7 +72,7 @@ function submitFile() {
     
     if(header) request = { method: props.method, headers: header, body: data }
     
-    fetch(url, request)
+    fetch(encodeURI(url), request)
     .then((res) => res.json())
     .then((data) => {
       loading.value = false;

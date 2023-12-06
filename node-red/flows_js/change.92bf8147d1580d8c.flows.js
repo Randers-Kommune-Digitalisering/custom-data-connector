@@ -1,8 +1,7 @@
 const Node = {
-  "id": "2019d2e087f6d3f0",
+  "id": "92bf8147d1580d8c",
   "type": "change",
   "z": "971a7ae6df987a48",
-  "g": "e42aa7e73ba0efec",
   "name": "set ftp env vars",
   "rules": [
     {
@@ -32,6 +31,13 @@ const Node = {
       "pt": "msg",
       "to": "FTP_PASS",
       "tot": "env"
+    },
+    {
+      "t": "set",
+      "p": "workdir",
+      "pt": "msg",
+      "to": "REMOTE_IN_PATH",
+      "tot": "env"
     }
   ],
   "action": "",
@@ -39,14 +45,12 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 600,
-  "y": 580,
+  "x": 440,
+  "y": 1540,
   "wires": [
-    [
-      "372e597aa7de3081"
-    ]
+    []
   ],
-  "_order": 189
+  "_order": 179
 }
 
 module.exports = Node;

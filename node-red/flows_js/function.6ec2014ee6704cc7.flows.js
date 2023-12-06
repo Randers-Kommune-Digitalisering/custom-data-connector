@@ -17,14 +17,16 @@ const Node = {
       "08817e32ba8194cd"
     ]
   ],
-  "_order": 179
+  "_order": 182
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
-      msg.payload = { "success": true, "message": msg.req.params.file + " deleted" }
-      return msg;
+      
+        msg.payload = { "success": true, "message": msg.req.params.file + " deleted" }
+        return msg;
+      
     
   
 }

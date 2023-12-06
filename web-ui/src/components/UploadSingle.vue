@@ -65,36 +65,11 @@ function onFileChanged($event) {
   }
 }
 
-async function makePostRequest(url, data, timeoutMillis) {
-      try {
-        const response = await axios.post(url, data, {
-          timeout: timeoutMillis,
-          headers: {
-            "Content-Type": "multipart/form-data",
-            // Add any other headers as needed
-          },
-        });
-
-        // Process responseData as needed
-        return response.data;
-      } catch (error) {
-        // Handle errors, e.g., timeout or network issues
-        console.error('Error making POST request:', error.message);
-      }
-    }
-
 function submitFile() {
   loading.value = true;
   let data = new FormData();
-
-  /*
-  for(let i=0; i<files.value.length; i++){
-    data.append('file', files.value[i])
-  }
-  */
   
-  data.append(fileName.value, new File([file.value], fileName.value, {type: file.value.type}));
-  //makePostRequest(URL, data, 360000).then((res) => console.log(res))
+  data.append(fileName.value, new File([file.value], encodeURI(fileName.value), {type: file.value.type}));
   
   let request = { method: 'POST', body: data };
   fetch(URL, request)

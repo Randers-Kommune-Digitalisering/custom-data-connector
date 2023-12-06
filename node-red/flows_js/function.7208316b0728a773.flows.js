@@ -23,9 +23,11 @@ const Node = {
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
-      const keyCount = Object.keys(msg.data[0]).length
-      if (!msg.data.every(obj => Object.keys(obj).length === keyCount)) throw new Error("Validation error: inconsistent number of keys");
-      return msg;
+      
+        const keyCount = Object.keys(msg.data[0]).length
+        if (!msg.data.every(obj => Object.keys(obj).length === keyCount)) throw new Error("Validation error: inconsistent number of keys");
+        return msg;
+      
     
   
 }

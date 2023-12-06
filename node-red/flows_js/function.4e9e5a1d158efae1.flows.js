@@ -17,24 +17,26 @@ const Node = {
       "2019d2e087f6d3f0"
     ]
   ],
-  "_order": 182
+  "_order": 185
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
-    if (msg.req.params.file.split("_")[0] != "Meta") throw Error(msg.req.params.file + " is not a meta / group file");
-    else if (msg.req.params.file.split(".").pop().toLowerCase() != "csv") throw Error(msg.req.params.file + " does not have the csv file extension");
     
-    if(!msg.payload) msg.payload = " ";
+      if (msg.req.params.file.split("_")[0] != "Meta") throw Error(msg.req.params.file + " is not a meta / group file");
+      else if (msg.req.params.file.split(".").pop().toLowerCase() != "csv") throw Error(msg.req.params.file + " does not have the csv file extension");
+      
+      if(!msg.payload) msg.payload = " ";
+      
+      const remotePath = env.get("REMOTE_IN_PATH");
+      const filename = decodeURI(msg.req.params.file);
+      const filedata = msg.payload;
+      msg.payload = {"filename":"", "filedata":""};
+      msg.payload.filename = remotePath + "/" + filename;
+      msg.payload.filedata = filedata;
+      
+      return msg;
     
-    const remotePath = env.get("REMOTE_IN_PATH");
-    const filename = msg.req.params.file;
-    const filedata = msg.payload;
-    msg.payload = {"filename":"", "filedata":""};
-    msg.payload.filename = remotePath + "/" + filename;
-    msg.payload.filedata = filedata;
-    
-    return msg;
   
 }
 
