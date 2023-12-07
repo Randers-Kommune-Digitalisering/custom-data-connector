@@ -160,9 +160,9 @@ function submitFile() {
       if(!err.value) {
         fileInput.value.value = null;
         file.value = null;
+        getFiles();
       } else console.log(msg.value)
       clearAll();
-      getFiles();
     });
   }
 }
