@@ -23,7 +23,6 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
       const names = msg.payload.filter(file => file.slice(0, 4) === 'Data').map(file => file.split('.')[0].slice(5));
-      msg.test = names;
       if (msg.req.method === "POST" && names.includes(msg.name)) throw Error(msg.name + ' already exists');
       
       return msg;

@@ -60,7 +60,6 @@ watch([err, name, group, department], function() {
 });
 
 watch([file_already_exists, overwrite], function() {
-  console.log(file_already_exists.value && overwrite.value)
   if(file_already_exists.value && overwrite.value) METHOD = "PUT";
   else METHOD = "POST";
 });
@@ -97,6 +96,7 @@ function getFiles() {
 function onFileChanged($event) {
   name.value = '';
   group.value = '';
+  msg.value = '';
 
   if($event.target.files.length > 0) {
     file.value = $event.target.files[0];
@@ -162,6 +162,7 @@ function submitFile() {
         file.value = null;
       } else console.log(msg.value)
       clearAll();
+      getFiles();
     });
   }
 }
@@ -169,7 +170,7 @@ function submitFile() {
 
 <template>
   <div class="upload">
-    <p :style="msgStyle">{{msg}}</p>
+    <!-- <p :style="msgStyle">{{msg}}</p> -->
     <form v-on:submit.prevent="submitFile">
       <label>Afdeling</label>
       <v-select :disabled="loading" id="mySelect" v-model="department" :options="departments" label="label"></v-select>
