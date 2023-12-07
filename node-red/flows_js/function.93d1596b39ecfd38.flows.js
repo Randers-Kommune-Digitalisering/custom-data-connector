@@ -22,7 +22,7 @@ const Node = {
       "0b4539367c3cec7d"
     ]
   ],
-  "_order": 48
+  "_order": 47
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util, dayjs) {
@@ -46,8 +46,6 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, da
         msg.columns = [];
       
         function isDate(date) {
-            //return false;
-            //return moment(date).isValid();
             return dayjs(date).isValid();
         }
       

@@ -12,7 +12,7 @@ export default defineConfig({
       '/status/': 'http://localhost:1880/',
       '/meta/': 'http://localhost:1880/',
       '/data/': 'http://localhost:1880/',
-      '/all/': 'http://localhost:1880/'
+      '/all': 'http://localhost:1880/'
     }
   },
   plugins: [

@@ -153,6 +153,7 @@ input[type="file"]::file-selector-button:hover {
 }
 
 input[type="file"][disabled]::file-selector-button {
+  border: none;
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
 }

@@ -17,7 +17,7 @@ const Node = {
       "07b35197c20d0112"
     ]
   ],
-  "_order": 73
+  "_order": 72
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -27,7 +27,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
       if(msg.name.split('_').length < 2){
         msg.group = msg.name;
-        msg.name = msg.name;
+        msg.name = '';
       } else {
         msg.group = msg.name.split('_')[0]
         msg.name = msg.name.split('_').slice(1).join('_');

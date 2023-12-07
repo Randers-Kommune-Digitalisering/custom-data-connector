@@ -8,7 +8,7 @@ const Node = {
   "password": "pass",
   "hmac": [],
   "cipher": [],
-  "_order": 26
+  "_order": 25
 }
 
 module.exports = Node;

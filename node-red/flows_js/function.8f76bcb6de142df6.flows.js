@@ -17,7 +17,7 @@ const Node = {
       "7208316b0728a773"
     ]
   ],
-  "_order": 46
+  "_order": 45
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -34,9 +34,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
         })();
         
         // Check if title is there and valid
-        if(typeof msg.name == "string") {
+        if(typeof msg.group == "string") {
             if (isValid(msg.name) || isValid(msg.group)){
-                msg.name = msg.group.replace(/ |_/g, '-') + "_" + msg.name.replace(/ /g, '_');
+                if(msg.name) msg.name = msg.group.replace(/ |_/g, '-') + "_" + msg.name.replace(/ /g, '_');
+                else msg.name = msg.group.replace(/ |_/g, '-');
             } else {
                 throw new Error("Validation error: message title contains illegal characters");
             }
