@@ -13,8 +13,8 @@ const version = APP_VERSION;
         <!-- <RouterLink to="/">Hjem</RouterLink> -->
         <RouterLink to="/upload">Upload</RouterLink>
         <RouterLink to="/status">Status</RouterLink>
-        <RouterLink to="/out">Udtræk</RouterLink>
-        <RouterLink to="/in">Indlæst</RouterLink>
+        <RouterLink to="/exported">Udtræk</RouterLink>
+        <RouterLink to="/imported">Indlæst</RouterLink>
         
       </nav>
     </div>

@@ -7,12 +7,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   server: {
     proxy: {
-      '/exported/': 'http://localhost:1880/',
-      '/imported/': 'http://localhost:1880/',
-      '/status/': 'http://localhost:1880/',
-      '/meta/': 'http://localhost:1880/',
-      '/data/': 'http://localhost:1880/',
-      '/all': 'http://localhost:1880/'
+      '/out/': 'http://localhost:1880/',
+      '/in/': 'http://localhost:1880/'
     }
   },
   plugins: [

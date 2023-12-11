@@ -2,7 +2,7 @@ const Node = {
   "id": "abb5e9815eb8ac37",
   "type": "function",
   "z": "971a7ae6df987a48",
-  "g": "0dec742373825c9e",
+  "g": "a4403add202fad14",
   "name": "set file name",
   "func": "",
   "outputs": 1,
@@ -10,14 +10,14 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 470,
+  "x": 490,
   "y": 260,
   "wires": [
     [
       "fe605e9c66b1f668"
     ]
   ],
-  "_order": 176
+  "_order": 142
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {

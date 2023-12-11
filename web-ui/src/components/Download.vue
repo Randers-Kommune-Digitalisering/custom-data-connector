@@ -30,11 +30,11 @@ function getFiles() {
   busy.value = true;
   files.value = null;
   loading.value = true;
-  fetch("/waiting", { method: "GET" })
+  fetch("/in", { method: "GET" })
   .then((res) => res.json())
   .then((data) => {
     let err = !data.success;
-    if(!err) files.value = data.files.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)))
+    if(!err) files.value = data.files.waiting.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)))
     msg.value = data.message;
     error.value = err;
     loading.value = false;

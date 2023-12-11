@@ -22,7 +22,7 @@ const Node = {
       "t": "set",
       "p": "headers.content-disposition",
       "pt": "msg",
-      "to": "\"inline; filename=\" & $substringAfter(msg.payload.filename, '/')",
+      "to": "\"inline; filename=\" & $split(msg.payload.filename, '/')[-1]",
       "tot": "jsonata"
     },
     {
@@ -50,7 +50,7 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 84
+  "_order": 83
 }
 
 module.exports = Node;

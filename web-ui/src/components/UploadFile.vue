@@ -17,7 +17,7 @@ const loading = ref(false)
 const color = "#325d88"
 const size = "30px"
 
-let URL = "/data/"
+let URL = "/in/"
 
 watch(err, function(err) {
   if(err) msgStyle.value = {color: 'red'};

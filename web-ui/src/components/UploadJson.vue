@@ -9,7 +9,7 @@ const err = ref(false);
 const msg = ref(null);
 const msgStyle = ref({color: 'green'});
 
-const URL = "/data/";
+const URL = "/in/";
 
 if(props.name) jsonText.value = '[{"myColNum": 1, "myColText":"mytext1"},{"myColNum": 2, "myColText":"mytext2"}]';
 makePretty()

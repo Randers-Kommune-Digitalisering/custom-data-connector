@@ -17,7 +17,7 @@ const editing = ref(false)
 const files_waiting = ref(null);
 const files_failed = ref(null);
 
-const URL = "/status/"
+const URL = "/in/"
 
 //Loader
 const loading = ref(false)
@@ -60,38 +60,7 @@ function downloadFile(file) {
   const a = document.createElement('a') 
   a.setAttribute('href', URL + file.name) 
   a.setAttribute('download', file.name); 
-  a.click()
-
-  /*
-  busy.value = true;
-  file.loading =true;
-  
-  fetch(URL + file.name, { method: "GET" })
-  .then((res) => {
-    const contentType = res.headers.get("Content-Type");
-    if(contentType.includes("application/json")){
-      res.json().then((data) => {
-        error.value = !data.success;
-        msg.value = data.message;
-        file.loading = false;
-        busy.value = false;
-      });
-    } else if(contentType.includes("text/csv")){
-        res.text()
-        .then((data) => {
-          const blob = new Blob([data], { type: 'text/csv' }); 
-          const url = window.URL.createObjectURL(blob) 
-          const a = document.createElement('a') 
-          a.setAttribute('href', url) 
-          a.setAttribute('download', file.name); 
-          a.click()
-          file.loading = false;
-          busy.value = false;
-          msg.value = file.name + " downloaded";
-        });      
-    } else throw Error("Unknown response!")
-  });
-  */
+  a.click();
 }
 
 function editFile(file){
@@ -127,7 +96,8 @@ function updateFile(err) {
 
 function saveFile() {
     loadingEditor.value = true
-    const url = name.value.slice(0,5) === 'Meta_' ? "/meta/" + name.value : "/data/" + name.value;
+    //const url = name.value.slice(0,5) === 'Meta_' ? "/meta/" + name.value : "/data/" + name.value;
+    const url = "/data/" + name.value;
     const header = { "Content-Type": "text/csv" };
     const request = { method: "PUT", headers: header, body: textInput.value };
     
@@ -234,6 +204,10 @@ function deleteFile(file) {
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: var(--vt-c-blue-soft);
+}
+
 .button:disabled {
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
@@ -300,8 +274,17 @@ th {
   background-color:var(--vt-c-red);
 }
 
+.red:hover {
+  background-color: var(--vt-c-red-soft);
+}
+
+
 .green {
   background-color:var(--vt-c-green);
+}
+
+.green:hover {
+  background-color: var(--vt-c-green-soft);
 }
 
 .save {

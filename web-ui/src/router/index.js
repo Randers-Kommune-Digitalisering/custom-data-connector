@@ -23,13 +23,13 @@ const router = createRouter({
     }
     ,
     {
-      path: '/out',
+      path: '/exported',
       name: 'Udtræk',
       component: () => import('../views/ExportedView.vue')
     }
     ,
     {
-      path: '/in',
+      path: '/imported',
       name: 'Imported',
       component: () => import('../views/ImportedView.vue')
     }

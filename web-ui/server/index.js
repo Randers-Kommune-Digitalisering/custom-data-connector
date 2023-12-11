@@ -10,12 +10,8 @@ const customDataConnectorHost = process.env.CUSTOM_DATA_CONNECTOR_HOST;
 
 app.use(cors())
 
-app.use('/all', createProxyMiddleware('/all', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/status', createProxyMiddleware('/status', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/imported', createProxyMiddleware('/imported', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/exported', createProxyMiddleware('/exported', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/meta', createProxyMiddleware('/meta', {target: 'http://' + customDataConnectorHost, secure: false}));
-app.use('/data', createProxyMiddleware('/data', {target: 'http://' + customDataConnectorHost, secure: false}));
+app.use('/in', createProxyMiddleware('/in', {target: 'http://' + customDataConnectorHost, secure: false}));
+app.use('/out', createProxyMiddleware('/out', {target: 'http://' + customDataConnectorHost, secure: false}));
 
 app.use(express.static('dist'));
 

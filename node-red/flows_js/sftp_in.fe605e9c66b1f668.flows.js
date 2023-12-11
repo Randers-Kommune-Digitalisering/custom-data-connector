@@ -2,7 +2,7 @@ const Node = {
   "id": "fe605e9c66b1f668",
   "type": "sftp in",
   "z": "971a7ae6df987a48",
-  "g": "0dec742373825c9e",
+  "g": "a4403add202fad14",
   "sftp": "6862cb1b4d4e71cc",
   "operation": "delete",
   "filename": "",
@@ -12,14 +12,14 @@ const Node = {
   "workdir": "",
   "savedir": "",
   "name": "delete file",
-  "x": 340,
-  "y": 220,
+  "x": 640,
+  "y": 260,
   "wires": [
     [
       "6ec2014ee6704cc7"
     ]
   ],
-  "_order": 177
+  "_order": 143
 }
 
 module.exports = Node;

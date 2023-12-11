@@ -16,7 +16,7 @@ const color = "#325d88"
 const size = "150px"
 const sizeSmall = "18px"
 
-const URL = "/exported/"
+const URL = "/out/"
 
 getFiles();
 
@@ -42,9 +42,10 @@ function getFiles() {
 }
 
 function downloadFile(file) {
+  console.log(file)
   const a = document.createElement('a') 
   a.setAttribute('href', URL + file.name) 
-  a.setAttribute('download', file.name); 
+  //a.setAttribute('download', file.name); 
   a.click()
 
   /*
@@ -138,6 +139,10 @@ function deleteFile(file) {
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: var(--vt-c-blue-soft);
+}
+
 .button:disabled {
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
@@ -200,9 +205,16 @@ th {
 .red {
   background-color:var(--vt-c-red);
 }
+.red:hover {
+  background-color: var(--vt-c-red-soft);
+}
 
 .green {
   background-color:var(--vt-c-green);
+}
+
+.green:hover {
+  background-color: var(--vt-c-green-soft);
 }
 
 .save {
