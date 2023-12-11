@@ -24,10 +24,12 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
       
-        const remotePath = env.get("REMOTE_IN_PATH");
-        msg.meta_filename = remotePath + "/Meta_" + msg.group + ".csv";
-        msg.data_filename = remotePath + "/Data_" + msg.name + ".csv";
-        return msg;
+        
+          const remotePath = env.get("REMOTE_IN_PATH");
+          msg.meta_filename = remotePath + "/Meta_" + msg.group + ".csv";
+          msg.data_filename = remotePath + "/Data_" + msg.name + ".csv";
+          return msg;
+        
       
     
   

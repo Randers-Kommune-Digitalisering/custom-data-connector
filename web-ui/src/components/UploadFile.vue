@@ -30,15 +30,10 @@ function onFileChanged($event) {
   }
 }
 
-function checkUrl() {
-  if(props.name) URL = props.name.slice(0,5) === 'Meta_' ? "/meta/" : "/data/";
-}
-
 function submitFile() {
   loading.value = true;
   emit('busy', true);
   var data = null;
-  checkUrl();
   var url = URL;
 
   if(props.name) {

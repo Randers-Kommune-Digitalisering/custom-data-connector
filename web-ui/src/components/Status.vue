@@ -96,8 +96,7 @@ function updateFile(err) {
 
 function saveFile() {
     loadingEditor.value = true
-    //const url = name.value.slice(0,5) === 'Meta_' ? "/meta/" + name.value : "/data/" + name.value;
-    const url = "/data/" + name.value;
+    const url = URL + name.value;
     const header = { "Content-Type": "text/csv" };
     const request = { method: "PUT", headers: header, body: textInput.value };
     
@@ -121,13 +120,13 @@ function deleteFile(file) {
   if(file.name === name.value) hideEditor()
   busy.value = true;
   file.loading = true
-  fetch("/failed" + file.name, { method: "DELETE" })
+  fetch(URL + file.name, { method: "DELETE" })
   .then((res) => res.json())
   .then((data) => {
     let err = !data.success;
     if(!err) {
-      const index = files.value.indexOf(file);
-      files.value.splice(index,1);
+      const index = files_failed.value.indexOf(file);
+      files_failed.value.splice(index,1);
     }
     msg.value = data.message;
     error.value = err;

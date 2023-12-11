@@ -38,7 +38,7 @@ function getFiles() {
   .then((data) => {
     error.value = !data.success;
     if(!error.value){
-      files.value = data.files.waiting.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
+      files.value = data.files.imported.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
     } else {
       msg.value = data.message;
     }

@@ -24,11 +24,13 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     
       
         
-          if (msg.payload.includes(msg.req.params.file)) {
-              const remotePath = env.get("REMOTE_OUT_PATH");
-              msg.payload.filename = remotePath + "/" + msg.req.params.file;
-              return msg;
-          } else throw Error('No such file');
+          
+            if (msg.payload.includes(msg.req.params.file)) {
+                const remotePath = env.get("REMOTE_OUT_PATH");
+                msg.payload.filename = remotePath + "/" + msg.req.params.file;
+                return msg;
+            } else throw Error('No such file');
+        
       
     
   

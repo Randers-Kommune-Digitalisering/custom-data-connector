@@ -21,9 +21,11 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.name = decodeURI(msg.req.files.at(-1).originalname.split('.')[0]);
-  if (msg.name.slice(0, 5) === "Meta_") msg.is_meta = true
-  return msg;
+  
+    msg.name = decodeURI(msg.req.files.at(-1).originalname.split('.')[0]);
+    if (msg.name.slice(0, 5) === "Meta_") msg.is_meta = true
+    return msg;
+    
   
 }
 
