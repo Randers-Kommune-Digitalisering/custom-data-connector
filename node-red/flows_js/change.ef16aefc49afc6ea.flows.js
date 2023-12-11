@@ -2,7 +2,7 @@ const Node = {
   "id": "ef16aefc49afc6ea",
   "type": "change",
   "z": "971a7ae6df987a48",
-  "g": "0dec742373825c9e",
+  "g": "a4403add202fad14",
   "name": "set ftp env vars",
   "rules": [
     {
@@ -46,14 +46,14 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 320,
-  "y": 300,
+  "x": 300,
+  "y": 220,
   "wires": [
     [
       "ea641d586f75858f"
     ]
   ],
-  "_order": 174
+  "_order": 140
 }
 
 module.exports = Node;

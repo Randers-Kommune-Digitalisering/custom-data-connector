@@ -17,14 +17,13 @@ const Node = {
       "3a5ac4149d90d854"
     ]
   ],
-  "_order": 71
+  "_order": 66
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    msg.name = decodeURI(msg.req.files.at(-1).originalname.split('.')[0]);
-    //msg.name = msg.req.files.at(-1).originalname.split('.')[0]
-    return msg;
+  msg.name = decodeURI(msg.req.files.at(-1).originalname.split('.')[0]);
+  if (msg.name.slice(0, 5) === "Meta_") msg.is_meta = true
+  return msg;
   
 }
 

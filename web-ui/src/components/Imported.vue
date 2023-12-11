@@ -2,7 +2,6 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
-import UploadFile from '../components/UploadFile.vue'
 
 const router = useRouter();
 const error = ref(false);
@@ -15,7 +14,7 @@ const editing = ref(false)
 
 const files = ref(null);;
 
-const URL = "/imported/"
+const URL = "/in/"
 
 //Loader
 const loading = ref(false)
@@ -39,7 +38,7 @@ function getFiles() {
   .then((data) => {
     error.value = !data.success;
     if(!error.value){
-      files.value = data.files.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
+      files.value = data.files.waiting.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
     } else {
       msg.value = data.message;
     }
@@ -54,36 +53,6 @@ function downloadFile(file) {
   a.setAttribute('href', URL + file.name) 
   a.setAttribute('download', file.name); 
   a.click()
-  /*
-  busy.value = true;
-  file.loading =true;
-  
-  fetch(URL + file.name, { method: "GET" })
-  .then((res) => {
-    const contentType = res.headers.get("Content-Type");
-    if(contentType.includes("application/json")){
-      res.json().then((data) => {
-        error.value = !data.success;
-        msg.value = data.message;
-        file.loading = false;
-        busy.value = false;
-      });
-    } else if(contentType.includes("text/csv")){
-        res.text()
-        .then((data) => {
-          const blob = new Blob([data], { type: 'text/csv' }); 
-          const url = window.URL.createObjectURL(blob) 
-          const a = document.createElement('a') 
-          a.setAttribute('href', url) 
-          a.setAttribute('download', file.name); 
-          a.click()
-          file.loading = false;
-          busy.value = false;
-          msg.value = file.name + " downloaded";
-        });      
-    } else throw Error("Unknown response!")
-  });
-  */
 }
 
 function editFile(file){
@@ -182,7 +151,6 @@ function deleteFile(file) {
               <button @click="hideEditor()" class="button save red">Annuller</button>
               </div>
           </div>
-          <UploadFile :name=name method="PUT" style="margin-top: 50px; margin-left:30px"/>
         </div>
       </div>
     </div>
@@ -208,6 +176,10 @@ function deleteFile(file) {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--vt-c-blue-soft);
 }
 
 .button:disabled {
@@ -275,9 +247,16 @@ th {
 .red {
   background-color:var(--vt-c-red);
 }
+.red:hover {
+  background-color: var(--vt-c-red-soft);
+}
 
 .green {
   background-color:var(--vt-c-green);
+}
+
+.green:hover {
+  background-color: var(--vt-c-green-soft);
 }
 
 .save {

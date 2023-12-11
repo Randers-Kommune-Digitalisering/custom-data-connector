@@ -4,18 +4,18 @@ const Node = {
   "z": "971a7ae6df987a48",
   "g": "a4403add202fad14",
   "name": "",
-  "url": "/data/:file",
+  "url": "/in/:file",
   "method": "put",
   "upload": true,
   "swaggerDoc": "",
   "x": 110,
-  "y": 620,
+  "y": 180,
   "wires": [
     [
       "cff271cfa4f7f6d1"
     ]
   ],
-  "_order": 160
+  "_order": 130
 }
 
 module.exports = Node;
