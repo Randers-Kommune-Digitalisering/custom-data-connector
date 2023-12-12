@@ -109,7 +109,7 @@ function deleteFile(file) {
       <table>
         <tr v-for="file in files" :key="file">
             <th>{{file.name}}</th>
-            <th><button :disabled="busy || (file.name.slice(-3) !== 'csv')" @click="downloadFile(file)" class="button green">Download</button></th>
+            <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
             <th><button :disabled="busy" @click="deleteFile(file)" class="button red">Slet</button></th>
             <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
         </tr>
@@ -144,6 +144,11 @@ function deleteFile(file) {
 }
 
 .button:disabled {
+  background-color:var(--vt-c-grey);
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
   background-color:var(--vt-c-grey);
   cursor: not-allowed;
 }

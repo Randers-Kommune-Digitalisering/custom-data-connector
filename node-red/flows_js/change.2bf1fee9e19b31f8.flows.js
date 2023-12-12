@@ -2,7 +2,7 @@ const Node = {
   "id": "2bf1fee9e19b31f8",
   "type": "change",
   "z": "ba6019643c26475d",
-  "name": "set  res",
+  "name": "set csv res",
   "rules": [
     {
       "t": "set",
@@ -45,12 +45,12 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 1130,
-  "y": 80,
+  "x": 1310,
+  "y": 20,
   "wires": [
     []
   ],
-  "_order": 83
+  "_order": 53
 }
 
 module.exports = Node;

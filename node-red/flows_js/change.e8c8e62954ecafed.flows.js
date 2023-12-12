@@ -8,7 +8,7 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[$.\"payload\".\"filename\"]",
+      "to": "[$.\"payload\".\"name\"]",
       "tot": "jsonata"
     }
   ],
@@ -24,7 +24,7 @@ const Node = {
       "336a912ecc32d35f"
     ]
   ],
-  "_order": 89
+  "_order": 57
 }
 
 module.exports = Node;

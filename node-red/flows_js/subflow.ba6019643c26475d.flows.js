@@ -35,7 +35,7 @@ const Node = {
   "meta": {},
   "color": "#3FADB5",
   "icon": "font-awesome/fa-download",
-  "_order": 5
+  "_order": 3
 }
 
 module.exports = Node;

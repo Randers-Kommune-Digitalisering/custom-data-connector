@@ -14,7 +14,7 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 51
+  "_order": 44
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -22,8 +22,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     
       
         
-          msg.data = msg.data.replaceAll('.', ',');
-          return msg;
+          
+            msg.data = msg.data.replaceAll('.', ',');
+            return msg;
+          
         
       
     

@@ -31,7 +31,7 @@ const Node = {
   "meta": {},
   "color": "#FDF0C2",
   "icon": "node-red/switch.svg",
-  "_order": 6
+  "_order": 4
 }
 
 module.exports = Node;

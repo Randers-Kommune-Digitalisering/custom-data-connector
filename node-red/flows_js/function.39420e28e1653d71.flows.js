@@ -14,7 +14,7 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 85
+  "_order": 55
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -22,7 +22,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     
       
         
-          throw Error("Inccorect http method");
+          
+            throw Error("Inccorect http method");
+          
         
       
     
