@@ -17,20 +17,22 @@ const Node = {
       "cde1e3cd51f5d613"
     ]
   ],
-  "_order": 75
+  "_order": 74
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
-    
-      let file = msg.req.files.pop();
-      if (file.mimetype === 'text/csv') {
-        msg.payload = file.buffer.toString('utf8').replace(/\r/g, "").trim();
-        msg.uploadedFiles.push(msg.name)
-        return msg;
-      } else throw Error(`Unknown file type: ${file.mimetype}`)
-    
+      
+      
+        let file = msg.req.files.pop();
+        if (file.mimetype === 'text/csv') {
+          msg.payload = file.buffer.toString('utf8').replace(/\r/g, "").trim();
+          msg.uploadedFiles.push(msg.name)
+          return msg;
+        } else throw Error(`Unknown file type: ${file.mimetype}`)
+      
+      
     
   
 }

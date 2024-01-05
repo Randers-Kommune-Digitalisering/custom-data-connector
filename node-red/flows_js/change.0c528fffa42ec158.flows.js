@@ -30,7 +30,7 @@ const Node = {
       "t": "set",
       "p": "statusCode",
       "pt": "msg",
-      "to": "400",
+      "to": "500",
       "tot": "num"
     }
   ],
@@ -46,7 +46,7 @@ const Node = {
       "398582240f7b0756"
     ]
   ],
-  "_order": 99
+  "_order": 98
 }
 
 module.exports = Node;

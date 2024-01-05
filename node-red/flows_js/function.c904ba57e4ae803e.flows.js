@@ -9,12 +9,12 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 630,
-  "y": 100,
+  "x": 550,
+  "y": 180,
   "wires": [
     []
   ],
-  "_order": 92
+  "_order": 91
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -23,7 +23,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
         
           
-            throw new Error(`Data, group or name missing`);
+            
+              throw new Error(`Data, group or name missing`);
+            
           
         
       

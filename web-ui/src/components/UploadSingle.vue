@@ -9,6 +9,7 @@ import * as XLSX from 'xlsx';
 const err = ref(false);
 const msg = ref(null);
 const nameError = ref(false)
+const duplicateError = ref(false)
 const msgStyle = ref({color: 'green'});
 const fileInput = ref(null);
 
@@ -80,32 +81,27 @@ watch([file_already_exists, overwrite], function() {
   else METHOD = "POST";
 });
 
-watch([excelData, department], function() {
-    if(excelData.value && department.value && group.value) {
-      fileNames.value = excelData.value.map(item => {
-        let fn_obj = {name: '', already_exists: false, overwrite: false, data: ''}
-        fn_obj.data = item.data;
-        if(item.name) fn_obj.name = [department.value.value + group.value, item.name].join('_') + '.csv';
-        else fn_obj.name = [department.value.value + group.value].join('_') + '.csv';
-        return fn_obj
-      });
+watch([file_already_exists, overwrite], function() {
+  if(file_already_exists.value && overwrite.value) METHOD = "PUT";
+  else METHOD = "POST";
+});
 
-      fileNames.value.forEach(fn => {
-        if(existing_files.value.includes("Data_" + fn.name)) fn.already_exists = true;
-      });
-    }
-  },
-  {deep: true}
-);
+
+watch(group, function() {
+    if(group.value.includes('_'))
+      nameError.value = true;
+    else
+      nameError.value = false;
+});
 
 watch(fileNames, function() {
     // Check if two files have the same name
     if(fileNames.value) {
       let seen = new Set();
       if(fileNames.value.some(function(fn) { return seen.size === seen.add(fn.name).size; })) 
-        nameError.value = true;
+        duplicateError.value = true;
       else
-        nameError.value = false;
+        duplicateError.value = false;
 
       // Check if there are any dupplicate files and if they should be overwritten
       file_already_exists.value = fileNames.value.filter((fn) => fn.already_exists === true).length > 0;
@@ -273,13 +269,15 @@ function readExcelData(file_data) {
       }
   }
 
+  if(uniform_sheets.length < 2 )uniform_sheets[0].name = '';
+
   return uniform_sheets;
 }
 </script>
 
 <template>
   <div class="upload">
-    <!-- <p :style="msgStyle">{{msg}}</p> -->
+    <p :style="msgStyle">{{msg}}</p>
     <form @submit.prevent="submitFile">
       <label>Afdeling</label>
       <v-select :disabled="loading" id="mySelect" v-model="department" :options="departments" label="label"></v-select>
@@ -316,9 +314,10 @@ function readExcelData(file_data) {
           </div>
         </div>
       </div>
-      <span v-if="nameError" class="error">To eller flere af filerne har samme navn!</span>
+      <span v-if="nameError" class="error">Kilde gruppe må ikke indeholde '_'</span>
+      <span v-if="duplicateError" class="error">To eller flere af filerne har samme navn</span>
       <div style="display: flex; align-items: center; flex-direction: row;">
-        <input :disabled="!file || !department || !group || loading || nameError || (file_already_exists && !overwrite)" type="submit" value="Upload" class="submit-button green">
+        <input :disabled="!file || !department || !group || duplicateError || loading || nameError || (file_already_exists && !overwrite)" type="submit" value="Upload" class="submit-button green">
         <button :disabled="loading" type="button" @click="clearAll()" class="remove-button red" style="margin-left: auto; margin-top: 10px;">Ryd</button>
       </div>
       <div style="display: flex; align-items: center; flex-direction: row;">

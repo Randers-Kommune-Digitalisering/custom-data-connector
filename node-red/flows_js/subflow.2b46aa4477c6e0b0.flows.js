@@ -1,7 +1,7 @@
 const Node = {
   "id": "2b46aa4477c6e0b0",
   "type": "subflow",
-  "name": "JSON handler",
+  "name": "JSON Handler",
   "info": "",
   "category": "",
   "in": [
@@ -25,6 +25,11 @@ const Node = {
           "port": 0
         }
       ]
+    },
+    {
+      "x": 800,
+      "y": 220,
+      "wires": []
     }
   ],
   "env": [],
