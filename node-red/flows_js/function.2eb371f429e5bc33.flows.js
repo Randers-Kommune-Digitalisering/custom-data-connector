@@ -14,7 +14,7 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 77
+  "_order": 76
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -23,9 +23,11 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
         
           
-          msg.payload = { "success": true, "message": `${msg.uploadedFiles.length} file(s) uploaded as ${msg.uploadedFiles.join()}` }
-            msg.statusCode = 200;
-            return msg;
+            
+            msg.payload = { "success": true, "message": `${msg.uploadedFiles.length} file(s) uploaded as ${msg.uploadedFiles.join()}` }
+              msg.statusCode = 200;
+              return msg;
+            
           
         
       

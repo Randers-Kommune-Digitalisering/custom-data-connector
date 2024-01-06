@@ -37,9 +37,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
             
             // Check if title is there and valid
             if(typeof msg.group == "string") {
-                if (isValid(msg.name) || isValid(msg.group)){
-                    if(msg.name) msg.name = msg.group.replace(/ |_/g, '-') + "_" + msg.name.replace(/ /g, '_');
-                    else msg.name = msg.group.replace(/ |_/g, '-');
+                if (isValid(msg.name) && isValid(msg.group)){
+                    if(msg.name) msg.name = msg.group + "_" + msg.name; //msg.group.replace(/ /g, '_') + "_" + msg.name.replace(/ /g, '_');
+                    else msg.name = msg.group;//msg.group.replace(/ /g, '_');
                 } else {
                     throw new Error("Validation error: message title contains illegal characters");
                 }

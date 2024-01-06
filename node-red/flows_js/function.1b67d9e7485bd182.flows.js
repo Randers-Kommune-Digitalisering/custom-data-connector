@@ -17,7 +17,7 @@ const Node = {
       "40edcc8112ec0e89"
     ]
   ],
-  "_order": 124
+  "_order": 123
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -26,8 +26,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
         
           
-            msg.payload = { "success": true, "message": msg.req.params.file + " deleted" }
-            return msg;
+            
+              msg.payload = { "success": true, "message": msg.req.params.file + " deleted" }
+              return msg;
+            
           
         
       

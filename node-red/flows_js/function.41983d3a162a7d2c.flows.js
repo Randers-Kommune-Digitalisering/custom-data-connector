@@ -16,7 +16,7 @@ const Node = {
       "bf7ceb0207b9c08c"
     ]
   ],
-  "_order": 64
+  "_order": 63
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -24,10 +24,12 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     
       
         
-          const names = msg.payload.filter(file => file.slice(0, 4) === 'Data').map(file => file.split('.')[0].slice(5));
-          if (msg.req.method === "POST" && names.includes(msg.name)) throw Error(msg.name + ' already exists');
           
-          return msg;
+            const names = msg.payload.filter(file => file.slice(0, 4) === 'Data').map(file => file.split('.')[0].slice(5));
+            if (msg.req.method === "POST" && names.includes(msg.name)) throw Error(msg.name + ' already exists');
+            
+            return msg;
+            
           
         
       

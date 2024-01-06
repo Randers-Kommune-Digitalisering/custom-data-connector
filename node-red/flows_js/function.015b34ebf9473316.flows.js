@@ -16,7 +16,7 @@ const Node = {
       "41983d3a162a7d2c"
     ]
   ],
-  "_order": 67
+  "_order": 66
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -24,13 +24,15 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     
       
         
-          if (msg.success_files) msg.payload = msg.success_files.concat(msg.waiting_files);
-          else msg.payload = msg.waiting_files;
           
-          delete msg.waiting_files;
-          delete msg.success_files;
+            if (msg.success_files) msg.payload = msg.success_files.concat(msg.waiting_files);
+            else msg.payload = msg.waiting_files;
+            
+            delete msg.waiting_files;
+            delete msg.success_files;
+            
+            return msg;
           
-          return msg;
         
       
     
