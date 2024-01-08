@@ -11,11 +11,11 @@ const Node = {
   "finalize": "",
   "libs": [],
   "x": 550,
-  "y": 220,
+  "y": 200,
   "wires": [
     []
   ],
-  "_order": 113
+  "_order": 137
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -25,7 +25,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
         
           
             
-              throw new Error(`Unknown Content-Type`)
+              
+                throw new Error(`Unknown Content-Type`)
+              
             
           
         

@@ -17,7 +17,7 @@ const Node = {
       "16bc34e8f52c954d"
     ]
   ],
-  "_order": 122
+  "_order": 146
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -28,11 +28,13 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           
             
               
-                if (msg.payload.includes(msg.req.params.file)) {
-                    const remotePath = env.get("REMOTE_IN_FAILED_PATH");
-                    msg.payload.filename = remotePath + "/" + msg.req.params.file;
-                    return msg;
-                } else throw Error('No such file');
+                
+                  if (msg.payload.includes(msg.req.params.file)) {
+                      const remotePath = env.get("REMOTE_IN_FAILED_PATH");
+                      msg.payload.filename = remotePath + "/" + msg.req.params.file;
+                      return msg;
+                  } else throw Error('No such file');
+              
             
           
         

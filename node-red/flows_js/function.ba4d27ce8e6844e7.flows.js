@@ -14,7 +14,7 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 73
+  "_order": 76
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -25,7 +25,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           
             
               
-                throw new Error(`No files`)
+                
+                  throw new Error(`No files`)
+                
               
             
           

@@ -6,6 +6,9 @@ import "vue-select/dist/vue-select.css";
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 import * as XLSX from 'xlsx';
 
+const props = defineProps(['existing_files', 'loading'])
+const emit = defineEmits(['busy'])
+
 const err = ref(false);
 const msg = ref(null);
 const nameError = ref(false)
@@ -29,15 +32,12 @@ const file_already_exists = ref(false);
 const overwrite = ref(false);
 
 //Loader
-const loading = ref(false);
 const color = "#325d88";
 const size = "30px";
 
 let URL = "/in/";
 let METHOD = "POST";
 const allowedFileExtensions = ['.csv', '.xlsx', '.xlsb','.xlsm','.xls','.ods']
-
-getFiles();
 
 // { value: '', label: 'Ingen afdeling' },  
 const departments = [
@@ -88,10 +88,12 @@ watch([file_already_exists, overwrite], function() {
 
 
 watch(group, function() {
-    if(group.value.includes('_'))
+    if(group.value) {
+      if(group.value.includes('_'))
       nameError.value = true;
     else
       nameError.value = false;
+    }
 });
 
 watch(fileNames, function() {
@@ -125,21 +127,6 @@ function clearAll(){
   excelData.value = null;
 }
 
-function getFiles() {
-  loading.value = true;
-  fetch(URL, { method: "GET" })
-  .then((res) => res.json())
-  .then((data) => {
-    err.value = !data.success;
-    if(!err.value){
-      existing_files.value = data.files.waiting.concat(data.files.imported);
-    } else {
-      msg.value = data.message;
-    }
-    loading.value = false;
-  });
-}
-
 function onFileChanged($event) {
   name.value = '';
   group.value = '';
@@ -155,12 +142,12 @@ function onFileChanged($event) {
       if(!allowedFileExtensions.includes(file_extension)) throw Error('Unknown file type')
 
       if(file.value.type !== 'text/csv') {
-        loading.value = true;
+        emit('busy', true)
         var reader = new FileReader();
         excelData.value = [{name: 'placeholder'}];
         reader.onload = function(e) {
           excelData.value = readExcelData(e.target.result);
-          loading.value = false;
+          emit('busy', false)
         };
         reader.readAsArrayBuffer(file.value);
       }
@@ -188,7 +175,8 @@ function removeSheet(index) {
 }
 
 function submitFile() {
-  loading.value = true;
+  emit('busy', true)
+
   let data = new FormData();
   let url = URL;
 
@@ -242,14 +230,13 @@ function sendRequest(url, method, data, header) {
     fetch(url, request)
     .then((res) => res.json())
     .then((data) => {
-      loading.value = false;
+      emit('busy', false)
       msg.value = data.message;
       err.value = !data.success;
       if(!err.value) {
         fileInput.value.value = null;
         file.value = null;
         clearAll();
-        getFiles();
       } else console.log(msg.value)
     });
   }
@@ -277,9 +264,10 @@ function readExcelData(file_data) {
 
 <template>
   <div class="upload">
+    <h1>Upload Data</h1>
     <p :style="msgStyle">{{msg}}</p>
     <form @submit.prevent="submitFile">
-      <label>Afdeling</label>
+      <label>Organisatorisk enhed</label>
       <v-select :disabled="loading" id="mySelect" v-model="department" :options="departments" label="label"></v-select>
       <!-- <input multiple @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input"> -->
       <input :disabled="loading" @change="onFileChanged($event)" ref="fileInput" type="file" accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, application/vnd.oasis.opendocument.spreadsheet, application/vnd.ms-excel.sheet.binary.macroenabled.12, application/vnd.ms-excel.sheet.macroEnabled.12" class="file-input">
@@ -309,7 +297,7 @@ function readExcelData(file_data) {
       <div v-if="excelData">
         <div v-for="fn in fileNames" :key="fn">
           <div v-if="fn.already_exists" style="display: flex; align-items: center; flex-direction: row;">
-            <label for="overwrite" >Filen <i>{{fn.name}}</i> findes allerede, skal dn overskrives? </label>
+            <label for="overwrite" >Filen <i>{{fn.name}}</i> findes allerede, skal den overskrives? </label>
             <input type="checkbox" name="overwirte" v-model="fn.overwrite"/>
           </div>
         </div>

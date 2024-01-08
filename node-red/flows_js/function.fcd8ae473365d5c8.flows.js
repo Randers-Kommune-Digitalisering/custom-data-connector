@@ -16,7 +16,7 @@ const Node = {
       "cbf725a7eaf153e7"
     ]
   ],
-  "_order": 67
+  "_order": 70
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -25,9 +25,11 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
         
           
-            if (msg.req.method === "POST" && (msg.name.slice(0, 5) === 'Meta_' || msg.name.slice(0, 5) === 'Data_')) throw Error('Name cannot start with "Data_" or "Meta_"')
-            if (msg.req.method === "PUT" && !['Meta_', 'Data_'].includes(msg.name.slice(0, 5))) throw Error('All files starts "Data_" or "Meta_", no such file as ' + msg.name)
-            return msg;
+            
+              if (msg.req.method === "POST" && (msg.name.slice(0, 5) === 'Meta_' || msg.name.slice(0, 5) === 'Data_')) throw Error('Name cannot start with "Data_" or "Meta_"')
+              if (msg.req.method === "PUT" && !['Meta_', 'Data_'].includes(msg.name.slice(0, 5))) throw Error('All files starts "Data_" or "Meta_", no such file as ' + msg.name)
+              return msg;
+            
           
         
       

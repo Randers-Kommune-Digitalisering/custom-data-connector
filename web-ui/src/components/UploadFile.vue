@@ -37,6 +37,7 @@ function submitFile() {
   var url = URL;
 
   if(props.name) {
+    if(props.name.slice(0,4) === "Aut_") url = url + "aut/"
     url  = url + props.name;
     let header = { "Content-Type": "text/csv" }
 
