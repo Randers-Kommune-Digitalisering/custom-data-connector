@@ -14,7 +14,7 @@ const Node = {
   "wires": [
     []
   ],
-  "_order": 68
+  "_order": 71
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -23,9 +23,11 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
         
           
-            const groups = msg.payload.filter(file => file.slice(0, 4) === 'Meta').map(file => file.split('.')[0].slice(5));
-            msg.groups = groups;
-            return msg;
+            
+              const groups = msg.payload.filter(file => file.slice(0, 4) === 'Meta').map(file => file.split('.')[0].slice(5));
+              msg.groups = groups;
+              return msg;
+            
           
         
       

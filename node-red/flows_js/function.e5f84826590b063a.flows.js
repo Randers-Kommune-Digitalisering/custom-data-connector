@@ -17,7 +17,7 @@ const Node = {
       "4ae1a5c1989051b1"
     ]
   ],
-  "_order": 34
+  "_order": 37
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
@@ -26,23 +26,25 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       
         
           
-            msg.data = msg.data.map(item => {
-                const updatedItems = { ...item };
             
-                for (const key in item) {
-                    try {
-                        if (!isNaN(item[key].getMonth())) {
-                            updatedItems[key] = item[key].toISOString().split('T')[0];
-                            if ('Tid_' + key in item) updatedItems['Tid-' + key] = item[key].toISOString().split('T')[1].split('.')[0];
-                        }
-                    }
-                    catch(e){}
-                }
+              msg.data = msg.data.map(item => {
+                  const updatedItems = { ...item };
+              
+                  for (const key in item) {
+                      try {
+                          if (!isNaN(item[key].getMonth())) {
+                              updatedItems[key] = item[key].toISOString().split('T')[0];
+                              if ('Tid_' + key in item) updatedItems['Tid-' + key] = item[key].toISOString().split('T')[1].split('.')[0];
+                          }
+                      }
+                      catch(e){}
+                  }
+              
+                  return updatedItems;
+              });
+              
+              return msg
             
-                return updatedItems;
-            });
-            
-            return msg
           
         
       

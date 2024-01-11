@@ -96,7 +96,9 @@ function updateFile(err) {
 
 function saveFile() {
     loadingEditor.value = true
-    const url = URL + name.value;
+    let url = URL
+    if(name.value.slice(0,4) === "Aut_") url = url + "aut/"
+    url = url + name.value;
     const header = { "Content-Type": "text/csv" };
     const request = { method: "PUT", headers: header, body: textInput.value };
     

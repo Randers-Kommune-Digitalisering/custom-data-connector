@@ -17,32 +17,34 @@ const Node = {
       "8272b3b4cb2c3081"
     ]
   ],
-  "_order": 33
+  "_order": 36
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
     
       
-        const replacer = (value) => value === null ? '' : value;
         
-        const data_items = msg.data;
-        const meta_items = msg.columns;
+          const replacer = (value) => value === null ? '' : value;
+          
+          const data_items = msg.data;
+          const meta_items = msg.columns;
+          
+          const meta_header = Object.keys(meta_items[0]);
+          const data_header = Object.keys(data_items[0]);
+          
+          let meta_first_row = meta_header.join(';') + '\r\n';
+          let meta_rows = [...meta_items.map(row => meta_header.map(fieldName => String(replacer(row[fieldName]))).join(';'))].join('\r\n');
+          msg.meta = meta_first_row + meta_rows;
+          msg.meta = Buffer.from(msg.meta, 'utf-8');
+          
+          let data_first_row = data_header.join(';') + '\r\n';
+          let data_rows = [...data_items.map(row => data_header.map(fieldName => String(replacer(row[fieldName]))).join(';'))].join('\r\n');
+          msg.data = data_first_row + data_rows
+          msg.test = msg.data;
+          msg.data = Buffer.from(msg.data, 'utf-8');
+          return msg;
         
-        const meta_header = Object.keys(meta_items[0]);
-        const data_header = Object.keys(data_items[0]);
-        
-        let meta_first_row = meta_header.join(';') + '\r\n';
-        let meta_rows = [...meta_items.map(row => meta_header.map(fieldName => String(replacer(row[fieldName]))).join(';'))].join('\r\n');
-        msg.meta = meta_first_row + meta_rows;
-        msg.meta = Buffer.from(msg.meta, 'utf-8');
-        
-        let data_first_row = data_header.join(';') + '\r\n';
-        let data_rows = [...data_items.map(row => data_header.map(fieldName => String(replacer(row[fieldName]))).join(';'))].join('\r\n');
-        msg.data = data_first_row + data_rows
-        msg.test = msg.data;
-        msg.data = Buffer.from(msg.data, 'utf-8');
-        return msg;
       
     
   

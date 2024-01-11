@@ -35,6 +35,12 @@ const router = createRouter({
     }
     ,
     {
+      path: '/unauthorized',
+      name: 'Unauthorized',
+      component: () => import('../views/UnauthorizedView.vue')
+    }
+    ,
+    {
       path: '/:pathMatch(.*)*',
       name: 'Not found',
       component: () => import('../views/NotFoundView.vue')
