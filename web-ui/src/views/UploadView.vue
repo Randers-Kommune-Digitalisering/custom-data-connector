@@ -8,6 +8,7 @@ const data_files = ref([]);
 
 const loading = ref(false)
 const err = ref(false);
+const msg = ref(null);
 let URL = "/in/"
 
 getFiles();

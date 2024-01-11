@@ -12,7 +12,7 @@ const emit = defineEmits(['busy'])
 const err = ref(false);
 const msg = ref(null);
 const msgStyle = ref({color: 'green'});
-const files = ref(null);
+const file = ref(null);
 const fileInput = ref(null);
 const fileName = ref(null)
 const autName = ref(null)
@@ -35,18 +35,39 @@ watch(fileName, function(err) {
 
 function onFileChanged($event) {
   if ($event.target.files) {
-      files.value = $event.target.files;
+      file.value = $event.target.files[0];
+
+      if(file.value) {
+        const file_extension = file.value.name.substring(file.value.name.lastIndexOf('.'));
+
+        if(!allowedFileExtensions.includes(file_extension)) throw Error('Unknown file type')
+
+        if(file.value.type !== 'text/csv') {
+          emit('busy', true)
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            let data = readExcelData(e.target.result);
+            file.value = new File([data], 'temp_file', {type: 'text/csv'})
+            emit('busy', false)
+          };
+          reader.readAsArrayBuffer(file.value);
+        }
+      }
   }
+}
+
+
+function readExcelData(file_data) {
+  let workbook = XLSX.read(file_data);
+  return XLSX.utils.sheet_to_csv(workbook.Sheets[workbook.SheetNames[0]], {FS:";", blankrows:false});
 }
 
 function submitFile() {
   emit('busy', true)
 
   let data = new FormData()
-  let file = new File([files.value[0]], autName.value, {
-        type: files.value[0].type
-    });
-  data.append('file', file)
+  let new_file = new File([file.value], autName.value, { type: file.value.type });
+  data.append('file', new_file)
 
   let request = { method: 'POST', body: data }
       
@@ -58,7 +79,7 @@ function submitFile() {
     err.value = !data.success;
     if(err.value) console.log(msg.value)
     fileInput.value.value = null;
-    files.value = null;
+    file.value = null;
   });
 }
 </script>
@@ -74,7 +95,7 @@ function submitFile() {
       <label v-if="autName">Genereret filnavn</label>
       <span v-if="autName">{{autName}}</span>
       <div style="display: flex; align-items: center; flex-direction: row;">
-        <input :disabled="!files || loading" type="submit" value="Upload" class="submit-button green">
+        <input :disabled="!file || loading" type="submit" value="Upload" class="submit-button green">
         <ClipLoader :loading="loading" :color="color" :size="size" class="loader"/>
         <span v-if="!err && msg && !loading" class="success">&#10004;</span>
         <span v-if="err && msg && !loading" class="fail">&#10008;</span>

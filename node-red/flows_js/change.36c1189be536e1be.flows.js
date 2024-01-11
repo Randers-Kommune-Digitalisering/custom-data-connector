@@ -1,36 +1,36 @@
 const Node = {
-  "id": "1fc6c96744519ec0",
+  "id": "36c1189be536e1be",
   "type": "change",
   "z": "fcba28c363701f4a",
   "g": "034543fb886eaefe",
-  "name": "set  res",
+  "name": "set error",
   "rules": [
     {
       "t": "set",
-      "p": "headers",
+      "p": "payload",
       "pt": "msg",
       "to": "{}",
       "tot": "json"
     },
     {
       "t": "set",
-      "p": "headers.content-type",
+      "p": "payload.success",
       "pt": "msg",
-      "to": "application/json",
-      "tot": "str"
+      "to": "false",
+      "tot": "bool"
     },
     {
       "t": "set",
-      "p": "payload",
+      "p": "payload.message",
       "pt": "msg",
-      "to": "{\"success\": true, \"files\": payload}",
-      "tot": "jsonata"
+      "to": "Access denied",
+      "tot": "str"
     },
     {
       "t": "set",
       "p": "statusCode",
       "pt": "msg",
-      "to": "200",
+      "to": "401",
       "tot": "num"
     }
   ],
@@ -39,14 +39,14 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 1050,
-  "y": 460,
+  "x": 600,
+  "y": 540,
   "wires": [
     [
-      "25202a5a16f294ab"
+      "2e70a2975c70acdd"
     ]
   ],
-  "_order": 127
+  "_order": 166
 }
 
 module.exports = Node;

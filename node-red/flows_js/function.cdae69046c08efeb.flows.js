@@ -23,7 +23,7 @@ const Node = {
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   let file = msg.req.files.pop();
   
-  if (file.mimetype === 'text/csv' || file.split(".").pop().toLowerCase() != "csv") {
+  if (file.mimetype === 'text/csv') {
       const remotePath = env.get("REMOTE_IN_PATH");
       const filename = decodeURI(file);
       msg.payload = { "filename": "", "filedata": "" };
