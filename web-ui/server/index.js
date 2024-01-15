@@ -13,12 +13,18 @@ const cookie_secret = process.env.COOKIE_SECRET;
  
 
 function hasRole(token, request) {
-    if(token.content.resource_access[resource]) {
-        console.log(token.content.resource_access[resource])
-        request.headers.auth = token.content.resource_access[resource].roles
-        return true
-    } else return false
-  }
+  if(token.content.resource_access[resource]) {
+      request.headers.auth = token.content.resource_access[resource].roles
+      return true
+  } else return false
+}
+
+function setRoles(token, request) {
+  if(token.content.resource_access[resource]) {
+      request.roles = token.content.resource_access[resource].roles
+      return true
+  } else return false
+}
 
 var memoryStore = new session.MemoryStore();
 
@@ -59,6 +65,10 @@ app.use(keycloak.middleware());
 
 app.use('/in', keycloak.protect(hasRole), createProxyMiddleware('/in', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/out', keycloak.protect(hasRole), createProxyMiddleware('/out', {target: 'http://' + customDataConnectorHost, secure: false}));
+
+app.get('/roles', keycloak.protect(setRoles), (req, res) => {
+  res.send(req.roles)
+})
 
 app.use( keycloak.protect(), express.static('dist'));
 
