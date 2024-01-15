@@ -1,6 +1,19 @@
 <script setup>
+import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
 const version = APP_VERSION;
+
+const roles = ref([])
+
+function getRoles(){
+  fetch('/roles')
+  .then((res) => res.json())
+  .then((data) => {
+    roles.value = data
+  });
+}
+
+getRoles()
 </script>
 
 <template>
@@ -13,14 +26,13 @@ const version = APP_VERSION;
         <!-- <RouterLink to="/">Hjem</RouterLink> -->
         <RouterLink to="/upload">Upload</RouterLink>
         <RouterLink to="/status">Status</RouterLink>
-        <RouterLink to="/exported">Udtræk</RouterLink>
+        <RouterLink v-if="roles.includes('admin')" to="/exported">Udtræk</RouterLink>
         <RouterLink to="/imported">Indlæst</RouterLink>
-        
       </nav>
     </div>
   </header>
   <body>
-    <RouterView />
+    <RouterView :roles=roles />
   </body>
 </template>
 

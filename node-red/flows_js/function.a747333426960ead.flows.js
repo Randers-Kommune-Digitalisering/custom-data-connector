@@ -11,7 +11,7 @@ const Node = {
   "finalize": "",
   "libs": [],
   "x": 280,
-  "y": 460,
+  "y": 480,
   "wires": [
     [
       "101f447019a4648a"
@@ -21,9 +21,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+  msg.authorized = true
   if (msg.req.headers['auth'])
       if (!msg.req.headers['auth'].includes('admin'))
-          msg.unauthorized = true
+          msg.authorized = false
   return msg;
 }
 

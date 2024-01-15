@@ -6,7 +6,7 @@ import "vue-select/dist/vue-select.css";
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 import * as XLSX from 'xlsx';
 
-const props = defineProps(['existing_files', 'loading'])
+const props = defineProps(['existing_files', 'loading', 'roles'])
 const emit = defineEmits(['busy'])
 
 const err = ref(false);
@@ -40,7 +40,7 @@ let METHOD = "POST";
 const allowedFileExtensions = ['.csv', '.xlsx', '.xlsb','.xlsm','.xls','.ods']
 
 // { value: '', label: 'Ingen afdeling' },  
-const departments = [
+let departments = [
   { value: 'BS', label: 'Børn og Skole (BS)' },
   { value: 'SA', label: 'Social og Arbejdsmarked (SA)' },
   { value: 'SKO', label: 'Sundhed, Kultur og Omsorg (SKO)' },
@@ -49,6 +49,9 @@ const departments = [
   { value: 'ØK', label: 'Økonomi (ØK)' },
   { value: 'IT', label: 'IT og Digitalisering (IT)' },
 ];
+
+if(!props.roles.includes('admin'))
+  departments = departments.filter((obj) => props.roles.includes(obj.value))
 
 watch(err, () => {
   if(err.value) msgStyle.value = {color: 'red'};

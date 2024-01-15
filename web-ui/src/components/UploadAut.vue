@@ -94,8 +94,8 @@ function submitFile() {
       <input :disabled="loading" @change="onFileChanged($event)" ref="fileInput" type="file" accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, application/vnd.oasis.opendocument.spreadsheet, application/vnd.ms-excel.sheet.binary.macroenabled.12, application/vnd.ms-excel.sheet.macroEnabled.12" class="file-input">
       <label v-if="autName">Genereret filnavn</label>
       <span v-if="autName">{{autName}}</span>
+      <input :disabled="!file || loading" type="submit" value="Upload" class="submit-button green">
       <div style="display: flex; align-items: center; flex-direction: row;">
-        <input :disabled="!file || loading" type="submit" value="Upload" class="submit-button green">
         <ClipLoader :loading="loading" :color="color" :size="size" class="loader"/>
         <span v-if="!err && msg && !loading" class="success">&#10004;</span>
         <span v-if="err && msg && !loading" class="fail">&#10008;</span>

@@ -4,21 +4,21 @@ const Node = {
   "z": "fcba28c363701f4a",
   "g": "034543fb886eaefe",
   "name": "auth?",
-  "property": "unauthorized",
+  "property": "authorized",
   "propertyType": "msg",
   "rules": [
     {
-      "t": "false"
+      "t": "true"
     },
     {
-      "t": "true"
+      "t": "else"
     }
   ],
   "checkall": "true",
   "repair": false,
   "outputs": 2,
   "x": 410,
-  "y": 500,
+  "y": 520,
   "wires": [
     [
       "23af0ee27c380259"

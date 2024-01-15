@@ -5,20 +5,20 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'hjem',
+      name: 'Hjem',
       redirect: '/upload'
       //component:() => import('../views/HomeView.vue')
     }
     ,
     {
       path: '/upload',
-      name: 'upload',
-      component: () => import('../views/UploadView.vue')
+      name: 'Upload',
+      component: () => import('../views/UploadView.vue'),
     }
     ,
     {
       path: '/status',
-      name: 'status',
+      name: 'Status',
       component: () => import('../views/StatusView.vue')
     }
     ,

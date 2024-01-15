@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import Data from '../components/UploadSingle.vue'
 import Aut from '../components/UploadAut.vue'
 
+const props = defineProps(['roles'])
+
 const existing_files = ref([]);
 const data_files = ref([]);
 
@@ -10,8 +12,6 @@ const loading = ref(false)
 const err = ref(false);
 const msg = ref(null);
 let URL = "/in/"
-
-getFiles();
 
 function getFiles() {
   loading.value = true;
@@ -28,12 +28,14 @@ function getFiles() {
     loading.value = false;
   });
 }
+
+getFiles();
 </script>
 
 <template>
   <main>
     <div class="container">
-      <Data @busy="(busy) => loading=busy" v-bind:loading="loading" v-bind:existing_files="existing_files"/>
+      <Data @busy="(busy) => loading=busy" v-bind:loading="loading" v-bind:existing_files="existing_files" :roles="props.roles"/>
       <Aut @busy="(busy) => loading=busy" v-bind:loading="loading" v-bind:data_files="data_files"/>
     </div>
   </main>
@@ -44,7 +46,8 @@ function getFiles() {
 @media (min-width: 1024px) {
   .container {
     display: flex;
-    align-items: center;
+    gap: 40px;
+    align-items: top;
     flex-direction: row;
   }
 }
