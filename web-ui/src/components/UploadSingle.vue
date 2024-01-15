@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref, watch } from 'vue';
+import { toRef, ref, watch } from 'vue';
 import vSelect from 'vue-select';
 import "vue-select/dist/vue-select.css";
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
@@ -27,7 +27,7 @@ const metaName = ref(null);
 const fileName = ref(null);
 const fileNames = ref(null); 
 
-const existing_files = ref([]);
+const existing_files = toRef(props, 'existing_files');
 const file_already_exists = ref(false);
 const overwrite = ref(false);
 
