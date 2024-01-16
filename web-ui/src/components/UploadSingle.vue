@@ -7,7 +7,7 @@ import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 import * as XLSX from 'xlsx';
 
 const props = defineProps(['existing_files', 'loading', 'roles'])
-const emit = defineEmits(['busy'])
+const emit = defineEmits(['busy', 'refresh'])
 
 const err = ref(false);
 const msg = ref(null);
@@ -239,6 +239,7 @@ function sendRequest(url, method, data, header) {
       if(!err.value) {
         fileInput.value.value = null;
         file.value = null;
+        emit('refresh')
         clearAll();
       } else console.log(msg.value)
     });

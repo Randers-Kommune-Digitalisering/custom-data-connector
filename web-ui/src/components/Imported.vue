@@ -3,6 +3,8 @@ import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
+const props = defineProps(['roles'])
+
 const router = useRouter();
 const error = ref(false);
 const msg = ref(null);
@@ -21,6 +23,12 @@ const loading = ref(false)
 const color = "#325d88"
 const size = "150px"
 const sizeSmall = "18px"
+
+let types = ['Aut_', 'Data_', 'Meta_'];
+let roles = ['BS', 'SA', 'SKO', 'UMT', 'HR', 'ØK', 'IT'];
+
+if(!props.roles.includes('admin'))
+  roles = props.roles;
 
 getFiles();
 
@@ -137,22 +145,23 @@ function deleteFile(file) {
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
               <!-- <th><button :disabled="busy" @click="editFile(file)" class="button">Rediger</button></th> -->
-              <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
+              <!-- <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th> -->
           </tr>
         </table>
       </div>
-      <div v-show="editing" style="display: flex; align-items: left; flex-direction: column;">
+      <!-- <div v-show="editing" style="display: flex; align-items: left; flex-direction: column;">
         <h3>{{name}}</h3>
         <div style="display: flex; align-items: center; flex-direction: row;">
           <div style="display: flex; align-items: top; flex-direction: column;">
               <textarea v-model="textInput" class="text"/>
               <div style="display: flex; align-items: center; flex-direction: row;">
-              <button @click="saveFile()" class="button save green">Gem</button>
-              <button @click="hideEditor()" class="button save red">Annuller</button>
+                <button @click="saveFile()" class="button save green">Gem</button>
+                <button @click="hideEditor()" class="button save red">Annuller</button>
               </div>
           </div>
         </div>
       </div>
+      -->
     </div>
   </div>
 </template>

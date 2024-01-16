@@ -35,8 +35,8 @@ getFiles();
 <template>
   <main>
     <div class="container">
-      <Data @busy="(busy) => loading=busy" v-bind:loading="loading" v-bind:existing_files="existing_files" :roles="props.roles"/>
-      <Aut @busy="(busy) => loading=busy" v-bind:loading="loading" v-bind:data_files="data_files"/>
+      <Data @busy="(busy) => loading=busy" @refresh="getFiles" v-bind:loading="loading" v-bind:existing_files="existing_files" :roles="props.roles"/>
+      <Aut @busy="(busy) => loading=busy" @refresh="getFiles" v-bind:loading="loading" v-bind:data_files="data_files"/>
     </div>
   </main>
 </template>

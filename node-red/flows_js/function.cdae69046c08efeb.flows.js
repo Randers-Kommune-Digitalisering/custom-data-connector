@@ -25,9 +25,9 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
   if (file.mimetype === 'text/csv') {
       const remotePath = env.get("REMOTE_IN_PATH");
-      const filename = decodeURI(file);
+      const filename = decodeURI(file.originalname);
       msg.payload = { "filename": "", "filedata": "" };
-      msg.payload.filename = remotePath + "/" + file.originalname;
+      msg.payload.filename = remotePath + "/" + filename;
       msg.payload.filedata = file.buffer//.toString('utf8').replace(/\r/g, "");
       msg.uploadedFiles.push(msg.name)
       return msg;
