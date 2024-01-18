@@ -6,15 +6,14 @@ const Node = {
   "name": "",
   "scope": null,
   "uncaught": false,
-  "x": 1080,
+  "x": 1060,
   "y": 60,
   "wires": [
     [
       "ecd7c11282a62a50",
       "0c528fffa42ec158"
     ]
-  ],
-  "_order": 120
+  ]
 }
 
 module.exports = Node;

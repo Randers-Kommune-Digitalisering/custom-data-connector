@@ -30,8 +30,7 @@ const Node = {
   "env": [],
   "meta": {},
   "color": "#C0DEED",
-  "icon": "font-awesome/fa-upload",
-  "_order": 2
+  "icon": "font-awesome/fa-upload"
 }
 
 module.exports = Node;

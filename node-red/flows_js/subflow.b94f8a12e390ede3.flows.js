@@ -30,8 +30,7 @@ const Node = {
   "env": [],
   "meta": {},
   "color": "#E6E0F8",
-  "icon": "node-red/switch.svg",
-  "_order": 8
+  "icon": "node-red/switch.svg"
 }
 
 module.exports = Node;
