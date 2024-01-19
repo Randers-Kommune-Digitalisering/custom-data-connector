@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { RouterLink, RouterView } from 'vue-router'
 const version = APP_VERSION;
 
 const roles = ref([])
@@ -9,11 +8,14 @@ function getRoles(){
   fetch('/roles')
   .then((res) => res.json())
   .then((data) => {
-    roles.value = data
+      roles.value = data
   });
 }
 
-getRoles()
+if(process.env.NODE_ENV === 'development')
+      roles.value = ['admin']
+else
+  getRoles()
 </script>
 
 <template>
@@ -26,8 +28,8 @@ getRoles()
         <!-- <RouterLink to="/">Hjem</RouterLink> -->
         <RouterLink to="/upload">Upload</RouterLink>
         <RouterLink to="/status">Status</RouterLink>
-        <RouterLink v-if="roles.includes('admin')" to="/exported">Udtræk</RouterLink>
         <RouterLink to="/imported">Indlæst</RouterLink>
+        <RouterLink v-if="roles.includes('admin')" to="/exported">Udtræk</RouterLink>
       </nav>
     </div>
   </header>

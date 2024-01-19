@@ -8,8 +8,7 @@ const Node = {
   "connTimeout": "",
   "pasvTimeout": "",
   "keepalive": "",
-  "password": "pass",
-  "_order": 18
+  "password": "pass"
 }
 
 module.exports = Node;

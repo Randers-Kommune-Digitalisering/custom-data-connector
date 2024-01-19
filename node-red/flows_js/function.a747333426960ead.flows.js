@@ -16,16 +16,17 @@ const Node = {
     [
       "101f447019a4648a"
     ]
-  ],
-  "_order": 162
+  ]
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.authorized = true
-  if (msg.req.headers['auth'])
-      if (!msg.req.headers['auth'].includes('admin'))
-          msg.authorized = false
-  return msg;
+  
+    msg.authorized = true
+    if (msg.req.headers['auth'])
+        if (!msg.req.headers['auth'].includes('admin'))
+            msg.authorized = false
+    return msg;
+  
 }
 
 module.exports = Node;

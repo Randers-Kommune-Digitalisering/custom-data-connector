@@ -7,7 +7,7 @@ import "vue-select/dist/vue-select.css";
 import * as XLSX from 'xlsx';
 
 const props = defineProps(['data_files', 'loading'])
-const emit = defineEmits(['busy'])
+const emit = defineEmits(['busy', 'refresh'])
 
 const err = ref(false);
 const msg = ref(null);
@@ -66,7 +66,7 @@ function submitFile() {
   emit('busy', true)
 
   let data = new FormData()
-  let new_file = new File([file.value], autName.value, { type: file.value.type });
+  let new_file = new File([file.value], encodeURI(autName.value), { type: file.value.type });
   data.append('file', new_file)
 
   let request = { method: 'POST', body: data }
@@ -78,6 +78,7 @@ function submitFile() {
     msg.value = data.message;
     err.value = !data.success;
     if(err.value) console.log(msg.value)
+    else emit('refresh')
     fileInput.value.value = null;
     file.value = null;
   });
@@ -117,6 +118,11 @@ function submitFile() {
 
 form {
   width: 100%;
+}
+
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 label {

@@ -7,8 +7,7 @@ const Node = {
   "password": "pass",
   "sshkey": "",
   "hmac": [],
-  "cipher": [],
-  "_order": 19
+  "cipher": []
 }
 
 module.exports = Node;
