@@ -159,7 +159,8 @@ function deleteFile(file) {
           <tr v-for="file in files_waiting" :key="file">
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
-              <th><button :disabled="busy" @click="editFile(file)" class="button">Rediger</button></th>
+              <th><button :disabled="busy || file.name.slice(0,4) === 'Data'" @click="editFile(file)" class="button">Rediger</button></th>
+              <!-- <th><button :disabled="busy" @click="deleteFile(file)" class="button red">Slet</button></th> -->
               <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
           </tr>
         </table>

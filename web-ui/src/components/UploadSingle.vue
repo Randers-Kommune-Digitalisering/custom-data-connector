@@ -99,6 +99,23 @@ watch(group, function() {
     }
 });
 
+watch([excelData, department], function() {
+    if(excelData.value && department.value && group.value) {
+      fileNames.value = excelData.value.map(item => {
+        let fn_obj = {name: '', already_exists: false, overwrite: false, data: ''}
+        fn_obj.data = item.data;
+        if(item.name) fn_obj.name = [department.value.value + group.value, item.name].join('_') + '.csv';
+        else fn_obj.name = [department.value.value + group.value].join('_') + '.csv';
+        return fn_obj
+      });
+      fileNames.value.forEach(fn => {
+        if(existing_files.value.includes("Data_" + fn.name)) fn.already_exists = true;
+      });
+    }
+  },
+  {deep: true}
+);
+
 watch(fileNames, function() {
     // Check if two files have the same name
     if(fileNames.value) {

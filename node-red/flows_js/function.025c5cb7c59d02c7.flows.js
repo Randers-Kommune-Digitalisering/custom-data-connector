@@ -24,7 +24,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           
             
               
-              msg.payload = { "success": true, "message": `${msg.uploadedFiles.length} file(s) uploaded as ${msg.uploadedFiles.join()}` }
+              msg.payload = { "success": true, "message": `${msg.uploadedFiles.length} file(er) uploaded som ${msg.uploadedFiles.join()}` }
                 msg.statusCode = 200;
                 return msg;
               

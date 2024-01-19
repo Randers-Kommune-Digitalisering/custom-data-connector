@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
+import UploadFile from '../components/UploadFile.vue'
 
 const props = defineProps(['roles']);
 
@@ -20,7 +21,7 @@ const URL = "/in/";
 
 //Loader
 const loading = ref(false)
-const loading_editor = ref(false)
+const loadingEditor = ref(false)
 const color = "#325d88"
 const size = "150px"
 const sizeSmall = "18px"
@@ -30,8 +31,9 @@ let all_files = [];
 let types_temp = ['Aut', 'Data', 'Meta'].map((str) => ({selected: true, name: str}));
 let roles_temp = ['BS', 'SA', 'SKO', 'UMT', 'HR', 'ØK', 'IT'].map((str) => ({selected: true, name: str}));
 
-if(!props.roles.includes('admin'))
+if(!props.roles.includes('admin')){
   roles_temp = roles_temp.filter((role) => props.roles.includes(role.name));
+}
 
 const types = ref(types_temp)
 const roles = ref(roles_temp)
@@ -125,7 +127,7 @@ function editFile(file){
 }
 
 function saveFile() {
-  loading_editor.value = true;
+  loadingEditor.value = true;
   let url = URL
   if(name.value.slice(0,3) === "Aut") url = url + 'aut/'
   url  = url + name.value;
@@ -138,8 +140,12 @@ function saveFile() {
     msg.value = data.message;
     error.value = !data.success;
     hideEditor();
-    loading_editor.value = false;
+    loadingEditor.value = false;
   });
+}
+
+function updateFile(err) {
+  if(!err) editFile({"name": name.value})
 }
 
 function hideEditor(){
@@ -183,8 +189,8 @@ function select(obj) {
     <div v-if="!loading" style="display: flex; flex-direction: row;">
       <div style="display: flex; flex-direction: column;">
         <input type="text" v-model="searchValue" placeholder="Søg" class="search">
-        <span class="filter-label">Org. Enheder</span>
-        <ul class="select-buttons">
+        <span v-if="roles.length > 1" class="filter-label">Org. Enheder</span>
+        <ul v-if="roles.length > 1" class="select-buttons">
           <li v-for="role, in roles">
             <label>
               <input type="checkbox" :checked="role.selected" @click="select(role)">
@@ -207,7 +213,7 @@ function select(obj) {
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
               <th><button :disabled="busy || file.name.slice(0,4) === 'Data'" @click="editFile(file)" class="button">Rediger</button></th>
-              <!-- <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th> -->
+              <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
           </tr>
         </table>
       </div>
@@ -219,8 +225,10 @@ function select(obj) {
               <div style="display: flex; align-items: center; flex-direction: row;">
                 <button @click="saveFile()" class="button save green">Gem</button>
                 <button @click="hideEditor()" class="button save red">Annuller</button>
+                <ClipLoader :loading="loadingEditor" :color="color" :size="sizeSmall" class="loaderEditor"/>
               </div>
           </div>
+          <UploadFile @upload="updateFile" @busy="(busy) => fileBusy=busy" :name=name method="PUT" style="margin-top: 50px; margin-left:30px"/>
         </div>
       </div>
     </div>
@@ -359,6 +367,11 @@ th {
   width: 18px;
   height: 18px;
 }
+
+.loaderEditor {
+  padding: 18px 0 0 20px;
+}
+
 
 .red {
   background-color:var(--vt-c-red);

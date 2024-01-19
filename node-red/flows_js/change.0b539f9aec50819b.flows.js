@@ -9,7 +9,7 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[$.\"payload\".\"filename\"]",
+      "to": "[$.\"payload\".\"name\"]",
       "tot": "jsonata"
     }
   ],
@@ -22,7 +22,8 @@ const Node = {
   "y": 260,
   "wires": [
     [
-      "edee0da30a9c80f7"
+      "edee0da30a9c80f7",
+      "105e133d606753c0"
     ]
   ]
 }

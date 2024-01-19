@@ -28,7 +28,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       msg.payload = { "filename": "", "filedata": "" };
       msg.payload.filename = remotePath + "/" + filename;
       msg.payload.filedata = file.buffer//.toString('utf8').replace(/\r/g, "");
-      msg.uploadedFiles.push(msg.name)
+      msg.uploadedFiles.push(msg.name + ".csv")
       return msg;
   } else throw Error(`Unknown file type: ${file.mimetype}`)
 }
