@@ -120,6 +120,11 @@ form {
   width: 100%;
 }
 
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 label {
   color: var(--vt-c-blue);
   font-size: 14px;

@@ -1,9 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
 
-const props = defineProps(['roles'])
+const props = defineProps(['roles']);
 
 const router = useRouter();
 const error = ref(false);
@@ -14,39 +14,73 @@ const busy = ref(false);
 const name = ref(null);
 const editing = ref(false)
 
-const files = ref(null);;
+const files = ref(null);
 
-const URL = "/in/"
+const URL = "/in/";
 
 //Loader
 const loading = ref(false)
+const loading_editor = ref(false)
 const color = "#325d88"
 const size = "150px"
 const sizeSmall = "18px"
 
-let types = ['Aut_', 'Data_', 'Meta_'];
-let roles = ['BS', 'SA', 'SKO', 'UMT', 'HR', 'ØK', 'IT'];
+let all_files = [];
+
+let types_temp = ['Aut', 'Data', 'Meta'].map((str) => ({selected: true, name: str}));
+let roles_temp = ['BS', 'SA', 'SKO', 'UMT', 'HR', 'ØK', 'IT'].map((str) => ({selected: true, name: str}));
 
 if(!props.roles.includes('admin'))
-  roles = props.roles;
+  roles_temp = roles_temp.filter((role) => props.roles.includes(role.name));
+
+const types = ref(types_temp)
+const roles = ref(roles_temp)
+const searchValue = ref('')
 
 getFiles();
 
 watch(error, function(err) {
-  if(error) msgStyle.value = {color: 'red'};
+  if(err) msgStyle.value = {color: 'red'};
   else msgStyle.value = {color: 'green'};
 });
+
+watch([roles, types, searchValue], function() {
+    let temp_files_roles = []
+    
+    roles.value.forEach((role) => {
+      if(role.selected) temp_files_roles = temp_files_roles.concat(all_files.filter((file) => file.name.split('_')[1].slice(0,role.name.length) === role.name))
+    })
+
+    let temp_files = []
+    types.value.forEach((type) => {
+      if(type.selected) temp_files = temp_files.concat(temp_files_roles.filter((file) => file.name.slice(0,type.name.length) === type.name))
+    })
+
+
+    if (searchValue.value != '' && searchValue.value) {
+        temp_files = temp_files.filter((file) => {
+          return file.name
+            .toUpperCase()
+            .includes(searchValue.value.toUpperCase())
+        })
+      }
+
+    files.value = temp_files;
+  },
+  {deep: true}
+);
 
 function getFiles() {
   busy.value = true;
   loading.value = true;
   editing.value = false;
-  fetch(URL, { method: "GET" }) //+ "Meta_myname.csv" 
+  fetch(URL, { method: "GET" })
   .then((res) => res.json())
   .then((data) => {
     error.value = !data.success;
     if(!error.value){
-      files.value = data.files.imported.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
+      all_files = data.files.imported.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
+      files.value = all_files;
     } else {
       msg.value = data.message;
     }
@@ -91,7 +125,10 @@ function editFile(file){
 }
 
 function saveFile() {
-  const url  = URL + name.value;
+  loading_editor.value = true;
+  let url = URL
+  if(name.value.slice(0,3) === "Aut") url = url + 'aut/'
+  url  = url + name.value;
   const header = { "Content-Type": "text/csv" };
   const request = { method: "PUT", headers: header, body: textInput.value };
   
@@ -101,6 +138,7 @@ function saveFile() {
     msg.value = data.message;
     error.value = !data.success;
     hideEditor();
+    loading_editor.value = false;
   });
 }
 
@@ -130,6 +168,11 @@ function deleteFile(file) {
     busy.value = false;
   });
 }
+
+function select(obj) {
+  obj.selected = !obj.selected;
+}
+
 </script>
 
 <template>
@@ -139,17 +182,36 @@ function deleteFile(file) {
     <ClipLoader :loading="loading" :color="color" :size="size" class="loader"/>
     <div v-if="!loading" style="display: flex; flex-direction: row;">
       <div style="display: flex; flex-direction: column;">
+        <input type="text" v-model="searchValue" placeholder="Søg" class="search">
+        <span class="filter-label">Org. Enheder</span>
+        <ul class="select-buttons">
+          <li v-for="role, in roles">
+            <label>
+              <input type="checkbox" :checked="role.selected" @click="select(role)">
+              <span>{{role.name}}</span>
+            </label>
+          </li>
+        </ul>
+        <span class="filter-label">Typer</span>
+        <ul class="select-buttons">
+          <li v-for="type in types">
+            <label>
+              <input type="checkbox" :checked="type.selected" @click="select(type)">
+              <span>{{type.name}}</span>
+            </label>
+          </li>
+        </ul>
         <table>
           <h1>Indlæst</h1>
           <tr v-for="file in files" :key="file">
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
-              <!-- <th><button :disabled="busy" @click="editFile(file)" class="button">Rediger</button></th> -->
+              <th><button :disabled="busy || file.name.slice(0,4) === 'Data'" @click="editFile(file)" class="button">Rediger</button></th>
               <!-- <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th> -->
           </tr>
         </table>
       </div>
-      <!-- <div v-show="editing" style="display: flex; align-items: left; flex-direction: column;">
+      <div v-show="editing" style="display: flex; align-items: left; flex-direction: column; margin-left: 100px;">
         <h3>{{name}}</h3>
         <div style="display: flex; align-items: center; flex-direction: row;">
           <div style="display: flex; align-items: top; flex-direction: column;">
@@ -161,7 +223,6 @@ function deleteFile(file) {
           </div>
         </div>
       </div>
-      -->
     </div>
   </div>
 </template>
@@ -175,6 +236,52 @@ function deleteFile(file) {
     min-height: 500px;
     min-width: 500px;
   }
+}
+
+.filter-label {
+  margin-top: 10px;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.search {
+  margin-top: 10px;
+  font-size: medium;
+}
+
+.select-buttons {
+  height: 100%;
+  list-style: none;
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.select-buttons li {
+  margin: 10px 10px 0 0;
+}
+
+.select-buttons label {
+  float: left; line-height: 3.0em;
+  width: 4.0em; height: 2.0em;
+}
+
+.select-buttons label span {
+  text-align: center;
+  display: block;
+  border: 1px solid var(--vt-c-blue);
+  border-radius: 10px;
+}
+
+.select-buttons label input {
+  position: absolute;
+  display: none;
+}
+
+.select-buttons input:checked + span {
+    color: var(--vt-c-white);
+    background-color: var(--vt-c-blue);
+    border-radius: 10px;
+    text-shadow: 0 0  6px rgba(0, 0, 0, 0.8);
 }
 
 .button {
