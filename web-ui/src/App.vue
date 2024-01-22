@@ -3,19 +3,21 @@ import { ref } from 'vue';
 const version = APP_VERSION;
 
 const roles = ref([])
+const user = ref('')
 
 function getRoles(){
   fetch('/roles')
   .then((res) => res.json())
   .then((data) => {
-      roles.value = data
+      roles.value = data.roles
+      user.value = data.username
   });
 }
 
-if(process.env.NODE_ENV === 'development')
-      roles.value = ['admin']
-else
-  getRoles()
+if(process.env.NODE_ENV === 'development') {
+  roles.value = ['admin']
+  user.value = 'admin@test.com'
+} else getRoles()
 </script>
 
 <template>
@@ -24,6 +26,7 @@ else
     <div class="wrapper">
       <h1>BI Custom Data</h1>
       <span class="version">Version {{version}}</span>
+      <span class="user">{{ user }} : {{ roles }}</span>
       <nav>
         <!-- <RouterLink to="/">Hjem</RouterLink> -->
         <RouterLink to="/upload">Upload</RouterLink>
@@ -72,6 +75,16 @@ h1 {
   font-size: small;
   font-weight: bold;
   top:0;
+  right:0;
+  color: var(--vt-c-white);
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.user {
+  position:absolute;
+  font-size: small;
+  top:20px;
   right:0;
   color: var(--vt-c-white);
   margin-right: 10px;

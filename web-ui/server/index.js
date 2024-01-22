@@ -22,6 +22,7 @@ function hasRole(token, request) {
 function setRoles(token, request) {
   if(token.content.resource_access[resource]) {
       request.roles = token.content.resource_access[resource].roles
+      request.username = token.content.preferred_username
       return true
   } else return false
 }
@@ -67,7 +68,7 @@ app.use('/in', keycloak.protect(hasRole), createProxyMiddleware('/in', {target: 
 app.use('/out', keycloak.protect(hasRole), createProxyMiddleware('/out', {target: 'http://' + customDataConnectorHost, secure: false}));
 
 app.get('/roles', keycloak.protect(setRoles), (req, res) => {
-  res.send(req.roles)
+  res.send({roles: req.roles, username: req.username})
 })
 
 app.use( keycloak.protect(), express.static('dist'));
