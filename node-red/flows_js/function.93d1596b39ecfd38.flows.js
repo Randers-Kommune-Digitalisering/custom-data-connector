@@ -95,15 +95,13 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
           if (txt_cnt <= txt_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Tekst" + txt_cnt, "EgetNavn": key });
           else throw new Error("Too many text columns");
       }
-      
-      // Check types in the first object (assuming all objects are the same)
-      const item = msg.data[0];
-      for (const key in item) {
-          i += 1; 
+  
+  
+      function assignType(item, key) {
           try {
               // Datetime objects
               if (!isNaN(item[key].getMonth())) {
-                  if(hasTime(item[key])) setDateTime(key);
+                  if (hasTime(item[key])) setDateTime(key);
                   else setDate(key);
               }
           }
@@ -112,7 +110,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
               if (!isNaN(item[key])) {
                   if (isCPR(item[key])) setCPR(key);
                   else setNum(key);
-              // Text/strings
+                  // Text/strings
               } else if (typeof item[key] === 'string' || item[key] instanceof String) {
                   if (isDate(item[key])) setDate(key);
                   else if (isTime(item[key])) setTime(key);
@@ -122,6 +120,16 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
                   throw new Error("Unknown type/column");
               }
           }
+      }
+      
+      // Check types in the first object (assuming all objects are the same)
+      const item = msg.data[0];
+      for (const key in item) {
+          i += 1;
+          if (item[key] !== 0) {
+              if (item[key]) assignType(item, key)
+              else throw Error('Empty value in first row')
+          } else assignType(item, key)
       };
   
       return msg;
