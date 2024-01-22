@@ -2,12 +2,13 @@
 
 import { ref, watch } from 'vue';
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
+import * as XLSX from 'xlsx';
 
 const props = defineProps(['method', 'name'])
 const err = ref(false);
 const msg = ref(null);
 const msgStyle = ref({color: 'green'});
-const files = ref(null);
+const file = ref(null);
 const fileInput = ref(null);
 
 const emit = defineEmits(['upload', 'busy'])
@@ -18,6 +19,7 @@ const color = "#325d88"
 const size = "30px"
 
 let URL = "/in/"
+const allowedFileExtensions = ['.csv', '.xlsx', '.xlsb','.xlsm','.xls','.ods']
 
 watch(err, function(err) {
   if(err) msgStyle.value = {color: 'red'};
@@ -26,7 +28,10 @@ watch(err, function(err) {
 
 function onFileChanged($event) {
   if ($event.target.files) {
-      files.value = $event.target.files;
+    const file_extension = $event.target.files[0].name.substring($event.target.files[0].name.lastIndexOf('.'));
+    if(!allowedFileExtensions.includes(file_extension)) throw Error('Unknown file type')
+    else file.value = $event.target.files[0];
+      
   }
 }
 
@@ -40,29 +45,34 @@ function submitFile() {
     if(props.name.slice(0,4) === "Aut_") url = url + "aut/"
     url  = url + props.name;
     let header = { "Content-Type": "text/csv" }
-
     var reader = new FileReader();
-    reader.onload = function(evt) {
-      if(evt.target.readyState != 2) return;
-      if(evt.target.error) {
-          throw Error('Error while reading file');
-      }
-      data = evt.target.result;
-      sendRequest(header)
-    };
 
-    reader.readAsText(files.value[0]);
 
-  } else {
-    data = new FormData()
+    if(file.value.type !== 'text/csv') {
+      reader.onload = function(evt) {
+        if(evt.target.readyState != 2) return;
+        if(evt.target.error) {
+            throw Error('Error while reading file');
+        }
+        data = readExcelData(evt.target.result);
+        sendRequest(header)
+        };
+      reader.readAsArrayBuffer(file.value);
+    } else {
+      reader.onload = function(evt) {
+        if(evt.target.readyState != 2) return;
+        if(evt.target.error) {
+            throw Error('Error while reading file');
+        }
+        data = evt.target.result;
+        sendRequest(header)
+      };
 
-    for(let i=0; i<files.value.length; i++){
-      data.append('file', files.value[i])
+      reader.readAsText(file.value);
     }
 
-    sendRequest()
-  }
- 
+  } else throw Error('No file name')
+
   function sendRequest(header) {
     let request = { method: props.method, body: data }
     
@@ -78,9 +88,14 @@ function submitFile() {
       emit('busy', false);
       if(err.value) console.log(msg.value)
       fileInput.value.value = null;
-      files.value = null;
+      file.value = null;
     });
   }
+}
+
+function readExcelData(file_data) {
+  let workbook = XLSX.read(file_data);
+  return XLSX.utils.sheet_to_csv(workbook.Sheets[workbook.SheetNames[0]], {FS:";", blankrows:false});;
 }
 </script>
 
@@ -89,9 +104,9 @@ function submitFile() {
     <!-- <p :style="msgStyle">{{msg}}</p> -->
     <form v-on:submit.prevent="submitFile">
       <input :disabled="loading" v-if="!props.name" multiple @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
-      <input :disabled="loading" v-if="props.name" @change="onFileChanged($event)" ref="fileInput" type="file" accept=".csv" class="file-input">
+      <input :disabled="loading" v-if="props.name" @change="onFileChanged($event)" ref="fileInput" type="file" accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, application/vnd.oasis.opendocument.spreadsheet, application/vnd.ms-excel.sheet.binary.macroenabled.12, application/vnd.ms-excel.sheet.macroEnabled.12" class="file-input">
       <div style="display: flex; align-items: center; flex-direction: row;">
-        <input :disabled="!files || loading" type="submit" value="Upload" class="submit-button green">
+        <input :disabled="!file || loading" type="submit" value="Upload" class="submit-button green">
         <ClipLoader :loading="loading" :color="color" :size="size" class="loader"/>
         <span v-if="!err && msg && !loading" class="success">&#10004;</span>
         <span v-if="err && msg && !loading" class="fail">&#10008;</span>

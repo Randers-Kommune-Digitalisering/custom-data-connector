@@ -12,6 +12,7 @@ const msg = ref(null);
 const msgStyle = ref({color: 'green'});
 const textInput = ref(null);
 const busy = ref(false);
+const fileBusy = ref(false);
 const name = ref(null);
 const editing = ref(false)
 
@@ -26,7 +27,7 @@ const color = "#325d88"
 const size = "150px"
 const sizeSmall = "18px"
 
-let all_files = [];
+let all_files = ref([]);
 
 let types_temp = ['Aut', 'Data', 'Meta'].map((str) => ({selected: true, name: str}));
 let roles_temp = ['BS', 'SA', 'SKO', 'UMT', 'HR', 'ØK', 'IT'].map((str) => ({selected: true, name: str}));
@@ -46,11 +47,15 @@ watch(error, function(err) {
   else msgStyle.value = {color: 'green'};
 });
 
-watch([roles, types, searchValue], function() {
+watch(fileBusy, function() {
+  if(fileBusy) busy.value = true;
+});
+
+watch([all_files, roles, types, searchValue], function() {
     let temp_files_roles = []
     
     roles.value.forEach((role) => {
-      if(role.selected) temp_files_roles = temp_files_roles.concat(all_files.filter((file) => file.name.split('_')[1].slice(0,role.name.length) === role.name))
+      if(role.selected) temp_files_roles = temp_files_roles.concat(all_files.value.filter((file) => file.name.split('_')[1].slice(0,role.name.length) === role.name))
     })
 
     let temp_files = []
@@ -81,8 +86,8 @@ function getFiles() {
   .then((data) => {
     error.value = !data.success;
     if(!error.value){
-      all_files = data.files.imported.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
-      files.value = all_files;
+      all_files.value = data.files.imported.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
+      //files.value = all_files;
     } else {
       msg.value = data.message;
     }
@@ -223,7 +228,7 @@ function select(obj) {
           <div style="display: flex; align-items: top; flex-direction: column;">
               <textarea v-model="textInput" class="text"/>
               <div style="display: flex; align-items: center; flex-direction: row;">
-                <button @click="saveFile()" class="button save green">Gem</button>
+                <button @click="saveFile()" :disabled="loading || busy" class="button save green">Gem</button>
                 <button @click="hideEditor()" class="button save red">Annuller</button>
                 <ClipLoader :loading="loadingEditor" :color="color" :size="sizeSmall" class="loaderEditor"/>
               </div>
