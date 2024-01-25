@@ -42,7 +42,18 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
       msg.columns = [];
       
       function isDate(date) {
-          return (moment(date, "DD-MM-YYYYY").isValid() || moment(date, "YYYYY-MM-DD").isValid())
+          
+          const isYearFirst = str => {
+              let [y, M, d] = str.split(/[-]/);
+              return (y && M <= 12 && d <= 31) ? true : false;
+          }
+  
+          const isDayFirst = str => {
+              let [d, M, y] = str.split(/[-]/);
+              return (y && M <= 12 && d <= 31) ? true : false;
+          }
+  
+          return isYearFirst(date) || isDayFirst(date)
       }
       
       function isTime(time) {
@@ -66,11 +77,11 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
           else throw new Error("Too many date columns");
       }
       
-          function setTime(key) {
-              time_cnt += 1;
-              if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslæt" + time_cnt, "EgetNavn": key });
-              else throw new Error("Too many time columns");
-          }
+      function setTime(key) {
+          time_cnt += 1;
+          if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslæt" + time_cnt, "EgetNavn": key });
+          else throw new Error("Too many time columns");
+      }
       
       function isCPR(value) {
           if (value == null) return false;
@@ -82,6 +93,11 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
           cpr_cnt += 1;
           if (cpr_cnt <= cpr_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "CPR", "EgetNavn": key });
           else throw new Error("Too many CPR columns");
+      }
+      
+  
+      function isNum(value) {
+          return !isNaN(parseFloat(value.replace(",", ".")))
       }
       
       function setNum(key) {
@@ -115,6 +131,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
                   if (isDate(item[key])) setDate(key);
                   else if (isTime(item[key])) setTime(key);
                   else if (isCPR(item[key])) setCPR(key);
+                  else if (isNum(item[key])) setNum(key)
                   else setTxt(key);
               } else {
                   throw new Error("Unknown type/column");
