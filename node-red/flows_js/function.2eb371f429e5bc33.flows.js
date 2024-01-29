@@ -9,7 +9,7 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 690,
+  "x": 630,
   "y": 80,
   "wires": [
     []
@@ -17,7 +17,7 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.payload = { "success": true, "message": `${msg.uploadedFiles.length} file(er) uploaded som ${msg.uploadedFiles.join()}` }
+  msg.payload = { "success": true, "message": `${msg.uploadedFiles.length} file(er) uploaded`, "files":msg.uploadedFiles }
   msg.statusCode = 200;
   return msg;
 }

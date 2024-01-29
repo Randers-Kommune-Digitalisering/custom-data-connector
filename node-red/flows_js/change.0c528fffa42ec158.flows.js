@@ -25,13 +25,6 @@ const Node = {
       "pt": "msg",
       "to": "error.message",
       "tot": "msg"
-    },
-    {
-      "t": "set",
-      "p": "statusCode",
-      "pt": "msg",
-      "to": "500",
-      "tot": "num"
     }
   ],
   "action": "",
@@ -39,8 +32,8 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 1200,
-  "y": 60,
+  "x": 560,
+  "y": 660,
   "wires": [
     [
       "398582240f7b0756"

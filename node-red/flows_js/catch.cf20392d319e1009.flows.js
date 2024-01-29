@@ -6,12 +6,11 @@ const Node = {
   "name": "",
   "scope": null,
   "uncaught": false,
-  "x": 1060,
-  "y": 60,
+  "x": 100,
+  "y": 660,
   "wires": [
     [
-      "ecd7c11282a62a50",
-      "0c528fffa42ec158"
+      "556a0649c474c2e9"
     ]
   ]
 }

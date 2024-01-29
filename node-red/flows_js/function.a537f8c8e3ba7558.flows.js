@@ -19,7 +19,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  if (msg.req.method === "PUT" && !(msg.name.slice(0, 4) === "Aut_")) throw Error('All files starts "Aut_", no such file as ' + msg.name)
+  if (msg.req.method === "PUT" && !(msg.name.slice(0, 4) === "Aut_")) {
+      msg.statusCode = 400
+      throw Error('All files starts "Aut_", no such file as ' + msg.name)
+  }
   
   if (msg.filter && msg.req.method === "PUT") {
       if (!msg.filter.includes("admin")) {
@@ -28,7 +31,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
               if (authorized) return;
               authorized = msg.name.split('_')[1].slice(0, fe.length) === fe;
           })
-          if (!authorized) throw Error("Unauthorized")
+          if (!authorized) {
+              msg.statusCode = 401
+              throw Error("Access denied")
+          }
       }
   }
   
@@ -39,7 +45,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
               if (authorized) return;
               authorized = msg.name.slice(0, fe.length) === fe;
           })
-          if (!authorized) throw Error("Unauthorized")
+          if (!authorized) {
+              msg.statusCode = 401
+              throw Error("Access denied")
+          }
       }
   }
   

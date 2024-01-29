@@ -9,7 +9,7 @@ const Node = {
       "p": "group",
       "pt": "msg",
       "to": "payload.group",
-      "tot": "str"
+      "tot": "msg"
     },
     {
       "t": "set",
@@ -24,6 +24,13 @@ const Node = {
       "pt": "msg",
       "to": "payload.data",
       "tot": "msg"
+    },
+    {
+      "t": "set",
+      "p": "is_json",
+      "pt": "msg",
+      "to": "true",
+      "tot": "bool"
     }
   ],
   "action": "",
@@ -31,8 +38,8 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 620,
-  "y": 40,
+  "x": 460,
+  "y": 60,
   "wires": [
     [
       "fdd7d1d17dac3292"

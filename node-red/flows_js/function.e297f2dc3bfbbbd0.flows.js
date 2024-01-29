@@ -21,8 +21,14 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   const data_names = msg.payload.filter(file => file.slice(0, 5) === 'Data_').map(file => file.split('.')[0].slice(5));
   msg.test1 = aut_names
   msg.test2 = data_names
-  if (msg.req.method === "POST" && aut_names.includes(msg.name)) throw Error(msg.name + ' already exists');
-  if (!data_names.includes(msg.name.slice(4))) throw Error('No data file exists for ' + msg.name);
+  if (msg.req.method === "POST" && aut_names.includes(msg.name)) {
+      msg.statusCode = 400
+      throw Error(msg.name + ' already exists');
+  }
+  if (!data_names.includes(msg.name.slice(4))) {
+      msg.statusCode = 400
+      throw Error('No data file exists for ' + msg.name);
+  }
   return msg;
 }
 

@@ -12,7 +12,7 @@ const Node = {
   "workdir": "",
   "savedir": "",
   "name": "delete file",
-  "x": 640,
+  "x": 1000,
   "y": 260,
   "wires": [
     [

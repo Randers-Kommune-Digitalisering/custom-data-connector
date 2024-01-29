@@ -1,24 +1,27 @@
 const Node = {
-  "id": "ba4d27ce8e6844e7",
+  "id": "211691eb196d7488",
   "type": "function",
-  "z": "cf20bd9b26e00f6d",
-  "name": "raise error",
+  "z": "fcba28c363701f4a",
+  "g": "3ec2a23d37bc97d8",
+  "name": "set auth",
   "func": "",
   "outputs": 1,
   "noerr": 0,
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 370,
+  "x": 300,
   "y": 100,
   "wires": [
-    []
+    [
+      "546a8af1d53dd275"
+    ]
   ]
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  msg.statusCode = 400
-  throw new Error(`No files`)
+  if (msg.req.headers['auth']) msg.filter = msg.req.headers['auth'].split(',')
+  return msg;
 }
 
 module.exports = Node;

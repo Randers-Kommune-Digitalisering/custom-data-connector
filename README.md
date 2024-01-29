@@ -141,3 +141,167 @@ flowchart LR
 # Testdata
 I forbindelse med udviklingen anvendes [FOLKA1](https://www.statistikbanken.dk/20021) tilgængelig fra [api.statbank.dk](https://api.statbank.dk).
 
+# REST API Documentation
+
+#### Creating/overwriting meta and data files
+
+<details>
+ <summary><code>POST</code> <code><b>/in</b></code> <code>(create files)</code></summary>
+
+#### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-----------------------------------|-----------------------------------------------------------------------|
+> | body      |  required | JSON object  | N/A  |
+
+###### Example JSON object
+
+```json
+{
+    "group":"myGroup",
+    "name": "myName", (optional)
+    "data":[
+        {
+            "myColNum": 1,
+            "myColText":"some text"
+        },
+        {
+            "myColNum": 2,
+            "myColText":"some more text"
+        }
+    ]
+}
+```
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"success":true,"message":"<N> fil(er) uploaded", "files":[<file names>]}`|
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>
+
+<details>
+ <summary><code>POST</code> <code><b>/in</b></code> <code>(create files)</code></summary>
+
+#### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-----------------------------------|-----------------------------------------------------------------------|
+> | body      |  required |   text/csv  | a CSV fil with data in the form described in KMD Insight documentation|
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"success":true,"message":"<N> fil(er) uploaded", "files":[<file names>]}`|
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>
+
+<details>
+ <summary><code>POST</code> <code><b>/in</b></code> <code>(create files)</code></summary>
+
+#### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-----------------------------------|-----------------------------------------------------------------------|
+> | body      |  required |  formData  | formData with one or more field(s) containing CSV files , field names ignored |
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"success":true,"message":"<N> fil(er) uploaded", "files":[<file names>]}`|
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>
+
+<details>
+ <summary><code>PUT</code> <code><b>/in</b></code> <code>(create or overwite files)</code></summary>
+
+#### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-----------------------------------|-----------------------------------------------------------------------|
+> | body      |  required | JSON object  | N/A  |
+
+###### Example JSON object
+
+```json
+{
+    "group":"myGroup",
+    "name": "myName", (optional)
+    "data":[
+        {
+            "myColNum": 1,
+            "myColText":"some text"
+        },
+        {
+            "myColNum": 2,
+            "myColText":"some more text"
+        }
+    ]
+}
+```
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"success":true,"message":"<N> fil(er) uploaded", "files":[<file names>]}`|
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>
+
+<details>
+ <summary><code>PUT</code> <code><b>/in/{file_name}</b></code> <code>(create or overwite files)</code></summary>
+
+#### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-----------------------------------|-----------------------------------------------------------------------|
+> | body      |  required |   text/csv  | a CSV fil with data in the form described in KMD Insight documentation|
+> | file_name |  required |   string    | must start with 'Meta_' or 'Data_' e.g. Meta_my_file.csv |
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"success":true,"message":"<N> fil(er) uploaded", "files":[<file names>]}`|
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>
+
+#### Getting meta and data files
+
+<details>
+ <summary><code>GET</code> <code><b>/in/{file_name}</b></code> <code>(get file)</code></summary>
+
+##### Parameters
+
+> None
+
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"success":true,"files":{"failed":[<file names>],"imported":[<file names>],"waiting":[<file names>]}}`|
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>
+
+
+<details>
+ <summary><code>GET</code> <code><b>/in</b></code> <code>(get files)</code></summary>
+
+#### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-----------------------------------|-----------------------------------------------------------------------|
+> | file_name |  required |   string    | must match an existing file name exacly e.g. Data_my_file.csv |
+
+
+#### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/csv`                        | CSV string                                     |
+> | `400/401/500` | `application/json`                | `{"success":false,"message":"<error message>"}`|
+</details>

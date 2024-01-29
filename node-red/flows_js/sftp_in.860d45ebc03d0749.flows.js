@@ -12,7 +12,7 @@ const Node = {
   "workdir": "",
   "savedir": "",
   "name": "put file",
-  "x": 750,
+  "x": 770,
   "y": 420,
   "wires": [
     [

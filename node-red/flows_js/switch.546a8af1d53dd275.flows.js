@@ -1,14 +1,15 @@
 const Node = {
-  "id": "d97ca7c31f609819",
+  "id": "546a8af1d53dd275",
   "type": "switch",
-  "z": "2b46aa4477c6e0b0",
-  "name": "check group",
-  "property": "payload",
+  "z": "fcba28c363701f4a",
+  "g": "3ec2a23d37bc97d8",
+  "name": "json?",
+  "property": "req.headers.content-type",
   "propertyType": "msg",
   "rules": [
     {
-      "t": "hask",
-      "v": "group",
+      "t": "eq",
+      "v": "application/json",
       "vt": "str"
     },
     {
@@ -18,14 +19,14 @@ const Node = {
   "checkall": "true",
   "repair": false,
   "outputs": 2,
-  "x": 150,
+  "x": 430,
   "y": 100,
   "wires": [
     [
-      "78d7b835dbdff8f4"
+      "0de32293be5a4d04"
     ],
     [
-      "c904ba57e4ae803e"
+      "50a2ea13c4a64b03"
     ]
   ]
 }

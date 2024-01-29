@@ -18,21 +18,8 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    
-      
-        
-          
-            
-              
-                throw new Error(`Unknown Content-Type`)
-              
-            
-          
-        
-      
-    
-  
+  msg.statusCode = 400
+  throw new Error(`Unknown Content-Type`)
 }
 
 module.exports = Node;
