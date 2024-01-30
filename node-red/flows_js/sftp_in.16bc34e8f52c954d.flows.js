@@ -13,7 +13,7 @@ const Node = {
   "savedir": "",
   "name": "delete file",
   "x": 1000,
-  "y": 260,
+  "y": 300,
   "wires": [
     [
       "1b67d9e7485bd182"
