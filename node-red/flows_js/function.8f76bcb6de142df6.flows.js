@@ -20,43 +20,36 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+  // Check for illegal characters
+  var isValid = (function () {
+      var rg1 = /^[^\\/:\*\?"<>\|]+$/;
+      var rg3 = /^(nul|prn|con|lpt[0-9]|com[0-9])(\.|$)/i;
+      return function isValid(fname) {
+          return rg1.test(fname) && !rg3.test(fname);
+      }
+  })();
   
-    
-      
-        
-          
-            
-              // Check for illegal characters
-              var isValid = (function () {
-                  var rg1 = /^[^\\/:\*\?"<>\|]+$/;
-                  var rg3 = /^(nul|prn|con|lpt[0-9]|com[0-9])(\.|$)/i;
-                  return function isValid(fname) {
-                      return rg1.test(fname) && !rg3.test(fname);
-                  }
-              })();
-              
-              // Check if title is there and valid
-              if(typeof msg.group == "string") {
-                  if (isValid(msg.name) && isValid(msg.group)){
-                      if(msg.name) msg.name = msg.group + "_" + msg.name; //msg.group.replace(/ /g, '_') + "_" + msg.name.replace(/ /g, '_');
-                      else msg.name = msg.group;//msg.group.replace(/ /g, '_');
-                  } else {
-                      throw new Error("Validation error: message title contains illegal characters");
-                  }
-              } else {
-                  throw new Error("Validation error: message does not contain a name, must be string");   
-              }
-              
-              // Check for array in data
-              if(!Array.isArray(msg.data)) throw new Error("Validation error: message does not contain data");
-              
-              return msg;
-            
-          
-        
-      
-    
+  // Check if title is there and valid
+  if(typeof msg.group == "string") {
+      if (isValid(msg.name) && isValid(msg.group)){
+          if(msg.name) msg.name = msg.group + "_" + msg.name; //msg.group.replace(/ /g, '_') + "_" + msg.name.replace(/ /g, '_');
+          else msg.name = msg.group;//msg.group.replace(/ /g, '_');
+      } else {
+          msg.statusCode = 400
+          throw new Error("Validation error: message title contains illegal characters");
+      }
+  } else {
+      msg.statusCode = 400
+      throw new Error("Validation error: message does not contain a name, must be string");   
+  }
   
+  // Check for array in data
+  if(!Array.isArray(msg.data)) {
+      msg.statusCode = 400
+      throw new Error("Validation error: message does not contain data");
+  }
+  
+  return msg;
 }
 
 module.exports = Node;

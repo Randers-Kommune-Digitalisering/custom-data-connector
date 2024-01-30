@@ -1,16 +1,16 @@
 const Node = {
-  "id": "0b539f9aec50819b",
+  "id": "8cb2fee56f876b3e",
   "type": "change",
   "z": "fcba28c363701f4a",
-  "g": "3ec2a23d37bc97d8",
-  "name": "set files",
+  "g": "b4a0526eacd24e87",
+  "name": "set status",
   "rules": [
     {
       "t": "set",
-      "p": "payload",
+      "p": "statusCode",
       "pt": "msg",
-      "to": "[$.\"payload\".\"name\"]",
-      "tot": "jsonata"
+      "to": "500",
+      "tot": "num"
     }
   ],
   "action": "",
@@ -18,11 +18,11 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 700,
-  "y": 300,
+  "x": 420,
+  "y": 720,
   "wires": [
     [
-      "edee0da30a9c80f7"
+      "0c528fffa42ec158"
     ]
   ]
 }

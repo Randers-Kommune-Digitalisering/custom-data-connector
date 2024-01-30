@@ -10,8 +10,8 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 490,
-  "y": 260,
+  "x": 850,
+  "y": 300,
   "wires": [
     [
       "16bc34e8f52c954d"
@@ -24,7 +24,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       const remotePath = env.get("REMOTE_IN_FAILED_PATH");
       msg.payload.filename = remotePath + "/" + msg.req.params.file;
       return msg;
-  } else throw Error('No such file');
+  } else {
+      msg.statusCode = 400
+      throw Error('No such file');
+  }
 }
 
 module.exports = Node;

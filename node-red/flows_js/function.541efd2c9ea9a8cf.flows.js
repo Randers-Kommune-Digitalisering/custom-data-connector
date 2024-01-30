@@ -32,8 +32,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     msg.name = msg.name.split('_').slice(1).join('_');
   }
   
-  if (msg.groups.includes(msg.group)) msg.meta_already_exists = true;
-  else msg.meta_already_exists = false;
+  msg.meta_already_exists = false;
+  
+  if (msg.req.headers['new-meta'] !== 'true' && msg.groups.includes(msg.group))
+    msg.meta_already_exists = true;
   
   return msg;
 }

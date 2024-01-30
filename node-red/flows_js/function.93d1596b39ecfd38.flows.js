@@ -145,7 +145,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
           i += 1;
           if (item[key] !== 0) {
               if (item[key]) assignType(item, key)
-              else throw Error('Empty value in first row')
+              else {
+                  msg.statusCode = 400
+                  throw Error('Empty value in first row')
+              }
           } else assignType(item, key)
       };
   

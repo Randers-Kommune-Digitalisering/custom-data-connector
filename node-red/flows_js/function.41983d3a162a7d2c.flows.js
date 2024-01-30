@@ -19,23 +19,20 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
+  const names = msg.payload.filter(file => file.slice(0, 4) === 'Data').map(file => file.split('.')[0].slice(5));
   
-    
-      
-        
-          
-            
-              const names = msg.payload.filter(file => file.slice(0, 4) === 'Data').map(file => file.split('.')[0].slice(5));
-              if (msg.req.method === "POST" && names.includes(msg.name)) throw Error(msg.name + ' already exists');
-              
-              return msg;
-              
-            
-          
-        
-      
-    
+  let name = msg.name
+  if (name && msg.group) name = msg.group + '_' + msg.name
+  else if (!name) name = msg.group
   
+  if (msg.req.headers['overwrite'] !== 'true') {
+      if (msg.req.method === "POST" && names.includes(name)) {
+          msg.statusCode = 400
+          throw Error(name + ' already exists');
+      }
+  }
+  
+  return msg;
 }
 
 module.exports = Node;

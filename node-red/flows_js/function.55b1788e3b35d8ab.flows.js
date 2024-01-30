@@ -18,8 +18,18 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  if (msg.meta_already_exists) msg.payload = { "success": true, "message": "Data fil " + msg.name + ".csv" + " uploaded" };
-  else msg.payload = { "success": true, "message": "Meta fil " + msg.name + ".csv " + "data fil " + msg.name + ".csv " + " uploaded" };
+  msg.payload = { "success": true, "message": "", "files": []};
+  
+  if (msg.uploadedFiles) msg.uploadedFiles.push("Data_" + msg.name + ".csv")
+  msg.payload.files.push("Data_" + msg.name + ".csv")
+  
+  if (msg.meta_already_exists) msg.payload.message = "1 fil uploaded";
+  else  {
+      msg.payload.message = "2 filer uploaded";
+      if (msg.uploadedFiles) msg.uploadedFiles.push("Meta_" + msg.group + ".csv")
+      msg.payload.files.push("Meta_" + msg.group + ".csv")
+  }
+  
   msg.statusCode = 200;
   return msg;
 }

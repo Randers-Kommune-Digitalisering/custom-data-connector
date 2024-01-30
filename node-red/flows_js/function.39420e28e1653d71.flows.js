@@ -17,21 +17,8 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  
-    
-      
-        
-          
-            
-              
-                throw Error("Inccorect http method");
-              
-            
-          
-        
-      
-    
-  
+  msg.statusCode = 400
+  throw Error("Inccorect http method");
 }
 
 module.exports = Node;

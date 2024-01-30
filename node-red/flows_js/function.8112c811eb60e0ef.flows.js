@@ -11,7 +11,7 @@ const Node = {
   "finalize": "",
   "libs": [],
   "x": 250,
-  "y": 220,
+  "y": 300,
   "wires": [
     [
       "a13c8b5180c6e5e2"
@@ -28,7 +28,11 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
               if (authorized) return;
               authorized = msg.name.split('_')[1].slice(0, fe.length) === fe;
           })
-          if (!authorized) throw Error("Unauthorized")
+          if (!authorized) {
+              msg.statusCode = 401
+              throw Error("Access denied")
+          }
+          
       }
   } 
   return msg;

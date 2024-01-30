@@ -1,9 +1,9 @@
 const Node = {
-  "id": "ad21db6680485cca",
+  "id": "546a8af1d53dd275",
   "type": "switch",
   "z": "fcba28c363701f4a",
   "g": "3ec2a23d37bc97d8",
-  "name": "json or file",
+  "name": "json?",
   "property": "req.headers.content-type",
   "propertyType": "msg",
   "rules": [
@@ -13,36 +13,20 @@ const Node = {
       "vt": "str"
     },
     {
-      "t": "cont",
-      "v": "multipart/form-data",
-      "vt": "str"
-    },
-    {
-      "t": "eq",
-      "v": "text/csv",
-      "vt": "str"
-    },
-    {
       "t": "else"
     }
   ],
   "checkall": "true",
   "repair": false,
-  "outputs": 4,
-  "x": 450,
-  "y": 380,
+  "outputs": 2,
+  "x": 430,
+  "y": 140,
   "wires": [
     [
-      "9ac8f413abad1ced"
+      "0de32293be5a4d04"
     ],
     [
-      "ca80a24cc1e9c7d1"
-    ],
-    [
-      "f299cf9d2331978a"
-    ],
-    [
-      "9ac8f413abad1ced"
+      "50a2ea13c4a64b03"
     ]
   ]
 }

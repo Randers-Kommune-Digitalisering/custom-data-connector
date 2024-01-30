@@ -30,7 +30,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       msg.payload.filedata = file.buffer//.toString('utf8').replace(/\r/g, "");
       msg.uploadedFiles.push(msg.name + ".csv")
       return msg;
-  } else throw Error(`Unknown file type: ${file.mimetype}`)
+  } else {
+      msg.statusCode = 400
+      throw Error(`Unknown file type: ${file.mimetype}`)
+  }
 }
 
 module.exports = Node;

@@ -1,15 +1,15 @@
 const Node = {
-  "id": "8173700d28693e75",
+  "id": "80f3c83658be7fd3",
   "type": "http in",
   "z": "fcba28c363701f4a",
   "g": "3ec2a23d37bc97d8",
   "name": "",
   "url": "/in/aut/:file",
-  "method": "put",
-  "upload": true,
+  "method": "post",
+  "upload": false,
   "swaggerDoc": "",
   "x": 120,
-  "y": 420,
+  "y": 380,
   "wires": [
     [
       "13313b131006fd7e"

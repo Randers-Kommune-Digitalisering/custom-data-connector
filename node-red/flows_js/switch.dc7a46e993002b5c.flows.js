@@ -3,13 +3,11 @@ const Node = {
   "type": "switch",
   "z": "cf20bd9b26e00f6d",
   "name": "check for files",
-  "property": "req",
+  "property": "req.files",
   "propertyType": "msg",
   "rules": [
     {
-      "t": "hask",
-      "v": "files",
-      "vt": "str"
+      "t": "nempty"
     },
     {
       "t": "else"
