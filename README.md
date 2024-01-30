@@ -435,5 +435,5 @@ I forbindelse med udviklingen anvendes [FOLKA1](https://www.statistikbanken.dk/2
 #### Undocumented endpoints
 <summary><code>DELETE</code> <code><b>/in/{filename}</b></code> <code>(delete a file which has failed to be imported into KMD Insight)</code></summary>
 <summary><code>POST</code> <code><b>/in/aut</b></code> <code>(create authentication file (Aut_&ltfilename>.csv))</code></summary>
-<summary><code>POST</code> <code><b>/in/aut/{filename}</b></code> <code>(create authentication file (Aut_&ltfilename\>.csv))</code></summary>
-<summary><code>PUT</code> <code><b>/in/aut/{filename}</b></code> <code>(create/overwrite authentication file (Aut_&ltfilename\>.csv))</code></summary>
+<summary><code>POST</code> <code><b>/in/aut/{filename}</b></code> <code>(create authentication file (Aut_&ltfilename>.csv))</code></summary>
+<summary><code>PUT</code> <code><b>/in/aut/{filename}</b></code> <code>(create/overwrite authentication file (Aut_&ltfilename>.csv))</code></summary>
