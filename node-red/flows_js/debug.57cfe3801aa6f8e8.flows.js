@@ -5,13 +5,13 @@ const Node = {
   "name": "debug /in",
   "active": true,
   "tosidebar": true,
-  "console": false,
+  "console": true,
   "tostatus": false,
   "complete": "true",
   "targetType": "full",
   "statusVal": "",
   "statusType": "auto",
-  "x": 900,
+  "x": 910,
   "y": 740,
   "wires": []
 }
