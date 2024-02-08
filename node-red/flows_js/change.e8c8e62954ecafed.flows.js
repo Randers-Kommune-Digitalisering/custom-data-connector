@@ -8,7 +8,7 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[$.\"payload\".\"name\"]",
+      "to": "[payload.(name)]",
       "tot": "jsonata"
     }
   ],

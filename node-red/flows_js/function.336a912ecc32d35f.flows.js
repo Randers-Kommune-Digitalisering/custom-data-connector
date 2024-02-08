@@ -25,7 +25,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       return msg;
   } else {
       msg.statusCode = 400
-      throw Error('No such file');
+      throw Error('filen findes ikke');
   }
 }
 

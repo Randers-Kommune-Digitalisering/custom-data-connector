@@ -10,8 +10,8 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 610,
-  "y": 420,
+  "x": 630,
+  "y": 460,
   "wires": [
     [
       "ca80a24cc1e9c7d1"
@@ -24,7 +24,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   if(msg.payload) msg.req.files.push({ "originalname": msg.req.params.file, "buffer": Buffer.from(msg.payload, "utf-8"), "mimetype": msg.req.headers["content-type"]})
   else {
       msg.statusCode = 400
-      throw Error('No data in request body')
+      throw Error('ingen data i request body')
   }
   return msg;
 }

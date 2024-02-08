@@ -134,7 +134,8 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
                   else if (isNum(item[key])) setNum(key)
                   else setTxt(key);
               } else {
-                  throw new Error("Unknown type/column");
+                  msg.statusCode = 400
+                  throw new Error("Validation error: Unknown type/column");
               }
           }
       }
@@ -147,7 +148,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
               if (item[key]) assignType(item, key)
               else {
                   msg.statusCode = 400
-                  throw Error('Empty value in first row')
+                  throw Error('Validation error: Empty value in first row')
               }
           } else assignType(item, key)
       };

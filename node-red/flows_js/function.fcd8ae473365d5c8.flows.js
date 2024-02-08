@@ -25,12 +25,12 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   
   if (msg.req.method === "POST" && (name.slice(0, 5) === 'Meta_' || name.slice(0, 5) === 'Data_')) {
       msg.statusCode = 400
-      throw Error('Name cannot start with "Data_" or "Meta_"')
+      throw Error('navn må ikke starte med "Data_" eller "Meta_"')
   }
   
   if (msg.req.method === "PUT" && !['Meta_', 'Data_'].includes(name.slice(0, 5)) && !msg.is_json) {
       msg.status = 400
-      throw Error('All files starts "Data_" or "Meta_", no such file as ' + name)
+      throw Error('alle filer starter med enten "Data_" eller "Meta_", filen "' + name + '" findes ikke')
   }
   
   if (msg.filter && msg.req.method === "PUT") {
@@ -45,7 +45,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           })
           if (!authorized) {
               msg.statusCode = 401
-              throw Error("Unauthorized")
+              throw Error("uautoriseret")
           }
       }
   }
@@ -62,7 +62,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           })
           if (!authorized) {
               msg.statusCode = 401
-              throw Error("Unauthorized")
+              throw Error("uautoriseret")
           }
       }
   }

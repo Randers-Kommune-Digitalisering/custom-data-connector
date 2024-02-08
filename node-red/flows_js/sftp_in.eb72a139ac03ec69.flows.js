@@ -1,22 +1,21 @@
 const Node = {
-  "id": "16bc34e8f52c954d",
+  "id": "eb72a139ac03ec69",
   "type": "sftp in",
-  "z": "fcba28c363701f4a",
-  "g": "3ec2a23d37bc97d8",
+  "z": "ceab71d708a09018",
   "sftp": "9e4cdbfa6eb8d02a",
-  "operation": "delete",
+  "operation": "put",
   "filename": "",
   "localFilename": "",
   "fileContents": "",
   "fileExtension": ".txt",
   "workdir": "",
   "savedir": "",
-  "name": "delete file",
-  "x": 1000,
-  "y": 300,
+  "name": "put file",
+  "x": 1250,
+  "y": 40,
   "wires": [
     [
-      "1b67d9e7485bd182"
+      "931394c53f56e313"
     ]
   ]
 }

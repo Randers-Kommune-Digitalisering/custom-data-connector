@@ -88,7 +88,7 @@ function submitFile() {
 <template>
   <div class="upload">
     <h1>Upload Autorisation</h1>
-    <!-- <p :style="msgStyle">{{msg}}</p> -->
+    <p :style="msgStyle">{{msg}}</p>
     <form v-on:submit.prevent="submitFile">
       <label>Datafil</label>
       <v-select :disabled="loading" v-model="fileName" :options="data_files" label="label"></v-select>

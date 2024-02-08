@@ -29,7 +29,7 @@ const Node = {
   ],
   "env": [],
   "meta": {},
-  "color": "#DEB887",
+  "color": "#F3B567",
   "icon": "node-red/switch.svg"
 }
 
