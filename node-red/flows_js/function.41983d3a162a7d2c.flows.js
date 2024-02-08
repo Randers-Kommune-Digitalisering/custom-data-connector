@@ -28,7 +28,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   if (msg.req.headers['overwrite'] !== 'true') {
       if (msg.req.method === "POST" && names.includes(name)) {
           msg.statusCode = 400
-          throw Error(name + ' already exists');
+          throw Error(name + ' findes allerede');
       }
   }
   

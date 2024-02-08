@@ -10,8 +10,8 @@ const Node = {
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 790,
-  "y": 360,
+  "x": 630,
+  "y": 500,
   "wires": [
     []
   ]
@@ -19,7 +19,7 @@ const Node = {
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   msg.statusCode = 400
-  throw new Error(`Unknown Content-Type`)
+  throw new Error(`ukendt Content-Type`)
 }
 
 module.exports = Node;

@@ -26,7 +26,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
     return msg;
   } else {
     msg.statusCode = 400
-    throw Error(`Unknown file type: ${file.mimetype}`)
+    throw Error(`ukendt filtype: ${file.mimetype}`)
   }
 }
 

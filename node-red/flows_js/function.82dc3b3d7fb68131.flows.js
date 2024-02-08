@@ -1,33 +1,30 @@
 const Node = {
-  "id": "edee0da30a9c80f7",
+  "id": "82dc3b3d7fb68131",
   "type": "function",
   "z": "fcba28c363701f4a",
   "g": "3ec2a23d37bc97d8",
-  "name": "set file name",
+  "name": "Aut?",
   "func": "",
   "outputs": 1,
   "noerr": 0,
   "initialize": "",
   "finalize": "",
   "libs": [],
-  "x": 850,
-  "y": 300,
+  "x": 290,
+  "y": 340,
   "wires": [
     [
-      "16bc34e8f52c954d"
+      "8112c811eb60e0ef"
     ]
   ]
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  if (msg.payload.includes(msg.req.params.file)) {
-      const remotePath = env.get("REMOTE_IN_FAILED_PATH");
-      msg.payload.filename = remotePath + "/" + msg.req.params.file;
-      return msg;
-  } else {
+  if(msg.req.params.file.slice(0,4) !== 'Aut_') {
       msg.statusCode = 400
-      throw Error('No such file');
+      throw Error('ikke en aut fil')
   }
+  return msg;
 }
 
 module.exports = Node;

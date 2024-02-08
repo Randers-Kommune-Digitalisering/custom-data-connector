@@ -20,10 +20,10 @@ const Node = {
 }
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
-  if (msg.req.params.file.split("_")[0] != "Meta") throw Error(msg.req.params.file + " is not a meta / group file");
+  if (msg.req.params.file.split("_")[0] != "Meta") throw Error(msg.req.params.file + " er ikke en meta / group fil");
   else if (msg.req.params.file.split(".").pop().toLowerCase() != "csv") {
       msg.statusCode = 400
-      throw Error(msg.req.params.file + " does not have the csv file extension");
+      throw Error(msg.req.params.file + " ender ikke på '.csv'");
   }
   
   let file = msg.req.files.pop();
@@ -38,7 +38,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       return msg;
   } else {
       msg.statusCode = 400
-      throw Error(`Unknown file type: ${file.mimetype}`)
+      throw Error(`ukendt filtype: ${file.mimetype}`)
   }
 }
 

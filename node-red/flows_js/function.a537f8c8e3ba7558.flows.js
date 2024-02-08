@@ -21,7 +21,7 @@ const Node = {
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   if (msg.req.method === "PUT" && !(msg.name.slice(0, 4) === "Aut_")) {
       msg.statusCode = 400
-      throw Error('All files starts "Aut_", no such file as ' + msg.name)
+      throw Error('alle filer starter med "Aut_", filen "' + msg.name + '" findes ikke')
   }
   
   if (msg.filter && msg.req.method === "PUT") {
@@ -33,7 +33,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           })
           if (!authorized) {
               msg.statusCode = 401
-              throw Error("Access denied")
+              throw Error("uautoriseret")
           }
       }
   }
@@ -47,7 +47,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
           })
           if (!authorized) {
               msg.statusCode = 401
-              throw Error("Access denied")
+              throw Error("uautoriseret")
           }
       }
   }

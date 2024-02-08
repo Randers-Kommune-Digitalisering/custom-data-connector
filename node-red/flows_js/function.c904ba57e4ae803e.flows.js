@@ -18,7 +18,7 @@ const Node = {
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   msg.statusCode = 400
-  throw new Error(`Data or name missing`);
+  throw new Error(`data eller group mangler`);
 }
 
 module.exports = Node;

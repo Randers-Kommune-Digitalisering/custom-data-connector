@@ -18,7 +18,7 @@ const Node = {
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   msg.statusCode = 400
-  throw new Error(`No files`)
+  throw new Error(`ingen fil(er)`)
 }
 
 module.exports = Node;

@@ -1,8 +1,7 @@
 const Node = {
-  "id": "a13c8b5180c6e5e2",
+  "id": "133538cd54b6419b",
   "type": "change",
-  "z": "fcba28c363701f4a",
-  "g": "3ec2a23d37bc97d8",
+  "z": "2a8933e95f6f15b9",
   "name": "set ftp env vars",
   "rules": [
     {
@@ -37,7 +36,7 @@ const Node = {
       "t": "set",
       "p": "workdir",
       "pt": "msg",
-      "to": "REMOTE_IN_FAILED_PATH",
+      "to": "REMOTE_IN_PATH",
       "tot": "env"
     }
   ],
@@ -46,11 +45,11 @@ const Node = {
   "from": "",
   "to": "",
   "reg": false,
-  "x": 400,
-  "y": 300,
+  "x": 320,
+  "y": 40,
   "wires": [
     [
-      "7b584c189a8aad14"
+      "88869bf87bdc1e56"
     ]
   ]
 }

@@ -8,7 +8,7 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[payload[$substring(longname,0,1) != \"d\"].name]",
+      "to": "[payload[type != \"d\" and size > 0].name]",
       "tot": "jsonata"
     },
     {

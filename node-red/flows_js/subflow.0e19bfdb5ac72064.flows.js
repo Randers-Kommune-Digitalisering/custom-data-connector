@@ -33,7 +33,7 @@ const Node = {
   ],
   "env": [],
   "meta": {},
-  "color": "#E9967A",
+  "color": "#C7E9C0",
   "icon": "font-awesome/fa-download"
 }
 

@@ -44,7 +44,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util) {
       else if (msg.failed_files.includes(msg.req.params.file)) remotePath = env.get("REMOTE_IN_FAILED_PATH");
       else {
           msg.statusCode = 400
-          throw Error('No such file');
+          throw Error('filen findes ikke');
       }
       msg.payload = { "filename": "" };
       msg.payload.filename = remotePath + "/" + msg.req.params.file;   
