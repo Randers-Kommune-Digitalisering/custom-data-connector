@@ -52,6 +52,13 @@ const Node = {
       "pt": "msg",
       "to": "payload.files.waiting",
       "tot": "msg"
+    },
+    {
+      "t": "move",
+      "p": "deleted_files",
+      "pt": "msg",
+      "to": "payload.files.deleting",
+      "tot": "msg"
     }
   ],
   "action": "",

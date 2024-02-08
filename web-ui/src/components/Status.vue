@@ -118,7 +118,7 @@ function hideEditor(){
    editing.value = false;
 }
 
-function deleteFile(file) {
+function deleteFailedFile(file) {
   if(file.name === name.value) hideEditor()
   busy.value = true;
   file.loading = true
@@ -129,6 +129,25 @@ function deleteFile(file) {
     if(!err) {
       const index = files_failed.value.indexOf(file);
       files_failed.value.splice(index,1);
+    }
+    msg.value = data.message;
+    error.value = err;
+    file.loading = false;
+    busy.value = false;
+  });
+}
+
+function deleteWaitingFile(file) {
+  if(file.name === name.value) hideEditor()
+  busy.value = true;
+  file.loading = true
+  fetch(URL + file.name, { method: "DELETE" })
+  .then((res) => res.json())
+  .then((data) => {
+    let err = !data.success;
+    if(!err) {
+      const index = files_waiting.value.indexOf(file);
+      files_waiting.value.splice(index,1);
     }
     msg.value = data.message;
     error.value = err;
@@ -150,7 +169,7 @@ function deleteFile(file) {
           <tr v-for="file in files_failed" :key="file">
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
-              <th><button :disabled="busy" @click="deleteFile(file)" class="button red">Slet</button></th>
+              <th><button :disabled="busy" @click="deleteFailedFile(file)" class="button red">Slet</button></th>
               <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
           </tr>
         </table>
@@ -160,7 +179,7 @@ function deleteFile(file) {
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
               <th><button :disabled="busy || file.name.slice(0,4) === 'Data'" @click="editFile(file)" class="button">Rediger</button></th>
-              <!-- <th><button :disabled="busy" @click="deleteFile(file)" class="button red">Slet</button></th> -->
+              <th><button :disabled="busy" @click="deleteWaitingFile(file)" class="button red">Slet</button></th>
               <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
           </tr>
         </table>

@@ -86,12 +86,10 @@ function getFiles() {
   .then((data) => {
     error.value = !data.success;
     if(!error.value){
-      all_files.value = data.files.imported.map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
-      //files.value = all_files;
+      all_files.value = data.files.imported.filter(file => !data.files.deleting.includes(file)).map(file => ({"name": file, "loading": false})).sort((a, b) => a.name.slice(5).localeCompare(b.name.slice(5)));
     } else {
       msg.value = data.message;
     }
-    //msg.value = data.message;
     loading.value = false;
     busy.value = false;
   });
@@ -170,8 +168,7 @@ function deleteFile(file) {
   .then((data) => {
     let err = !data.success;
     if(!err) {
-      const index = files.value.indexOf(file);
-      files.value.splice(index,1);
+      getFiles();
     }
     msg.value = data.message;
     error.value = err;
@@ -218,6 +215,7 @@ function select(obj) {
               <th>{{file.name}}</th>
               <th><button :disabled="busy" @click="downloadFile(file)" class="button green">Download</button></th>
               <th><button :disabled="busy || file.name.slice(0,4) === 'Data'" @click="editFile(file)" class="button">Rediger</button></th>
+              <th><button :disabled="busy" @click="deleteFile(file)" class="button red">Slet</button></th>
               <th><div class="loaderSmallContainer"><ClipLoader :loading="file.loading" :color="color" :size="sizeSmall" class="loaderSmall"/></div></th>
           </tr>
         </table>
