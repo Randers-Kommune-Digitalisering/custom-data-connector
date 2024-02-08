@@ -8,14 +8,21 @@ const Node = {
       "t": "set",
       "p": "payload",
       "pt": "msg",
-      "to": "[payload[type != \"d\" and size > 0].name]",
+      "to": "{\t    \"waiting_files\": [payload[type != \"d\" and size > 0].name],\t    \"deleted_files\": [payload[type != \"d\" and size = 0].name]\t}",
       "tot": "jsonata"
     },
     {
       "t": "move",
-      "p": "payload",
+      "p": "payload.waiting_files",
       "pt": "msg",
       "to": "waiting_files",
+      "tot": "msg"
+    },
+    {
+      "t": "move",
+      "p": "payload.deleted_files",
+      "pt": "msg",
+      "to": "deleted_files",
       "tot": "msg"
     }
   ],
