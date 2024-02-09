@@ -1,5 +1,5 @@
 <script setup>
-  let env = window.location.href.includes('data') ? "drift" : "test"
+  let env = window.location.href.includes('data.randers') ? "drift" : "test"
 </script>
 
 <template>
