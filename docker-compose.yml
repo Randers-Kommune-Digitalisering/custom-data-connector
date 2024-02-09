@@ -15,7 +15,6 @@ services:
       FTP_PASS: pass
       FTP_PORT: 22
       FTP_HOST: ftp
-      JOBINDSATS_API_KEY: ${JOBINDSATS_API_KEY}
             
       # Miljøvariablen FLOWS fortæller Node-RED IDEet hvilket flow.json den skal åbne og gemme ændringer i ved deploy.
       FLOWS: "/data/flows.json"
