@@ -7,14 +7,14 @@ services:
     ports:
       - "1880:1880"
     environment:
-      DB_USER: root
-      DB_PASS: pass
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: demo
-
-      # Sætter miljøvariablen TEST_API_KEY til værdien af CodeSpace secret TEST_API_KEY, (hvis den er sat).
-      TEST_API_KEY: ${TEST_API_KEY}
+      REMOTE_IN_PATH: demo/CustomData
+      REMOTE_IN_FAILED_PATH: demo/CustomData/Failed
+      REMOTE_IN_IMPORTED_PATH: demo/CustomData/Archived
+      REMOTE_OUT_PATH: demo/CustomData/Uddata
+      FTP_USER: demo
+      FTP_PASS: pass
+      FTP_PORT: 22
+      FTP_HOST: ftp
             
       # Miljøvariablen FLOWS fortæller Node-RED IDEet hvilket flow.json den skal åbne og gemme ændringer i ved deploy.
       FLOWS: "/data/flows.json"
@@ -22,23 +22,17 @@ services:
       # Bind mount fra codespace til den kørende containers /data.
       # Gør det muligt at deploye flowkode direkte fra IDE og bruge git til at comitte ændringerne til repo.
     volumes:
-      - "./node-red/:/data" 
-      
+      - "./node-red/:/data"
+
     depends_on: 
-      db:
-        condition: service_healthy
-  db:
-    image: mariadb:10.6.11
+      - ftp
+
+  ftp:
+    image: atmoz/sftp:latest
     restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: pass
-      MARIADB_DATABASE: demo
-    healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -u root --password=pass
-      start_period: 5s
-      interval: 5s
-      timeout: 5s
-      retries: 55
+    command: demo:pass:::demo
+    ports:
+      - "22:22"
     networks:
       - node_red
       

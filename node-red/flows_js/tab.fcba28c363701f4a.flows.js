@@ -1,11 +1,10 @@
 const Node = {
-  "id": "971a7ae6df987a48",
+  "id": "fcba28c363701f4a",
   "type": "tab",
-  "label": "Flow 1",
+  "label": "REST API",
   "disabled": false,
   "info": "",
-  "env": [],
-  "_order": 0
+  "env": []
 }
 
 module.exports = Node;
