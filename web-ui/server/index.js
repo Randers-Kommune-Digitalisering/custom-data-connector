@@ -31,7 +31,7 @@ var memoryStore = new session.MemoryStore();
 
 let kcconfig = {
     realm: "randers-kommune",
-    authServerUrl: authServerUrl,
+    authServerUrl: authServerUrl.replace(/(\r\n|\n|\r)/gm, ""),
     resource: resource,
     sslRequired: "external",
     credentials: {
@@ -63,6 +63,8 @@ var app = express();
 app.use(cors(corsOptions));
 app.use(session(sess))
 app.use(keycloak.middleware());
+
+app.get('/health', (req, res) => { res.send('ok') });
 
 app.use('/in', keycloak.protect(hasRole), createProxyMiddleware('/in', {target: 'http://' + customDataConnectorHost, secure: false}));
 app.use('/out', keycloak.protect(hasRole), createProxyMiddleware('/out', {target: 'http://' + customDataConnectorHost, secure: false}));
