@@ -31,7 +31,7 @@ var memoryStore = new session.MemoryStore();
 
 let kcconfig = {
     realm: "randers-kommune",
-    authServerUrl: authServerUrl,
+    authServerUrl: authServerUrl.replace(/(\r\n|\n|\r)/gm, ""),
     resource: resource,
     sslRequired: "external",
     credentials: {
