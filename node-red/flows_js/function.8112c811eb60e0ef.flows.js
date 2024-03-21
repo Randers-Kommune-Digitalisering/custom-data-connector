@@ -21,20 +21,23 @@ const Node = {
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   if (msg.req.headers['auth']) {
-      if(!msg.req.headers['auth'].includes("admin")) {
+      if (!msg.req.headers['auth'].includes("admin")) {
           let filter = msg.req.headers['auth'].split(',')
           let authorized = false
           filter.forEach((fe) => {
               if (authorized) return;
-              authorized = msg.name.split('_')[1].slice(0, fe.length) === fe;
+              if (msg.req.params.file.split('_').length > 1) {
+                  authorized = msg.req.params.file.split('_')[1].slice(0, fe.length) === fe;
+              } else {
+                  authorized = false
+              }
           })
           if (!authorized) {
               msg.statusCode = 401
               throw Error("Access denied")
           }
-          
       }
-  } 
+  }
   return msg;
 }
 
