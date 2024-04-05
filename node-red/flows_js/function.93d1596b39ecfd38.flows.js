@@ -57,7 +57,10 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
       }
       
       function isTime(time) {
-          return /(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)/.test(time)
+          time = time.trim()
+          if (time.length == 8) return /(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)/.test(time)
+          else if (time.length == 7) return /(?:[0-9]|10):(?:[0-5]\d):(?:[0-5]\d)/.test(time)
+          else return false
       }
       
       function hasTime(date_time) {
