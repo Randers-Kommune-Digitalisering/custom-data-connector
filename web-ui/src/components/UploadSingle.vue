@@ -263,7 +263,7 @@ function sendRequest(url, method, data, header) {
   }
   
 function readExcelData(file_data) {
-  let workbook = XLSX.read(file_data);
+  let workbook = XLSX.read(file_data, {cellDates: true, dateNF: 'dd-mm-yyyy'});
   let header = null;
   let uniform_sheets = [];
 
