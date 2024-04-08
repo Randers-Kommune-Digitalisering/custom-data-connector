@@ -69,7 +69,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
       
       function setDateTime(key) {
           time_cnt += 1;
-          if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslæt" + time_cnt, "EgetNavn": "Tid-" + key });
+          if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslaet" + time_cnt, "EgetNavn": "Tid-" + key });
           else throw new Error("Too many time columns");
           setDate(key);
       }
@@ -82,7 +82,7 @@ Node.func = async function (node, msg, RED, context, flow, global, env, util, mo
       
       function setTime(key) {
           time_cnt += 1;
-          if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslæt" + time_cnt, "EgetNavn": key });
+          if (time_cnt <= time_max) msg.columns.push({ "Kolonnenummer": i, "TekniskNavn": "Klokkeslaet" + time_cnt, "EgetNavn": key });
           else throw new Error("Too many time columns");
       }
       
