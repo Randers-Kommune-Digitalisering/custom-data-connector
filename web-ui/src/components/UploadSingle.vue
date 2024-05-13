@@ -30,6 +30,8 @@ const fileNames = ref(null);
 const existing_files = toRef(props, 'existing_files');
 const file_already_exists = ref(false);
 const overwrite = ref(false);
+const meta_already_exists = ref(false);
+const meta_overwrite = ref(false);
 
 //Loader
 const color = "#325d88";
@@ -73,8 +75,10 @@ watch([name, group, department], function() {
   if(department.value && file.value && group.value) {
     let meta_name = [["Meta", department.value.value + group.value].join('_'), 'csv'].join('.')
     if(meta_name !== metaName.value) {
-      if(existing_files.value.includes(meta_name)) metaName.value = null;
-      else metaName.value = meta_name;
+      if(existing_files.value.includes(meta_name)) {
+        metaName.value = null;
+        meta_already_exists.value = true
+      } else metaName.value = meta_name;
     }
   }
 });
@@ -213,6 +217,7 @@ function submitFile() {
     overwtite_files.forEach((fn) => {
       let temp_url = url + "Data_" + fn.name;
       let header = { "Content-Type": "text/csv" };
+      if(meta_overwrite.value && meta_already_exists.value) header["new-meta"] = "true";
       sendRequest(temp_url, 'PUT', fn.data, header);
     });
 
@@ -223,7 +228,7 @@ function submitFile() {
     if(METHOD === "PUT"){
       url = url + "Data_" + fileName.value;
       let header = { "Content-Type": "text/csv" }
-
+      if(meta_overwrite.value && meta_already_exists.value) header["new-meta"] = "true";
       var reader = new FileReader();
       reader.onload = function(evt) {
         if(evt.target.readyState != 2) return;
@@ -237,7 +242,9 @@ function submitFile() {
       reader.readAsText(file.value);
     } else {
       data.append(fileName.value, new File([file.value], encodeURI(fileName.value), {type: file.value.type}));
-      sendRequest(url, METHOD, data);
+      let header = false
+      if(meta_overwrite.value && meta_already_exists.value) header = { "new-meta": "true" };
+      sendRequest(url, METHOD, data, header);
     }
   }
 }
@@ -312,7 +319,7 @@ function readExcelData(file_data) {
         </div>
       </div>
       <div v-if="file_already_exists && !excelData" style="display: flex; align-items: center; flex-direction: row;">
-        <label for="overwrite" >Filen <i>{{fileName}}</i> findes allerede, skal dn overskrives? </label>
+        <label for="overwrite" >Filen <i>{{fileName}}</i> findes allerede, skal den overskrives? </label>
         <input type="checkbox" name="overwirte" v-model="overwrite"/>
       </div>
       <div v-if="excelData">
@@ -322,6 +329,10 @@ function readExcelData(file_data) {
             <input type="checkbox" name="overwirte" v-model="fn.overwrite"/>
           </div>
         </div>
+      </div>
+      <div v-if="meta_already_exists" style="display: flex; align-items: center; flex-direction: row;">
+        <label for="overwrite" >Skal eksisterende meta-fil overskrives? </label>
+        <input type="checkbox" name="overwirte" v-model="meta_overwrite"/>
       </div>
       <span v-if="nameError" class="error">Kilde gruppe må ikke indeholde '_'</span>
       <span v-if="duplicateError" class="error">To eller flere af filerne har samme navn</span>
@@ -387,8 +398,8 @@ input[type="text"] {
 input[type="checkbox"] {
   appearance: none;
   margin-left: 18px;
-  height: 18px;
-  width: 18px;
+  min-height: 18px;
+  min-width: 18px;
   border-radius: 0.3em;
   background-clip: content-box;
 	padding: 3px;

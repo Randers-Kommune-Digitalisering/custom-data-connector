@@ -21,11 +21,11 @@ const Node = {
 
 Node.func = async function (node, msg, RED, context, flow, global, env, util) {
   function checkfile(buff) {
-      let string = msg.payload.filedata.toString()
+      let string = buff.toString()
       if(string.split(';').length > 1) {
           msg.statusCode = 400
           throw Error('for mange kolonner - højest én')
-      } else if(string.split('\n')[0] !== "Brugernavn") {
+      } else if (string.split('\n')[0].trim() !== "Brugernavn") {
           msg.statusCode = 400
           throw Error('kolonnenavn skal være "Brugernavn"')
       } else return true
