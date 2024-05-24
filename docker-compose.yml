@@ -1,3 +1,4 @@
+# Kør: ./create-dirs.sh (linux) eller crate-dirs.cmd (windows) før docker-compose up for at oprette den rigtige mappestruktur.
 version: "3.9"
 services:
   node-red:
@@ -7,10 +8,10 @@ services:
     ports:
       - "1880:1880"
     environment:
-      REMOTE_IN_PATH: demo/CustomData
-      REMOTE_IN_FAILED_PATH: demo/CustomData/Failed
-      REMOTE_IN_IMPORTED_PATH: demo/CustomData/Archived
-      REMOTE_OUT_PATH: demo/CustomData/Uddata
+      REMOTE_IN_PATH: CustomData
+      REMOTE_IN_FAILED_PATH: CustomData/Failed
+      REMOTE_IN_IMPORTED_PATH: CustomData/Archived
+      REMOTE_OUT_PATH: CustomData/Uddata
       FTP_USER: demo
       FTP_PASS: pass
       FTP_PORT: 22
@@ -30,7 +31,9 @@ services:
   ftp:
     image: atmoz/sftp:latest
     restart: always
-    command: demo:pass:::demo
+    command: demo:pass:::CustomData
+    volumes:
+      - ./CustomData/:/home/demo/CustomData/
     ports:
       - "22:22"
     networks:
