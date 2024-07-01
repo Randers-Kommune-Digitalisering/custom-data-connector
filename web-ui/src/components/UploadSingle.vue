@@ -270,12 +270,12 @@ function sendRequest(url, method, data, header) {
   }
   
 function readExcelData(file_data) {
-  let workbook = XLSX.read(file_data, {cellDates: true, dateNF: 'dd-mm-yyyy'});
+  let workbook = XLSX.read(file_data, {cellText:false, cellDates: true});
   let header = null;
   let uniform_sheets = [];
 
   for (const sheet of workbook.SheetNames) {
-      let csv = XLSX.utils.sheet_to_csv(workbook.Sheets[sheet], {FS:";", blankrows:false});
+      let csv = XLSX.utils.sheet_to_csv(workbook.Sheets[sheet], {FS:";", blankrows:false, dateNF: 'dd-mm-yyyy'});
       if(!header) {
           header = csv.split('\n')[0]
           uniform_sheets.push({name: sheet, data: csv})
