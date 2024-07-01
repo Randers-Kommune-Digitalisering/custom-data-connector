@@ -7,10 +7,10 @@ services:
     ports:
       - "1880:1880"
     environment:
-      REMOTE_IN_PATH: demo/CustomData
-      REMOTE_IN_FAILED_PATH: demo/CustomData/Failed
-      REMOTE_IN_IMPORTED_PATH: demo/CustomData/Archived
-      REMOTE_OUT_PATH: demo/CustomData/Uddata
+      REMOTE_IN_PATH: demo
+      REMOTE_IN_FAILED_PATH: demo
+      REMOTE_IN_IMPORTED_PATH: demo
+      REMOTE_OUT_PATH: demo
       FTP_USER: demo
       FTP_PASS: pass
       FTP_PORT: 22
