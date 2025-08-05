@@ -1,3 +1,4 @@
 pandas
+paramiko==3.4.0
 pysftp
 tabulate
