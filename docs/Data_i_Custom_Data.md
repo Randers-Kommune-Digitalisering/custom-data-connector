@@ -1,75 +1,75 @@
 ## <a id="top"> Data i Custom Data i KMD Insight</a>
-- [BSBefolkningsprognose](#dipiqvyl)
-- [BSBetaling2401](#syboiujk)
-- [BSDUBU](#enximarj)
-- [BSDUBU2](#wjykeryv)
-- [BSDUBUp30](#waxpjljb)
-- [BSDUBUp32](#cteaarcf)
-- [BSData](#jfvntwbr)
-- [BSFlyttet](#qxuazfno)
-- [BSNotinlist](#wpwbkmkm)
-- [BSRisikovurdering2410](#btavchwb)
-- [BSSofus](#vipmrjuq)
-- [BSSpecialtilbud](#jpbascet)
-- [BSTestdata](#rvepvwvs)
-- [BSelevtrivsel-4til9klasse](#xwumhilw)
-- [HRTestdata](#lguaosoa)
-- [ITTestdata](#ugsvfytu)
-- [SA](#mrhbtgji)
-- [SAFrontdeskBorgerservice](#irxwdvyf)
-- [SAFrontdeskBorgerserviceFeedback](#rptosonx)
-- [SAFrontdeskBorgerserviceForecasts](#kscznsrf)
-- [SAFrontdeskBorgerserviceTables](#xwjnkfpt)
-- [SAFrontdeskBorgerservice_old](#quhmrjgs)
-- [SAJobindsats](#qimpqfmr)
-- [SAJobindsatsOTIJ01](#wrzcwsgs)
-- [SAJobindsatsPTVA02](#saxjcyqo)
-- [SAJobindsatsPTVC01](#bmtphoxk)
-- [SAJobindsatsY01A02](#wnesjbvn)
-- [SAJobindsatsY04A02](#hvjheujc)
-- [SAJobindsatsY07A02](#swuseyog)
-- [SAJobindsatsY08A02](#tvlheduv)
-- [SAJobindsatsY09A02](#fkcdxqjb)
-- [SAJobindsatsY10A02](#tsadrnmc)
-- [SAJobindsatsY11A02](#gejmfkwu)
-- [SAJobindsatsY12A02](#xzdcbkxi)
-- [SAJobindsatsY14D03](#ieoxhvva)
-- [SAJobindsatsY30R21](#fnyqbswc)
-- [SAJobindsatsY35A02](#gorieuon)
-- [SAJobindsatsY36A02](#heagqqob)
-- [SAJobindsatsY38A02](#rdnughig)
-- [SASensum](#omgaoxrr)
-- [SASensumSagsAktivitet](#dkajxszy)
-- [SATestdata](#omsladbu)
-- [SAYdelsesrefusion](#zcauhpkc)
-- [SAYdelsesrefusionIndivid](#ewnbdgvu)
-- [SKOTestdata](#dqfnrbum)
-- [SKObudgettildeling til drift på omsorgsområdet](#hxgbckmh)
-- [Test](#raflbmdx)
-- [UMTByggesag BOM](#krclzovo)
-- [UMTByggesag afgjorte sager](#pdoylczk)
-- [UMTByggesag modtagede sager](#ixpijybd)
-- [UMTByggesag-modtagede-sager](#sckmlchr)
-- [UMTByggesagerAfgjorte](#pndkuliq)
-- [UMTByggesagerModtagede](#vtqrlztz)
-- [UMTKlimadataBrændstof](#epsildly)
-- [UMTLandzoneafgjorte sager](#mkulcxlh)
-- [UMTLandzonemodtagede sager](#mieaherj)
-- [UMTTestdata](#hokkfgau)
-- [elevtrivsel-4til9klasse](#hrezylyv)
-- [ØKE-handelsfilter](#orzfmfpx)
-- [ØKFrontdeskBorgerservice](#gemmjoxw)
-- [ØKSD data size](#enpshejj)
-- [ØKTestdata](#dnbdnqmj)
-- [ØKdst-arealdk](#ipzkzzyj)
-- [ØKdst-bil53](#ypbcspsu)
-- [ØKdst-bil54](#nnqkmtls)
-- [ØKdst-bol102](#dmnbhxfm)
-- [ØKjo01](#nvrybtxl)
-- [ØKy30r21](#ullyrxrk)
-- [ØKy36a02](#zkcgxeff)
+- [BSBefolkningsprognose](#yvqyxbra)
+- [BSBetaling2401](#dyeehhxb)
+- [BSDUBU](#xcfvjtbi)
+- [BSDUBU2](#odlbcjmb)
+- [BSDUBUp30](#qvwuktix)
+- [BSDUBUp32](#bmevlwmx)
+- [BSData](#pompnaeq)
+- [BSFlyttet](#fucjapsb)
+- [BSNotinlist](#rwpgoxmu)
+- [BSRisikovurdering2410](#cjlyypga)
+- [BSSofus](#icrzdwsn)
+- [BSSpecialtilbud](#nlwgutsw)
+- [BSTestdata](#vinyssqb)
+- [BSelevtrivsel-4til9klasse](#qhtfghll)
+- [HRTestdata](#hgbynygb)
+- [ITTestdata](#lwgpnryh)
+- [SA](#vdvkrpui)
+- [SAFrontdeskBorgerservice](#yxtpbbgi)
+- [SAFrontdeskBorgerserviceFeedback](#ujscrcdv)
+- [SAFrontdeskBorgerserviceForecasts](#fxtqndeo)
+- [SAFrontdeskBorgerserviceTables](#ozhhminb)
+- [SAFrontdeskBorgerservice_old](#qoenaega)
+- [SAJobindsats](#avqjodmt)
+- [SAJobindsatsOTIJ01](#ehpxfsqk)
+- [SAJobindsatsPTVA02](#rmgubctd)
+- [SAJobindsatsPTVC01](#ipbvvpst)
+- [SAJobindsatsY01A02](#bdbqbfmp)
+- [SAJobindsatsY04A02](#cxdcaksg)
+- [SAJobindsatsY07A02](#zqoiylxe)
+- [SAJobindsatsY08A02](#ltnzthrr)
+- [SAJobindsatsY09A02](#aykwgrpi)
+- [SAJobindsatsY10A02](#kpqldloo)
+- [SAJobindsatsY11A02](#atlsutob)
+- [SAJobindsatsY12A02](#gltksezw)
+- [SAJobindsatsY14D03](#kxkcrwtm)
+- [SAJobindsatsY30R21](#zfmhdkov)
+- [SAJobindsatsY35A02](#kwendmqe)
+- [SAJobindsatsY36A02](#glhkcxxb)
+- [SAJobindsatsY38A02](#vcskylbf)
+- [SASensum](#cfwodiqp)
+- [SASensumSagsAktivitet](#oscdwiir)
+- [SATestdata](#nspoalnb)
+- [SAYdelsesrefusion](#zapqhfwo)
+- [SAYdelsesrefusionIndivid](#ggqzgnpz)
+- [SKOTestdata](#ntlriaxm)
+- [SKObudgettildeling til drift på omsorgsområdet](#azpdhzdi)
+- [Test](#dabivwxm)
+- [UMTByggesag BOM](#vniyyhif)
+- [UMTByggesag afgjorte sager](#litcvrdv)
+- [UMTByggesag modtagede sager](#rxxntwld)
+- [UMTByggesag-modtagede-sager](#bxpbjvaf)
+- [UMTByggesagerAfgjorte](#tzmfbduu)
+- [UMTByggesagerModtagede](#rawfcmls)
+- [UMTKlimadataBrændstof](#dzwwsrev)
+- [UMTLandzoneafgjorte sager](#nvfhdkjy)
+- [UMTLandzonemodtagede sager](#qeuipcdz)
+- [UMTTestdata](#fhkgmjxt)
+- [elevtrivsel-4til9klasse](#dyujoxlq)
+- [ØKE-handelsfilter](#pjcszwyr)
+- [ØKFrontdeskBorgerservice](#htqbzbkm)
+- [ØKSD data size](#smlfmcej)
+- [ØKTestdata](#dkihwkzo)
+- [ØKdst-arealdk](#fjudtqpp)
+- [ØKdst-bil53](#hhjwsmzk)
+- [ØKdst-bil54](#zqmucwsh)
+- [ØKdst-bol102](#swybgbfi)
+- [ØKjo01](#dfctxtgw)
+- [ØKy30r21](#xnesndyc)
+- [ØKy36a02](#dypdvlvf)
 
-## <a id="dipiqvyl"> BSBefolkningsprognose</a> 
+## <a id="yvqyxbra"> BSBefolkningsprognose</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -85,7 +85,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="syboiujk"> BSBetaling2401</a> 
+## <a id="dyeehhxb"> BSBetaling2401</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -103,7 +103,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="enximarj"> BSDUBU</a> 
+## <a id="xcfvjtbi"> BSDUBU</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -138,7 +138,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="wjykeryv"> BSDUBU2</a> 
+## <a id="odlbcjmb"> BSDUBU2</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -164,7 +164,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="waxpjljb"> BSDUBUp30</a> 
+## <a id="qvwuktix"> BSDUBUp30</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -190,7 +190,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="cteaarcf"> BSDUBUp32</a> 
+## <a id="bmevlwmx"> BSDUBUp32</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -216,7 +216,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="jfvntwbr"> BSData</a> 
+## <a id="pompnaeq"> BSData</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -228,21 +228,22 @@
 | Dato4         | Afgang dato                                   |
 | Numerisk1     | Antal dage                                    |
 | Tekst1        | Skole - specialundervisning                   |
-| Tekst10       | Indskoling, mellem, udskoling skoleår 2025/26 |
-| Tekst11       | Indskrevet i dag                              |
-| Tekst12       | Bemærkninger                                  |
+| Tekst10       | Indskoling, mellem, udskoling - første halvår |
+| Tekst11       | Indskoling, mellem, udskoling - sidste halvår |
+| Tekst12       | Indskrevet i dag                              |
+| Tekst13       | Bemærkninger                                  |
 | Tekst2        | Forkortelse                                   |
 | Tekst3        | Cpr.nr.                                       |
 | Tekst4        | Betalingsskole                                |
 | Tekst5        | Betalings-kommune                             |
 | Tekst6        | grænsekrydser/anbragt                         |
 | Tekst7        | Takst-gruppe                                  |
-| Tekst8        | Trin sidste år                                |
-| Tekst9        | Indskoling, mellem, udskoling skoleår 2024/25 |
+| Tekst8        | Trin første halvår                            |
+| Tekst9        | Trin sidste halvår                            |
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="qxuazfno"> BSFlyttet</a> 
+## <a id="fucjapsb"> BSFlyttet</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -256,7 +257,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="wpwbkmkm"> BSNotinlist</a> 
+## <a id="rwpgoxmu"> BSNotinlist</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -268,7 +269,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="btavchwb"> BSRisikovurdering2410</a> 
+## <a id="cjlyypga"> BSRisikovurdering2410</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -281,7 +282,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="vipmrjuq"> BSSofus</a> 
+## <a id="icrzdwsn"> BSSofus</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -305,7 +306,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="jpbascet"> BSSpecialtilbud</a> 
+## <a id="nlwgutsw"> BSSpecialtilbud</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -332,7 +333,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="rvepvwvs"> BSTestdata</a> 
+## <a id="vinyssqb"> BSTestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -344,7 +345,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="xwumhilw"> BSelevtrivsel-4til9klasse</a> 
+## <a id="qhtfghll"> BSelevtrivsel-4til9klasse</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -358,7 +359,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="lguaosoa"> HRTestdata</a> 
+## <a id="hgbynygb"> HRTestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -370,7 +371,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ugsvfytu"> ITTestdata</a> 
+## <a id="lwgpnryh"> ITTestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -382,7 +383,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="mrhbtgji"> SA</a> 
+## <a id="vdvkrpui"> SA</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -406,7 +407,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="irxwdvyf"> SAFrontdeskBorgerservice</a> 
+## <a id="yxtpbbgi"> SAFrontdeskBorgerservice</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -435,7 +436,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="rptosonx"> SAFrontdeskBorgerserviceFeedback</a> 
+## <a id="ujscrcdv"> SAFrontdeskBorgerserviceFeedback</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -454,7 +455,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="kscznsrf"> SAFrontdeskBorgerserviceForecasts</a> 
+## <a id="fxtqndeo"> SAFrontdeskBorgerserviceForecasts</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -467,7 +468,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="xwjnkfpt"> SAFrontdeskBorgerserviceTables</a> 
+## <a id="ozhhminb"> SAFrontdeskBorgerserviceTables</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -486,7 +487,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="quhmrjgs"> SAFrontdeskBorgerservice_old</a> 
+## <a id="qoenaega"> SAFrontdeskBorgerservice_old</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -508,7 +509,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="qimpqfmr"> SAJobindsats</a> 
+## <a id="avqjodmt"> SAJobindsats</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -527,7 +528,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="wrzcwsgs"> SAJobindsatsOTIJ01</a> 
+## <a id="ehpxfsqk"> SAJobindsatsOTIJ01</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -546,7 +547,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="saxjcyqo"> SAJobindsatsPTVA02</a> 
+## <a id="rmgubctd"> SAJobindsatsPTVA02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -564,7 +565,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="bmtphoxk"> SAJobindsatsPTVC01</a> 
+## <a id="ipbvvpst"> SAJobindsatsPTVC01</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -580,7 +581,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="wnesjbvn"> SAJobindsatsY01A02</a> 
+## <a id="bdbqbfmp"> SAJobindsatsY01A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -599,7 +600,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="hvjheujc"> SAJobindsatsY04A02</a> 
+## <a id="cxdcaksg"> SAJobindsatsY04A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -617,7 +618,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="swuseyog"> SAJobindsatsY07A02</a> 
+## <a id="zqoiylxe"> SAJobindsatsY07A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -636,7 +637,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="tvlheduv"> SAJobindsatsY08A02</a> 
+## <a id="ltnzthrr"> SAJobindsatsY08A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -654,7 +655,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="fkcdxqjb"> SAJobindsatsY09A02</a> 
+## <a id="aykwgrpi"> SAJobindsatsY09A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -672,7 +673,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="tsadrnmc"> SAJobindsatsY10A02</a> 
+## <a id="kpqldloo"> SAJobindsatsY10A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -690,7 +691,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="gejmfkwu"> SAJobindsatsY11A02</a> 
+## <a id="atlsutob"> SAJobindsatsY11A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -708,7 +709,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="xzdcbkxi"> SAJobindsatsY12A02</a> 
+## <a id="gltksezw"> SAJobindsatsY12A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -726,7 +727,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ieoxhvva"> SAJobindsatsY14D03</a> 
+## <a id="kxkcrwtm"> SAJobindsatsY14D03</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -747,7 +748,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="fnyqbswc"> SAJobindsatsY30R21</a> 
+## <a id="zfmhdkov"> SAJobindsatsY30R21</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -767,7 +768,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="gorieuon"> SAJobindsatsY35A02</a> 
+## <a id="kwendmqe"> SAJobindsatsY35A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -785,7 +786,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="heagqqob"> SAJobindsatsY36A02</a> 
+## <a id="glhkcxxb"> SAJobindsatsY36A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -804,7 +805,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="rdnughig"> SAJobindsatsY38A02</a> 
+## <a id="vcskylbf"> SAJobindsatsY38A02</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -823,7 +824,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="omgaoxrr"> SASensum</a> 
+## <a id="cfwodiqp"> SASensum</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -853,7 +854,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="dkajxszy"> SASensumSagsAktivitet</a> 
+## <a id="oscdwiir"> SASensumSagsAktivitet</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -874,7 +875,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="omsladbu"> SATestdata</a> 
+## <a id="nspoalnb"> SATestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -886,7 +887,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="zcauhpkc"> SAYdelsesrefusion</a> 
+## <a id="zapqhfwo"> SAYdelsesrefusion</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -901,7 +902,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ewnbdgvu"> SAYdelsesrefusionIndivid</a> 
+## <a id="ggqzgnpz"> SAYdelsesrefusionIndivid</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -920,7 +921,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="dqfnrbum"> SKOTestdata</a> 
+## <a id="ntlriaxm"> SKOTestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -932,7 +933,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="hxgbckmh"> SKObudgettildeling til drift på omsorgsområdet</a> 
+## <a id="azpdhzdi"> SKObudgettildeling til drift på omsorgsområdet</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -945,7 +946,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="raflbmdx"> Test</a> 
+## <a id="dabivwxm"> Test</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -970,7 +971,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="krclzovo"> UMTByggesag BOM</a> 
+## <a id="vniyyhif"> UMTByggesag BOM</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -986,7 +987,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="pdoylczk"> UMTByggesag afgjorte sager</a> 
+## <a id="litcvrdv"> UMTByggesag afgjorte sager</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1007,7 +1008,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ixpijybd"> UMTByggesag modtagede sager</a> 
+## <a id="rxxntwld"> UMTByggesag modtagede sager</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1022,7 +1023,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="sckmlchr"> UMTByggesag-modtagede-sager</a> 
+## <a id="bxpbjvaf"> UMTByggesag-modtagede-sager</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1035,7 +1036,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="pndkuliq"> UMTByggesagerAfgjorte</a> 
+## <a id="tzmfbduu"> UMTByggesagerAfgjorte</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1049,7 +1050,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="vtqrlztz"> UMTByggesagerModtagede</a> 
+## <a id="rawfcmls"> UMTByggesagerModtagede</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1062,7 +1063,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="epsildly"> UMTKlimadataBrændstof</a> 
+## <a id="dzwwsrev"> UMTKlimadataBrændstof</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1076,7 +1077,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="mkulcxlh"> UMTLandzoneafgjorte sager</a> 
+## <a id="nvfhdkjy"> UMTLandzoneafgjorte sager</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1096,7 +1097,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="mieaherj"> UMTLandzonemodtagede sager</a> 
+## <a id="qeuipcdz"> UMTLandzonemodtagede sager</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1110,7 +1111,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="hokkfgau"> UMTTestdata</a> 
+## <a id="fhkgmjxt"> UMTTestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1122,7 +1123,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="hrezylyv"> elevtrivsel-4til9klasse</a> 
+## <a id="dyujoxlq"> elevtrivsel-4til9klasse</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1136,7 +1137,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="orzfmfpx"> ØKE-handelsfilter</a> 
+## <a id="pjcszwyr"> ØKE-handelsfilter</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1156,7 +1157,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="gemmjoxw"> ØKFrontdeskBorgerservice</a> 
+## <a id="htqbzbkm"> ØKFrontdeskBorgerservice</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1184,7 +1185,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="enpshejj"> ØKSD data size</a> 
+## <a id="smlfmcej"> ØKSD data size</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1197,7 +1198,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="dnbdnqmj"> ØKTestdata</a> 
+## <a id="dkihwkzo"> ØKTestdata</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1209,7 +1210,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ipzkzzyj"> ØKdst-arealdk</a> 
+## <a id="fjudtqpp"> ØKdst-arealdk</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1223,7 +1224,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ypbcspsu"> ØKdst-bil53</a> 
+## <a id="hhjwsmzk"> ØKdst-bil53</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1238,7 +1239,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="nnqkmtls"> ØKdst-bil54</a> 
+## <a id="zqmucwsh"> ØKdst-bil54</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1253,7 +1254,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="dmnbhxfm"> ØKdst-bol102</a> 
+## <a id="swybgbfi"> ØKdst-bol102</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1268,7 +1269,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="nvrybtxl"> ØKjo01</a> 
+## <a id="dfctxtgw"> ØKjo01</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1285,7 +1286,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="ullyrxrk"> ØKy30r21</a> 
+## <a id="xnesndyc"> ØKy30r21</a> 
 <details>
 <summary>Vis tabel</summary>
 
@@ -1305,7 +1306,7 @@
 </details>
 <a href="#top">:arrow_heading_up:</a>
 
-## <a id="zkcgxeff"> ØKy36a02</a> 
+## <a id="dypdvlvf"> ØKy36a02</a> 
 <details>
 <summary>Vis tabel</summary>
 
