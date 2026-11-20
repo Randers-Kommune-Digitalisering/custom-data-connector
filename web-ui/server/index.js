@@ -13,7 +13,11 @@ const authServerUrl = process.env.KEYCLOACK_AUTH_URL;
 const resource = process.env.KEYCLOACK_CLIENTID;
 const secret = process.env.KEYCLOACK_SECRET;
 const cookie_secret = process.env.COOKIE_SECRET;
-const pool = new Pool({ ssl: { rejectUnauthorized: true } });
+const insecureDatabaseTls = process.env.PGSSL_INSECURE === 'true';
+if (insecureDatabaseTls) {
+  console.warn('PostgreSQL certificate verification is disabled (PGSSL_INSECURE=true)');
+}
+const pool = new Pool({ ssl: { rejectUnauthorized: !insecureDatabaseTls } });
 const sessionStore = new PgSession({ pool, schemaName: 'custom_data_connector_web_ui_audit' });
  
 

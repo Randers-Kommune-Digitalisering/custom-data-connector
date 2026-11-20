@@ -69,6 +69,11 @@ Make the database CA trusted by the Node.js runtime if it is not publicly
 trusted; the database hostname must match its certificate. The
 application database role needs access only to the `custom_data_connector_web_ui_audit`
 schema and its two tables.
+If the CA certificate is temporarily unavailable, set `PGSSL_INSECURE=true`
+in the web UI deployment to disable certificate verification for this
+PostgreSQL connection only. TLS remains enabled, but the server's identity
+cannot be verified; use this only on a trusted network and remove the setting
+once the CA can be installed. The default remains certificate verification.
 Grant read access to visit records only to named administrators via a separate
 read-only database role. Do not expose individual records through Prometheus.
 
