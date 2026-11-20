@@ -1,6 +1,9 @@
 var Keycloak = require('keycloak-connect');
 var express = require('express')
 var session = require('express-session');
+const PgSession = require('connect-pg-simple')(session);
+const { Pool } = require('pg');
+const { createVisitRecorder } = require('./audit');
 var cors = require('cors');
 const { createProxyMiddleware, fixRequestBody } = require('http-proxy-middleware');
 
@@ -10,6 +13,8 @@ const authServerUrl = process.env.KEYCLOACK_AUTH_URL;
 const resource = process.env.KEYCLOACK_CLIENTID;
 const secret = process.env.KEYCLOACK_SECRET;
 const cookie_secret = process.env.COOKIE_SECRET;
+const pool = new Pool({ ssl: { rejectUnauthorized: true } });
+const sessionStore = new PgSession({ pool, schemaName: 'custom_data_connector_web_ui_audit' });
  
 
 function hasRole(token, request) {
@@ -27,8 +32,6 @@ function setRoles(token, request) {
   } else return false
 }
 
-var memoryStore = new session.MemoryStore();
-
 let kcconfig = {
     realm: "randers-kommune",
     authServerUrl: authServerUrl.replace(/(\r\n|\n|\r)/gm, ""),
@@ -40,16 +43,17 @@ let kcconfig = {
 }
  
 var keycloak = new Keycloak({
-  store: memoryStore
+  store: sessionStore
 }, kcconfig);
  
 var sess = {
   secret: cookie_secret,
   resave: false,
-  saveUninitialized: true,
-  store: memoryStore,
+  saveUninitialized: false,
+  store: sessionStore,
   cookie: {
-    secure: false,
+    secure: 'auto',
+    sameSite: 'lax'
   }
 }
 
@@ -60,6 +64,7 @@ var corsOptions = {
   }
 
 var app = express();
+app.set('trust proxy', 1);
 app.use(cors(corsOptions));
 app.use(session(sess))
 app.use(keycloak.middleware());
@@ -73,10 +78,31 @@ app.get('/roles', keycloak.protect(setRoles), (req, res) => {
   res.send({roles: req.roles, username: req.username})
 })
 
-app.use( keycloak.protect(), express.static('dist'));
+const recordVisit = createVisitRecorder(pool, resource);
+app.use(keycloak.protect(), recordVisit, express.static('dist'));
 
 app.use('*', keycloak.protect(), express.static('dist'));
 
-app.listen(port, () => {
+async function removeExpiredVisits() {
+  await pool.query("DELETE FROM custom_data_connector_web_ui_audit.visits WHERE visited_at < now() - interval '12 months'");
+}
+
+async function start() {
+  await pool.query('SELECT 1 FROM custom_data_connector_web_ui_audit.session LIMIT 0');
+  await removeExpiredVisits();
+  setInterval(() => {
+    removeExpiredVisits().catch((error) => {
+      console.error('Failed to remove expired visits:', error.code || 'database error');
+      process.exit(1);
+    });
+  }, 24 * 60 * 60 * 1000).unref();
+  app.listen(port, () => {
     console.log(`App listening on port:${port}`);
+  });
+}
+
+start().catch((error) => {
+  console.error('Visit database is unavailable:', error.code || 'database error');
+  process.exitCode = 1;
+  pool.end();
 });
